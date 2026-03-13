@@ -54,19 +54,7 @@ def roles():
     print(" " * len(select), end='\r')
     if player_role == "murd":
         print("🔪 murderer.")
-        print(comp1_role)
-        print(comp2_role)
-        print(comp3_role)
-        print(comp4_role)
-        print(comp5_role)
-        print(comp6_role)
     else:
         print("😨survivor.")
-        print(comp1_role)
-        print(comp2_role)
-        print(comp3_role)
-        print(comp4_role)
-        print(comp5_role)
-        print(comp6_role)
 
 intro()
