@@ -59,4 +59,7 @@ def roles():
     print(comp1_role)
     print(comp2_role)
     print(comp3_role)
+    print(comp4_role)
+    print(comp5_role)
+    print(comp6_role)
 intro()
