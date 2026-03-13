@@ -68,9 +68,12 @@ def energy(pts):
     return lv
 
 
-intro()
+player_name = intro()
+player_role, comp1_role, comp2_role, comp3_role, comp4_role, comp5_role, comp6_role = roles()
 sus_points = 0
-energy_points = randint(500,540)
+energy_points = randint(100,140)
 energy_lv = energy(energy_points)
 print(energy_points)
 print(energy_lv)
+print(player_role)
+print(comp1_role)
