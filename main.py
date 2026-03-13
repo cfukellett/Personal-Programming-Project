@@ -57,4 +57,23 @@ def roles():
     else:
         print("😨survivor.")
 
-intro()
+def energy(pts):
+    if pts >= 200:
+        lv = 'hyper'
+    elif pts >= 150:
+        lv = 'energetic'
+    elif pts >= 100:
+        lv = 'neutral'
+    elif pts >= 50:
+        lv = "tired"
+    else:
+        lv = "exhausted"
+    return lv
+
+
+#intro()
+sus_points = 0
+energy_points = randint(100,140)
+energy_lv = energy(energy_points)
+print(energy_points)
+print(energy_lv)
