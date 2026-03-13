@@ -79,8 +79,19 @@ def day(day, suspts, energylv):
         print("There is no danger here. You can freely rest.")
     return day
 
-#def night(player_role):
+def night(player_role):
+    if player_role == "surv":
+        player_sleep = input("Will you sleep? (y/n)\n").lower()
+        while player_sleep not in ['y', 'yes', 'n', 'no']:
+            print("Sorry. I did not quite catch that.")
+            player_sleep = input("Will you sleep? (y/n)\n").lower()
+    if player_sleep in ['y', 'yes']:
+        player_sleep = True
 
+def aicode(playerrole, c1role, c2role, c3role, c4role, c5role, c6role):
+
+    chosen = randint(0,6)
+    
 
 
 
@@ -91,4 +102,5 @@ energy_points = randint(100,140)
 energy_lv = energy(energy_points)
 day_num = 0
 day_num = day(day_num, sus_points, energy_lv)
+aicode(player_role, comp1_role, comp2_role, comp3_role, comp4_role, comp5_role, comp6_role)
 night(player_role)
