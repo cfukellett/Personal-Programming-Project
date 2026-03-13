@@ -56,16 +56,24 @@ def roles():
 
 def energy(pts):
     if pts >= 200:
-        lv = "hyper"
+        lv = "Hyper 🤩"
     elif pts >= 150:
-        lv = "energetic"
+        lv = "Energetic 😁"
     elif pts >= 100:
-        lv = "neutral"
+        lv = "Neutral 😐"
     elif pts >= 50:
-        lv = "tired"
+        lv = "Tired 😫"
     else:
-        lv = "exhausted"
+        lv = "Exhausted 🫩"
     return lv
+
+
+def day(day, suspts, energylv):
+    print(f"☀️--Day {day}--☀️")
+    print("It's the start of a brand new day.")
+    print("Here are your day 1 stats:")
+    print(f"🤔 Suspicion Points: {suspts}")
+    print(f"⚡Energy Level: Neutral 😐")
 
 
 player_name = intro()
@@ -73,7 +81,5 @@ player_role, comp1_role, comp2_role, comp3_role, comp4_role, comp5_role, comp6_r
 sus_points = 0
 energy_points = randint(100,140)
 energy_lv = energy(energy_points)
-print(energy_points)
-print(energy_lv)
-print(player_role)
-print(comp1_role)
+day_num = 0
+day(day_num)
