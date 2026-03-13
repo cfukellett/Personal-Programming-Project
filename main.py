@@ -59,11 +59,11 @@ def roles():
 
 def energy(pts):
     if pts >= 200:
-        lv = 'hyper'
+        lv = "hyper"
     elif pts >= 150:
-        lv = 'energetic'
+        lv = "energetic"
     elif pts >= 100:
-        lv = 'neutral'
+        lv = "neutral"
     elif pts >= 50:
         lv = "tired"
     else:
