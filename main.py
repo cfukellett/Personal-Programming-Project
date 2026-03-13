@@ -73,7 +73,7 @@ def day(day, suspts, energylv):
     print("It's the start of a brand new day.")
     print("Here are your day 1 stats:")
     print(f"🤔 Suspicion Points: {suspts}")
-    print(f"⚡Energy Level: Neutral 😐")
+    print(f"⚡Energy Level: {energylv}")
 
 
 player_name = intro()
@@ -82,4 +82,4 @@ sus_points = 0
 energy_points = randint(100,140)
 energy_lv = energy(energy_points)
 day_num = 0
-day(day_num)
+day(day_num, sus_points, energy_lv)
