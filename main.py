@@ -71,7 +71,7 @@ def energy(pts):
     return lv
 
 
-#intro()
+intro()
 sus_points = 0
 energy_points = randint(100,140)
 energy_lv = energy(energy_points)
