@@ -48,9 +48,9 @@ def roles():
     time.sleep(1)
     print(" " * len(select), end='\r')
     if player == "murd":
-        print("🔪 murderer.")
+        print("🔪 murderer.\n")
     else:
-        print("😨survivor.")
+        print("😨survivor.\n")
 
     return player, comp1, comp2, comp3, comp4, comp5, comp6
 
@@ -75,7 +75,14 @@ def day(day, suspts, energylv):
     print("Here are your day 1 stats:")
     print(f"🤔 Suspicion Points: {suspts}")
     print(f"⚡Energy Level: {energylv}")
+    if day == 1:
+        print("There is no danger here. You can freely rest.")
     return day
+
+#def night(player_role):
+
+
+
 
 player_name = intro()
 player_role, comp1_role, comp2_role, comp3_role, comp4_role, comp5_role, comp6_role = roles()
@@ -84,3 +91,4 @@ energy_points = randint(100,140)
 energy_lv = energy(energy_points)
 day_num = 0
 day_num = day(day_num, sus_points, energy_lv)
+night(player_role)
