@@ -29,6 +29,7 @@ def roles():
         player = "surv"
     else:
         player = "murd"
+    print(player)
     if player == "murd":
         comp1 = comp2 = comp3 = comp4 = comp5 = comp6 = "surv"
     else:
