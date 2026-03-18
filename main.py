@@ -46,10 +46,10 @@ def roles():
         elif random_murd == 6:
             comp6 = "murd"
         for i in (comp1, comp2, comp3, comp4, comp5, comp6):
-            if i == "":
-                i.append("surv")
+            if i != "murd":
+                i = "surv"
 
-    print(comp1, comp2, comp3, comp4, comp5, comp6)
+        print(comp1, comp2, comp3, comp4, comp5, comp6)
 
     print("Your selected role is...") 
     select = "selecting"
