@@ -35,7 +35,7 @@ def roles():
         comp1 = comp2 = comp3 = comp4 = comp5 = comp6 = "surv"
     else:
         random_murd = randint(1, 6)
-        for i in players:
+        for i+1 in players:
             stupidnumber = 1
             if random_murd == players[stupidnumber]:
                 players[stupidnumber] = "murd"
