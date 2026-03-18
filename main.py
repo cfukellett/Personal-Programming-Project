@@ -33,12 +33,12 @@ def roles():
         comp1 = comp2 = comp3 = comp4 = comp5 = comp6 = "surv"
     else:
         random_murd = randint(6, 6)
-        for i in range(len(comps)):
-            if i + 1 == random_murd:
+        for i in comps:
+            if random_murd == comps[i]:
                 comps[i] = "murd"
-                print(i)
             else:
                 comps[i] = "surv"
+    print(comps)
 
     print("Your selected role is...") 
     select = "selecting"
