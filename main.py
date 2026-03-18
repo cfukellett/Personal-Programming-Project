@@ -18,16 +18,14 @@ def intro():
 
 def roles():
     players = ["surv", "surv", "surv", "surv", "surv", "surv", "surv"]
-    print(players)
-    player = randint(0,0)
+    player = randint(0,1)
     if player == 0:
         players[0] = "surv"
     else:
         players[0] = "murd"
     if players[0] == "surv":
-        random_murd = randint(6, 6)
+        random_murd = randint(1, 6)
         players[random_murd] = "murd"
-    print(players)
 
     print("Your selected role is...") 
     select = "selecting"
@@ -110,6 +108,7 @@ def aicode(playerrole, c1role, c2role, c3role, c4role, c5role, c6role):
 
 player_name = intro()
 player_role, comp1_role, comp2_role, comp3_role, comp4_role, comp5_role, comp6_role = roles()
+print(player_role, comp1_role, comp2_role, comp3_role, comp4_role, comp5_role, comp6_role)
 sus_points = 0
 energy_points = randint(100,140)
 energy_lv = energy(energy_points)
