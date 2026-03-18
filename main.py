@@ -17,13 +17,14 @@ def intro():
     return name
 
 def roles():
+    player = ""
     comp1 = ""
     comp2 = ""
     comp3 = ""
     comp4 = ""
     comp5 = ""
     comp6 = ""
-    comps = [comp1, comp2, comp3, comp4, comp5, comp6] # by value, not by reference
+    players = [player, comp1, comp2, comp3, comp4, comp5, comp6]
     player = randint(0,0)
     if player == 0:
         player = "surv"
@@ -32,50 +33,13 @@ def roles():
     if player == "murd":
         comp1 = comp2 = comp3 = comp4 = comp5 = comp6 = "surv"
     else:
-        random_murd = randint(6, 6)
-        if random_murd == 1:
-            comp1 = "murd"
-            comp2 = "surv"
-            comp3 = "surv"
-            comp4 = "surv"
-            comp5 = "surv"
-            comp6 = "surv"
-        elif random_murd == 2:
-            comp1 = "surv"
-            comp2 = "murd"
-            comp3 = "surv"
-            comp4 = "surv"
-            comp5 = "surv"
-            comp6 = "surv"
-        elif random_murd == 3:
-            comp1 = "surv"
-            comp2 = "surv"
-            comp3 = "murd"
-            comp4 = "surv"
-            comp5 = "surv"
-            comp6 = "surv"
-        elif random_murd == 4:
-            comp1 = "surv"
-            comp2 = "surv"
-            comp3 = "surv"
-            comp4 = "murd"
-            comp5 = "surv"
-            comp6 = "surv"
-        elif random_murd == 5:
-            comp1 = "surv"
-            comp2 = "surv"
-            comp3 = "surv"
-            comp4 = "surv"
-            comp5 = "murd"
-            comp6 = "surv"
-        elif random_murd == 6:
-            comp1 = "surv"
-            comp2 = "surv"
-            comp3 = "surv"
-            comp4 = "surv"
-            comp5 = "surv"
-            comp6 = "murd"
-    print(comp1, comp2, comp3, comp4, comp5, comp6)
+        random_murd = randint(1, 6)
+        for i in players:
+            if random_murd == players[i]:
+                players[i] = "murd"
+            else:
+                players[i] = "surv"
+    print(players)
 
     print("Your selected role is...") 
     select = "selecting"
@@ -90,8 +54,11 @@ def roles():
     else:
         print("😨survivor.\n")
     time.sleep(2)
-    #print(player, comp1, comp2, comp3, comp4, comp5, comp6)
-    return player, comp1, comp2, comp3, comp4, comp5, comp6
+
+    players[x] = change
+
+    return players
+
 
 def energy(pts):
     if pts >= 200:
@@ -142,13 +109,11 @@ def playerchosenbias():
 
 def aicode(playerrole, c1role, c2role, c3role, c4role, c5role, c6role):
     role_list = [playerrole, c1role, c2role, c3role, c4role, c5role, c6role]
-    print(c6role)
-    chosen = randint(5,6)
+    chosen = randint(0,6)
     if chosen == 0:
         chosen = playerchosenbias()
     while role_list[chosen] == 'murd':
-        print("test")
-        chosen = randint(5,6)
+        chosen = randint(0,6)
         if chosen == 0:
             chosen = playerchosenbias()
     print(chosen)
