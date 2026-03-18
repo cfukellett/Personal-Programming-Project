@@ -46,7 +46,7 @@ def roles():
         elif random_murd == 6:
             comp6 = "murd"
         for i in (comp1, comp2, comp3, comp4, comp5, comp6):
-            if i != "murd":
+            if i == "":
                 i = "surv"
     print(comp1, comp2, comp3, comp4, comp5, comp6)
 
