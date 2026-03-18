@@ -95,26 +95,22 @@ def playerchosenbias():
         chosen2 = "bias"
     else:
         chosen2 = "unbias"
-    return chosen2
+    if chosen2 == "bias":
+        chosen = randint(1,6)
+    else:
+        chosen = 0
+    return chosen
 
 def aicode(playerrole, c1role, c2role, c3role, c4role, c5role, c6role):
     role_list = [playerrole, c1role, c2role, c3role, c4role, c5role, c6role]
     chosen = randint(5,6)
     if chosen == 0:
         chosen = playerchosenbias()
-        if chosen == "bias":
-            chosen = randint(1,6)
-        else:
-            chosen = 0
     if playerrole == 'surv':
         while role_list[chosen] == 'murd':
             chosen = randint(0,6)
             if chosen == 0:
                 chosen = playerchosenbias()
-                if chosen == "bias":
-                    chosen = randint(1,6)
-                else:
-                    chosen = 0
     print(chosen)
     return chosen
     
