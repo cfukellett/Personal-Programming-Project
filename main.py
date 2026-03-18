@@ -47,7 +47,8 @@ def roles():
             comp6 = "murd"
         for i in (comp1, comp2, comp3, comp4, comp5, comp6):
             if i == "":
-                i = "surv"
+                i.append("surv")
+
     print(comp1, comp2, comp3, comp4, comp5, comp6)
 
     print("Your selected role is...") 
