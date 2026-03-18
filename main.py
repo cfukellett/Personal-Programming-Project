@@ -88,9 +88,34 @@ def night(player_role):
     if player_sleep in ['y', 'yes']:
         player_sleep = True
 
-def aicode(playerrole, c1role, c2role, c3role, c4role, c5role, c6role):
+def playerchosenbias():
+    chosen = randint(1,5)
+    chosen2 = ""
+    if chosen == 1:
+        chosen2 = "bias"
+    else:
+        chosen2 = "unbias"
+    return chosen2
 
+def aicode(playerrole, c1role, c2role, c3role, c4role, c5role, c6role):
+    role_list = [playerrole, c1role, c2role, c3role, c4role, c5role, c6role]
     chosen = randint(0,6)
+    if chosen == 0:
+        chosen = playerchosenbias()
+        if chosen == "bias":
+            chosen = randint(1,6)
+        else:
+            chosen = 0
+    if playerrole == 'surv':
+        while role_list[chosen] == 'murd':
+            chosen = randint(0,6)
+            chosen = playerchosenbias()
+            if chosen == "bias":
+                chosen = randint(1,6)
+            else:
+                chosen = 0
+    print(chosen)
+
     
 
 
