@@ -106,12 +106,11 @@ def aicode(playerrole, c1role, c2role, c3role, c4role, c5role, c6role):
     chosen = randint(5,6)
     if chosen == 0:
         chosen = playerchosenbias()
-    if playerrole == 'surv':
-        while role_list[chosen] == 'murd':
-            print("test")
-            chosen = randint(5,6)
-            if chosen == 0:
-                chosen = playerchosenbias()
+    while role_list[chosen] == 'murd':
+        print("test")
+        chosen = randint(5,6)
+        if chosen == 0:
+            chosen = playerchosenbias()
     print(chosen)
     return chosen
     
@@ -125,6 +124,7 @@ energy_points = randint(100,140)
 energy_lv = energy(energy_points)
 day_num = 0
 day_num = day(day_num, sus_points, energy_lv)
+print(comp6_role)
 if player_role == 'surv':
     chosen = aicode(player_role, comp1_role, comp2_role, comp3_role, comp4_role, comp5_role, comp6_role)
 night(player_role)
