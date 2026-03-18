@@ -43,7 +43,7 @@ def roles():
             else:
                 players[stupidnumber] = "surv"
             stupidnumber += 1
-    players = [player, comp1, comp2, comp3, comp4, comp5, comp6]
+    #players = 
     print(players)
 
     print("Your selected role is...") 
