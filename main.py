@@ -17,13 +17,13 @@ def intro():
     return name
 
 def roles():
-    player = ""
-    comp1 = ""
-    comp2 = ""
-    comp3 = ""
-    comp4 = ""
-    comp5 = ""
-    comp6 = ""
+    player = "0"
+    comp1 = "1"
+    comp2 = "2"
+    comp3 = "3"
+    comp4 = "4"
+    comp5 = "5"
+    comp6 = "6"
     players = [player, comp1, comp2, comp3, comp4, comp5, comp6]
     player = randint(0,0)
     if player == 0:
@@ -56,8 +56,6 @@ def roles():
     else:
         print("😨survivor.\n")
     time.sleep(2)
-
-    players[x] = change
 
     return players
 
