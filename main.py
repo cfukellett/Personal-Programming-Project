@@ -36,6 +36,7 @@ def roles():
         for i in range(len(comps)):
             if i + 1 == random_murd:
                 comps[i] = "murd"
+                print(i)
             else:
                 comps[i] = "surv"
 
