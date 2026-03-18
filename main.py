@@ -67,16 +67,23 @@ def day(day, suspts, energylv):
     print(f"⚡Energy Level: {energylv}")
     if day == 1:
         print("There is no danger here. You can freely rest.")
+    time.sleep(2)
     return day
 
-def night(player_role):
+def night(player_role, chosen):
+    dead = False
     if player_role == "surv":
         player_sleep = input("Will you sleep? (y/n)\n").lower()
         while player_sleep not in ['y', 'yes', 'n', 'no']:
             print("Sorry. I did not quite catch that.")
             player_sleep = input("Will you sleep? (y/n)\n").lower()
-    if player_sleep in ['y', 'yes']:
-        player_sleep = True
+        if player_sleep in ['y', 'yes']:
+            player_sleep = True
+            if chosen == 0:
+                dead = True
+        elif player_sleep in ['n', 'no']:
+            player_sleep = False
+    return dead
 
 def playerchosenbias():
     chosen = randint(1,5)
@@ -108,7 +115,6 @@ def aicode(playerrole, c1role, c2role, c3role, c4role, c5role, c6role):
 
 player_name = intro()
 player_role, comp1_role, comp2_role, comp3_role, comp4_role, comp5_role, comp6_role = roles()
-print(player_role, comp1_role, comp2_role, comp3_role, comp4_role, comp5_role, comp6_role)
 sus_points = 0
 energy_points = randint(100,140)
 energy_lv = energy(energy_points)
@@ -116,4 +122,4 @@ day_num = 0
 day_num = day(day_num, sus_points, energy_lv)
 if player_role == 'surv':
     chosen = aicode(player_role, comp1_role, comp2_role, comp3_role, comp4_role, comp5_role, comp6_role)
-night(player_role)
+night(player_role, chosen)
