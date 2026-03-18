@@ -33,7 +33,8 @@ def roles():
     if player == "murd":
         comp1 = comp2 = comp3 = comp4 = comp5 = comp6 = "surv"
     else:
-        random_murd = randint(6, 6)
+        random_murd = randint(1, 6)
+        print("test")
         if random_murd == 1:
             comp1 = "murd"
         elif random_murd == 2:
