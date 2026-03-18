@@ -24,20 +24,17 @@ def roles():
     comp4 = 4
     comp5 = 5
     comp6 = 6
-    players = ["surv" * 7]
+    players = ["surv", "surv", "surv", "surv", "surv", "surv", "surv"]
     print(players)
     player = randint(0,0)
     if player == 0:
-        player = "surv"
+        players[0] = "surv"
     else:
-        player = "murd"
+        player[0] = "murd"
     print(player)
-    if player == "murd":
-        comp1 = comp2 = comp3 = comp4 = comp5 = comp6 = "surv"
-    else:
+    if player == "surv":
         random_murd = randint(6, 6)
         players[random_murd] = "murd"
-    #players = 
     print(players)
 
     print("Your selected role is...") 
