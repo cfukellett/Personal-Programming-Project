@@ -17,22 +17,14 @@ def intro():
     return name
 
 def roles():
-    player = 0
-    comp1 = 1
-    comp2 = 2
-    comp3 = 3
-    comp4 = 4
-    comp5 = 5
-    comp6 = 6
     players = ["surv", "surv", "surv", "surv", "surv", "surv", "surv"]
     print(players)
     player = randint(0,0)
     if player == 0:
         players[0] = "surv"
     else:
-        player[0] = "murd"
-    print(player)
-    if player == "surv":
+        players[0] = "murd"
+    if players[0] == "surv":
         random_murd = randint(6, 6)
         players[random_murd] = "murd"
     print(players)
