@@ -35,10 +35,12 @@ def roles():
     else:
         random_murd = randint(1, 6)
         for i in players:
-            if random_murd == players[i]:
-                players[i] = "murd"
+            stupidnumber = 1
+            if random_murd == players[stupidnumber]:
+                players[stupidnumber] = "murd"
             else:
-                players[i] = "surv"
+                players[stupidnumber] = "surv"
+            stupidnumber += 1
     print(players)
 
     print("Your selected role is...") 
