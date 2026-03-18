@@ -23,7 +23,7 @@ def roles():
     comp4 = ""
     comp5 = ""
     comp6 = ""
-    comps = [comp1, comp2, comp3, comp4, comp5, comp6]
+    comps = [comp1, comp2, comp3, comp4, comp5, comp6] # by value, not by reference
     player = randint(0,0)
     if player == 0:
         player = "surv"
@@ -50,7 +50,7 @@ def roles():
         for i in comps:
             if i != "murd":
                 i = "surv"
-    print(comps)
+    print(comp1, comp2, comp3, comp4, comp5, comp6)
 
     print("Your selected role is...") 
     select = "selecting"
