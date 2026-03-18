@@ -108,6 +108,7 @@ def aicode(playerrole, c1role, c2role, c3role, c4role, c5role, c6role):
         chosen = playerchosenbias()
     if playerrole == 'surv':
         while role_list[chosen] == 'murd':
+            print("test")
             chosen = randint(5,6)
             if chosen == 0:
                 chosen = playerchosenbias()
