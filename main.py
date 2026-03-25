@@ -83,6 +83,8 @@ def night(player_role, chosen):
                 dead = True
         elif player_sleep in ['n', 'no']:
             player_sleep = False
+        #if player_sleep == False:
+         #   player_
     return dead
 
 def playerchosenbias():
