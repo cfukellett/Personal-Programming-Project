@@ -1,4 +1,5 @@
 from random import randint
+import random
 import time
 
 def intro():
@@ -9,7 +10,7 @@ def intro():
     time.sleep(1)
     read_rules = input("Would you like to read the rules? (y/n):\n").lower()
     while read_rules not in ['y', 'yes', 'n', 'no']:
-        print("Sorry. I did not quite catch that.")
+        wronginsert()
         read_rules = input("Would you like to read the rules? (y/n):\n").lower()
     if read_rules in ['y', 'yes']:
         print("rules here")
@@ -29,12 +30,7 @@ def roles():
 
     print("Your selected role is...") 
     select = "selecting"
-    for i in range(5):
-        select += "."
-        print(select, end='\r')
-        time.sleep(0.3)
-    time.sleep(1)
-    print(" " * len(select), end='\r')
+    dot_spam(select)
     if player == "murd":
         print("🔪 murderer.\n")
     else:
@@ -70,12 +66,15 @@ def day(day, suspts, energylv):
     time.sleep(2)
     return day
 
+def wronginsert():
+    print("Please answer with an acceptable input.\n")
+
 def night(player_role, chosen):
     dead = False
     if player_role == "surv":
         player_sleep = input("Will you sleep? (y/n)\n").lower()
         while player_sleep not in ['y', 'yes', 'n', 'no']:
-            print("Sorry. I did not quite catch that.")
+            wronginsert()
             player_sleep = input("Will you sleep? (y/n)\n").lower()
         if player_sleep in ['y', 'yes']:
             player_sleep = True
@@ -83,9 +82,57 @@ def night(player_role, chosen):
                 dead = True
         elif player_sleep in ['n', 'no']:
             player_sleep = False
-        #if player_sleep == False:
-         #   player_
+        if player_sleep == False:
+            while player_lh != 1 and player_lh != 2 and player_lh != 3:
+                print("Will you take a peek outside or go into hiding? (Enter 1, 2 or 3)")
+                print("1. (Take a peek outside)")
+                print("2. (Hide in your house)")
+                print("3. Nevermind. I'm feeling sleepy.")
+                player_lh = int(input())
+                if player_lh == 1:
+                    player_lh = "look"
+                    print("You decided to take a peak outside...")
+                    peak()
+                elif player_lh == 2:
+                    player_lh = "hide"
+                    print("You decided to hide for the night.")
+                    hide(chosen)
+                elif player_lh == 3:
+                    player_lh = "none"
+                    player_sleep = True
+                else:
+                    wronginsert()
     return dead
+
+def hide(target):
+    hidingrandom = randint(1,8)
+    hideactions = ["You hid in a cardboard box, hoping not to be found...", "You hid in the wardrobe, trying to stay as silent as possible...", "You hid under your bed whilst attempting to control your heavy breathing...", "You hid underneath the bathroom cabinet, surely they won't expect this...", "You hid in the attic, staying as still as possible...", "You hid under the dining table...Surely they can't see you down there...right? RIGHT???", "You dug 3000 kilometers below the surface into the mantle to greet Satan and treated yourself with a nice Subway sandwich. Then, you went into the deep sea to greet your good old friend 'Angus the Deep Sea Anglerfish' and had a great time catching up. Then, you returned to your house and found a knife...but it was a toy knife. So, you decided to climb on the ceiling and hope for the best.", "You hid in the kitchen cabinet, holding your breath."]
+    hidetext = "Hiding"
+    tensiontexts = ["...nothing happened.", "...you heard nothing.", "...you stayed silent, but somehow, the world seemed even quieter", "...nothing was happening."]
+    dot_spam(hidetext)
+    print(f"{hideactions[hidingrandom]}")
+    randomtension = randint(2,4)
+    for i in range(randomtension):
+        dot_spam(".")
+        random.shuffle(tensiontexts)
+        print(tensiontexts[0])
+        time.sleep(1)
+    dot_spam(".")
+    if target == 0:
+        print("...?")
+        print("You heard what seemed like footsteps paddling around in your house.")
+        print("After 5 minutes of tension, the footsteps faded away.")
+    print("You felt safe.")
+
+
+def dot_spam(text):
+    for i in range(5):
+        text += "."
+        print(text, end='\r')
+        time.sleep(0.3)
+    time.sleep(1)
+    print(" " * len(text), end='\r')
+
 
 def playerchosenbias():
     chosen = randint(1,5)
@@ -112,11 +159,21 @@ def aicode(playerrole, c1role, c2role, c3role, c4role, c5role, c6role):
     print(chosen)
     return chosen
     
+def compnames():
+    finalcomp_names = []
+    comp_names = ["Tim", "Gerald", "Jack", "Sammy", "Maria", "Jeremy", "Kaitlyn", "Andrew", "Tate", "Matthew", "Nick", "Eric", "Martin", "Hugo", "Harry", "Richard", "Michael", "Gabriel", "Josephine", "Joe", "Patrick", "Ronald", "Jerry", "Oliver", "Mark", "Elizabeth", "Billy", "Greg", "Violet", "Martha", "Jeffery", "Jerome", "Debbie", "Callum", "Grant", "Sarah", "Veronica", "Rachel", "Colin", "Josh", "Aaron", "Frank", "Cynthia", "Steven", "Jennifer", "Sophie", "Muhammed", "Emily", "Claire", "Kylie", "Joel", "Alicia", "Darrell"]
+    random.shuffle(comp_names)
+    for i in range(6):
+        finalcomp_names.append(comp_names[0])
+        comp_names.pop(0)
+    return finalcomp_names
 
 
-
+#compnames()
+#player_lh = int(input())
 player_name = intro()
 player_role, comp1_role, comp2_role, comp3_role, comp4_role, comp5_role, comp6_role = roles()
+comp1name, comp2name, comp3name, comp4name, comp5name, comp6name = compnames()
 sus_points = 0
 energy_points = randint(100,140)
 energy_lv = energy(energy_points)
