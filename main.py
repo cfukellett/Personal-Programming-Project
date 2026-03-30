@@ -20,6 +20,7 @@ def intro():
 def roles():
     players = ["surv", "surv", "surv", "surv", "surv", "surv", "surv"]
     player = randint(0,1)
+    murd = 0
     if player == 0:
         players[0] = "surv"
     else:
@@ -27,7 +28,11 @@ def roles():
     if players[0] == "surv":
         random_murd = randint(1, 6)
         players[random_murd] = "murd"
-
+    for play in players:
+        if play != 'murd':
+            murd += 1
+        if play == 'murd':
+            break
     print("Your selected role is...") 
     select = "selecting"
     dot_spam(select)
@@ -37,7 +42,7 @@ def roles():
         print("😨survivor.\n")
     time.sleep(2)
 
-    return players
+    return players, murd
 
 
 def energy(pts):
@@ -92,7 +97,7 @@ def night(player_role, chosen):
                 if player_lh == 1:
                     player_lh = "look"
                     print("You decided to take a peak outside...")
-                    peak()
+                    #peak()
                 elif player_lh == 2:
                     player_lh = "hide"
                     print("You decided to hide for the night.")
@@ -103,6 +108,11 @@ def night(player_role, chosen):
                 else:
                     wronginsert()
     return dead
+
+#def peak():
+#    obs_rate = randint(1,5)
+#    if obs_rate == 1:
+
 
 def hide(target):
     hidingrandom = randint(1,8)
@@ -172,7 +182,8 @@ def compnames():
 #compnames()
 #player_lh = int(input())
 player_name = intro()
-player_role, comp1_role, comp2_role, comp3_role, comp4_role, comp5_role, comp6_role = roles()
+(player_role, comp1_role, comp2_role, comp3_role, comp4_role, comp5_role, comp6_role), murd = roles()
+print(player_role, comp1_role, comp2_role, murd)
 comp1name, comp2name, comp3name, comp4name, comp5name, comp6name = compnames()
 sus_points = 0
 energy_points = randint(100,140)
