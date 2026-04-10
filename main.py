@@ -69,7 +69,7 @@ def day(day, suspts, energylv):
 def wronginsert():
     print("Please answer with an acceptable input.\n")
 
-def night(player_role, chosen):
+def night(player_role, chosen, murd, names):
     dead = False
     player_lh = ""
     if player_role == "surv":
@@ -93,7 +93,7 @@ def night(player_role, chosen):
                 if player_lh == "1":
                     player_lh = "look"
                     print("You decided to take a peak outside...")
-                    #peak()
+                    dead = peak(murd, name_list)
                 elif player_lh == "2":
                     player_lh = "hide"
                     print("You decided to hide for the night.")
@@ -105,9 +105,32 @@ def night(player_role, chosen):
                     wronginsert()
     return dead
 
-#def peak():
-    #obs_rate = randint(1,5)
-    #if obs_rate == 1:
+def peak(murd, names):
+    dead = False
+    obs_rate = randint(1,5)
+    murd_rate = randint(1,3)
+    if murd_rate != 3:
+        chosen_one = names[murd]
+    else:
+        chosen_one = names[randint(1,6)]
+    dot_spam("You peeked out the window...")
+    peektext = [f"...and saw {chosen_one} walking on the streets with their hands in their pockets...", f"...and saw {chosen_one} quietly sitting on a bench outside...", f"...and saw {chosen_one} breakdancing in an alleyway...?", f"...and saw {chosen_one} doing the Enma Palm Sign...", f"...and saw {chosen_one} floating in the air with a grin...Oh, you were hallucinating. {chosen_one} is really just standing there doing nothing.", f"...and saw {chosen_one} stretching out in the open..."]
+    murdtext = [f"...and saw {chosen_one} holding a knife...", f"...and saw {chosen_one} with bloods splattered all over their hands...", f"...and saw {chosen_one} carrying a Hush Puppy..."]
+    murdtextrate = randint(1,2)
+    allpeektext = peektext
+    if chosen_one == names[murd]:
+        if murdtextrate == 1:
+            allpeektext += murdtext
+    allpeektextindex = len(allpeektext)-1
+    if obs_rate == 1:
+        print(f"{allpeektext[allpeektextindex]}")
+        spotted = randint(1,10)
+        if spotted == 1:
+            dot_spam(f"...Suddenly, {chosen_one} stopped...")
+            print(f"Shivers go up your spine...{chosen_one} has found you.")
+            print(f"And then, suddenly - it was all black.")
+            dead = True
+    return dead
 
 
 
@@ -179,9 +202,7 @@ def murdwho(people):
     count = -1
     for player in people:
         count += 1
-        print("test")
         if player == "murd":
-            print('test2')
             break
     return count
 
@@ -190,6 +211,7 @@ def murdwho(people):
 player_name = intro()
 player_role, comp1_role, comp2_role, comp3_role, comp4_role, comp5_role, comp6_role = roles()
 comp1name, comp2name, comp3name, comp4name, comp5name, comp6name = compnames()
+name_list = [player_name, comp1name, comp2name, comp3name, comp4name, comp5name, comp6name]
 sus_points = 0
 energy_points = randint(100,140)
 energy_lv = energy(energy_points)
@@ -200,5 +222,6 @@ role_list = [player_role, comp1_role, comp2_role, comp3_role, comp4_role, comp5_
 if player_role == 'surv':
     chosen = aicode(player_role, comp1_role, comp2_role, comp3_role, comp4_role, comp5_role, comp6_role)
     murd = murdwho(role_list)
-    print(murd)
-night(player_role, chosen)
+else:
+    murd = 0
+night(player_role, chosen, murd, name_list)
