@@ -37,7 +37,7 @@ def roles():
         print("😨survivor.\n")
     time.sleep(2)
 
-    return players, murd
+    return players
 
 
 def energy(pts):
