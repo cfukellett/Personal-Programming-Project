@@ -19,7 +19,7 @@ def intro():
 
 def roles():
     players = ["surv", "surv", "surv", "surv", "surv", "surv", "surv"]
-    player = randint(0,1)
+    player = randint(0,0)
     if player == 0:
         players[0] = "surv"
     else:
@@ -195,9 +195,10 @@ energy_lv = energy(energy_points)
 day_num = 0
 day_num = day(day_num, sus_points, energy_lv)
 print(player_role)
+role_list = [player_role, comp1_role, comp2_role, comp3_role, comp4_role, comp5_role, comp6_role]
 if player_role == 'surv':
     chosen = aicode(player_role, comp1_role, comp2_role, comp3_role, comp4_role, comp5_role, comp6_role)
     print("test")
-    murd = murdwho([player_role, comp1_role, comp2_role, comp3_role, comp4_role, comp5_role, comp6_role])
+    murd = murdwho(role_list)
     print(murd)
 night(player_role, chosen)
