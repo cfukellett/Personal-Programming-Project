@@ -20,7 +20,6 @@ def intro():
 def roles():
     players = ["surv", "surv", "surv", "surv", "surv", "surv", "surv"]
     player = randint(0,1)
-    murd = 0
     if player == 0:
         players[0] = "surv"
     else:
@@ -31,6 +30,7 @@ def roles():
     print("Your selected role is...") 
     select = "selecting"
     dot_spam(select)
+    player = players[0]
     if player == "murd":
         print("🔪 murderer.\n")
     else:
@@ -199,5 +199,5 @@ if player_role == 'surv':
     chosen = aicode(player_role, comp1_role, comp2_role, comp3_role, comp4_role, comp5_role, comp6_role)
     print("test")
     murd = murdwho([player_role, comp1_role, comp2_role, comp3_role, comp4_role, comp5_role, comp6_role])
-print(murd)
+    print(murd)
 night(player_role, chosen)
