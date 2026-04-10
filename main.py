@@ -197,6 +197,6 @@ day_num = day(day_num, sus_points, energy_lv)
 #print(player_role)
 if player_role == 'surv':
     chosen = aicode(player_role, comp1_role, comp2_role, comp3_role, comp4_role, comp5_role, comp6_role)
-    murd = murdwho(player_role, comp1_role, comp2_role, comp3_role, comp4_role, comp5_role, comp6_role)
+    murd = murdwho([player_role, comp1_role, comp2_role, comp3_role, comp4_role, comp5_role, comp6_role])
 print(murd)
 night(player_role, chosen)
