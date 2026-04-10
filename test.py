@@ -3,5 +3,5 @@ peektext2 = ["...and saw here"]
 peektext3 = peektext
 peektext3 += peektext2
 print(peektext3)
-allpeektextindex = len(peektext3)
+allpeektextindex = len(peektext3)-1
 print(f"{peektext3[allpeektextindex]}")
