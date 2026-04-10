@@ -71,6 +71,7 @@ def wronginsert():
 
 def night(player_role, chosen):
     dead = False
+    player_lh = 0
     if player_role == "surv":
         player_sleep = input("Will you sleep? (y/n)\n").lower()
         while player_sleep not in ['y', 'yes', 'n', 'no']:
@@ -184,7 +185,7 @@ energy_points = randint(100,140)
 energy_lv = energy(energy_points)
 day_num = 0
 day_num = day(day_num, sus_points, energy_lv)
-print(player_role)
+#print(player_role)
 if player_role == 'surv':
     chosen = aicode(player_role, comp1_role, comp2_role, comp3_role, comp4_role, comp5_role, comp6_role)
 night(player_role, chosen)
