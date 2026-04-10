@@ -178,9 +178,10 @@ def compnames():
 def murdwho(people):
     count = -1
     for player in people:
-        if player != "murd":
-            count += 1
-        else:
+        count += 1
+        print("test")
+        if player == "murd":
+            print('test2')
             break
     return count
 
@@ -198,7 +199,6 @@ print(player_role)
 role_list = [player_role, comp1_role, comp2_role, comp3_role, comp4_role, comp5_role, comp6_role]
 if player_role == 'surv':
     chosen = aicode(player_role, comp1_role, comp2_role, comp3_role, comp4_role, comp5_role, comp6_role)
-    print("test")
     murd = murdwho(role_list)
     print(murd)
 night(player_role, chosen)
