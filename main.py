@@ -71,7 +71,7 @@ def wronginsert():
 
 def night(player_role, chosen):
     dead = False
-    player_lh = 0
+    player_lh = ""
     if player_role == "surv":
         player_sleep = input("Will you sleep? (y/n)\n").lower()
         while player_sleep not in ['y', 'yes', 'n', 'no']:
@@ -84,21 +84,21 @@ def night(player_role, chosen):
         elif player_sleep in ['n', 'no']:
             player_sleep = False
         if player_sleep == False:
-            while player_lh != 1 and player_lh != 2 and player_lh != 3:
+            while player_lh != "1" and player_lh != "2" and player_lh != "3":
                 print("Will you take a peek outside or go into hiding? (Enter 1, 2 or 3)")
                 print("1. (Take a peek outside)")
                 print("2. (Hide in your house)")
                 print("3. Nevermind. I'm feeling sleepy.")
-                player_lh = int(input())
-                if player_lh == 1:
+                player_lh = input()
+                if player_lh == "1":
                     player_lh = "look"
                     print("You decided to take a peak outside...")
                     #peak()
-                elif player_lh == 2:
+                elif player_lh == "2":
                     player_lh = "hide"
                     print("You decided to hide for the night.")
                     hide(chosen)
-                elif player_lh == 3:
+                elif player_lh == "3":
                     player_lh = "none"
                     player_sleep = True
                 else:
@@ -106,8 +106,9 @@ def night(player_role, chosen):
     return dead
 
 #def peak():
-#    obs_rate = randint(1,5)
-#    if obs_rate == 1:
+    #obs_rate = randint(1,5)
+    #if obs_rate == 1:
+
 
 
 def hide(target):
@@ -174,6 +175,14 @@ def compnames():
         comp_names.pop(0)
     return finalcomp_names
 
+def murdwho(people):
+    count = -1
+    for player in people:
+        if player != "murd":
+            count += 1
+        else:
+            break
+    return count
 
 #compnames()
 #player_lh = int(input())
@@ -188,4 +197,6 @@ day_num = day(day_num, sus_points, energy_lv)
 #print(player_role)
 if player_role == 'surv':
     chosen = aicode(player_role, comp1_role, comp2_role, comp3_role, comp4_role, comp5_role, comp6_role)
+    murd = murdwho(player_role, comp1_role, comp2_role, comp3_role, comp4_role, comp5_role, comp6_role)
+print(murd)
 night(player_role, chosen)
