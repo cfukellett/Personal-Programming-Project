@@ -92,8 +92,8 @@ def night(player_role, chosen, murd, names):
                 player_lh = input()
                 if player_lh == "1":
                     player_lh = "look"
-                    print("You decided to take a peak outside...")
-                    dead = peak(murd, name_list)
+                    print("You decided to take a peek outside...")
+                    dead = peek(murd, name_list)
                 elif player_lh == "2":
                     player_lh = "hide"
                     print("You decided to hide for the night.")
@@ -105,7 +105,7 @@ def night(player_role, chosen, murd, names):
                     wronginsert()
     return dead
 
-def peak(murd, names):
+def peek(murd, names):
     dead = False
     obs_rate = randint(1,5)
     murd_rate = randint(1,3)
