@@ -94,10 +94,12 @@ def night(player_role, chosen, murd, names):
                     player_lh = "look"
                     print("You decided to take a peek outside...")
                     dead = peek(murd, name_list)
+                    break
                 elif player_lh == "2":
                     player_lh = "hide"
                     print("You decided to hide for the night.")
                     hide(chosen)
+                    break
                 elif player_lh == "3":
                     player_lh = "none"
                     player_sleep = True
