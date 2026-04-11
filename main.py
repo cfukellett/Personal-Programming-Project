@@ -109,7 +109,7 @@ def night(player_role, chosen, murd, names):
 
 def peek(murd, names):
     dead = False
-    obs_rate = randint(1,5)
+    obs_rate = randint(1,1)
     murd_rate = randint(1,3)
     if murd_rate != 3:
         chosen_one = names[murd]
@@ -132,6 +132,8 @@ def peek(murd, names):
             print(f"Shivers go up your spine...{chosen_one} has found you.")
             print(f"And then, suddenly - it was all black.")
             dead = True
+    else:
+        print("...and saw nothing.")
     return dead
 
 
