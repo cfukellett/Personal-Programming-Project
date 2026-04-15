@@ -54,22 +54,31 @@ def energy(pts):
     return lv
 
 
-def day(day, suspts, energylv):
-    day += 1
+def day(day, suspts, energylv, name_list, murd, player_role, chosen):
     print(f"☀️--Day {day}--☀️")
     print("It's the start of a brand new day.")
-    print("Here are your day 1 stats:")
+    print(f"Here are your day {day} stats:")
+    print(f"Your role: {player_role}")
     print(f"🤔 Suspicion Points: {suspts}")
     print(f"⚡Energy Level: {energylv}")
-    if day == 1:
-        print("There is no danger here. You can freely rest.")
+    deadlist = {"was found with his eyes gouged out and his neck hanging on a branch… Terrifying! 😱", "had been impaled and had died from blood loss...", "was electrocuted, leaving their body completely unrecognisable...", "was having a midnight snack and suddenly suffered from a heart attack...Y"
+}
+    if player_role == 'surv':
+        if day == 1:
+            print("There is no danger here. You can freely rest.")
+        else:
+            dot_spam()
+            time.sleep(0.2)
+            print("Oh, what's this? A murder had occured overnight.")
+
+        
     time.sleep(2)
     return day
 
 def wronginsert():
     print("Please answer with an acceptable input.\n")
 
-def night(player_role, chosen, murd, names):
+def night(player_role, chosen, murd, name_list, energy_pts):
     dead = False
     player_lh = ""
     if player_role == "surv":
@@ -105,7 +114,13 @@ def night(player_role, chosen, murd, names):
                     player_sleep = True
                 else:
                     wronginsert()
-    return dead
+            if player_lh != "3":
+                energy_pts -= 30
+            else:
+                energy_pts += 20
+        else:
+            energy_pts += 20
+    return dead, energy_pts
 
 def peek(murd, names):
     dead = False
@@ -133,7 +148,7 @@ def peek(murd, names):
             time.sleep(1)
             print(f"Shivers go up your spine...{chosen_one} has found you.")
             time.sleep(1)
-            print(f"And then, suddenly - it was all black.")
+            print(f"You are now what people call 'dead'.")
             dead = True
     else:
         print("...and saw nothing.")
@@ -213,6 +228,27 @@ def murdwho(people):
             break
     return count
 
+def overview(daynum, name, role, energy_lv, sus_points, murd, dead):
+    if dead == True:
+        print("You have perished...This is quite tragic indeed.")
+    print(f"{name}:")
+    print(f"Your role was {role}.")
+    print(f"Final Energy Level: {energy_lv}")
+    print(f"Final Suspicion Points: {sus_points}")
+    if role == 'surv':
+        dot_spam("You survived for")
+        print(f"{daynum} days.")
+        dot_spam("The murderer was")
+        print(f"{murd}.")
+
+def murdthing(player_role, role_list):
+    if player_role == 'surv':
+        chosen = aicode(player_role, comp1_role, comp2_role, comp3_role, comp4_role, comp5_role, comp6_role)
+        murd = murdwho(role_list)
+    else:
+        murd = 0
+    return murd, chosen
+
 #compnames()
 #player_lh = int(input())
 player_name = intro()
@@ -221,14 +257,15 @@ comp1name, comp2name, comp3name, comp4name, comp5name, comp6name = compnames()
 name_list = [player_name, comp1name, comp2name, comp3name, comp4name, comp5name, comp6name]
 sus_points = 0
 energy_points = randint(100,140)
-energy_lv = energy(energy_points)
 day_num = 0
-day_num = day(day_num, sus_points, energy_lv)
 print(player_role)
 role_list = [player_role, comp1_role, comp2_role, comp3_role, comp4_role, comp5_role, comp6_role]
-if player_role == 'surv':
-    chosen = aicode(player_role, comp1_role, comp2_role, comp3_role, comp4_role, comp5_role, comp6_role)
-    murd = murdwho(role_list)
-else:
-    murd = 0
-night(player_role, chosen, murd, name_list)
+murd, chosen = murdthing(player_role, role_list)
+while dead == False:
+    day_num += 1
+    energy_lv = energy(energy_points)
+    dead = day(day_num, sus_points, energy_lv, name_list, murd, player_role, chosen)
+    if dead == False:
+        dead, energy_points = night(player_role, chosen, murd, name_list, energy_points)
+    if dead == True:
+        overview(day_num, player_name, player_role, energy_lv, sus_points, murd, dead)
