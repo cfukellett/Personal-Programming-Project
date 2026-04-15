@@ -73,7 +73,9 @@ def day(day, suspts, energylv, name_list, murd, player_role, chosen, player_name
             print(f"{chosen} {deadlist[rand_death]}")
             print('There is a murderer among you and the others. Vote to eliminate the murderer!\n')
     print("Let's take a look at the others.")
-    for name in
+    name_list.pop(0)
+    for name in name_list:
+
 
         
     time.sleep(2)
@@ -268,8 +270,9 @@ murd, chosen = murdthing(player_role, role_list)
 while dead == False:
     day_num += 1
     energy_lv = energy(energy_points)
-    dead = day(day_num, sus_points, energy_lv, name_list, murd, player_role, chosen)
+    dead = day(day_num, sus_points, energy_lv, name_list, murd, player_role, chosen, player_name)
     if dead == False:
         dead, energy_points = night(player_role, chosen, murd, name_list, energy_points)
     if dead == True:
         overview(day_num, player_name, player_role, energy_lv, sus_points, murd, dead)
+    name_list.pop(chosen)
