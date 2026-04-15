@@ -128,8 +128,11 @@ def peek(murd, names):
         print(f"{allpeektext[allpeektextindex]}")
         spotted = randint(1,10)
         if spotted == 1:
+            time.sleep(1)
             dot_spam(f"...Suddenly, {chosen_one} stopped...")
+            time.sleep(1)
             print(f"Shivers go up your spine...{chosen_one} has found you.")
+            time.sleep(1)
             print(f"And then, suddenly - it was all black.")
             dead = True
     else:
