@@ -54,15 +54,15 @@ def energy(pts):
     return lv
 
 
-def day(day, suspts, energylv, name_list, murd, player_role, chosen):
+def day(day, suspts, energylv, name_list, murd, player_role, chosen, player_name):
     print(f"☀️--Day {day}--☀️")
     print("It's the start of a brand new day.")
     print(f"Here are your day {day} stats:")
     print(f"Your role: {player_role}")
     print(f"🤔 Suspicion Points: {suspts}")
     print(f"⚡Energy Level: {energylv}")
-    deadlist = {"was found with his eyes gouged out and his neck hanging on a branch… Terrifying! 😱", "had been impaled and had died from blood loss...", "was electrocuted, leaving their body completely unrecognisable...", "was having a midnight snack and suddenly suffered from a heart attack...Y"
-}
+    deadlist = {"was found with his eyes gouged out and his neck hanging on a branch… Terrifying! 😱", "had been impaled and had died from blood loss...", "was electrocuted, leaving their body completely unrecognisable...", "was having a midnight snack and suddenly suffered from a heart attack...Yes, this was caused by the murderer.", "somehow found an active volcano and jumped into it, burning themselves into ashes in the process.", "was found without skin in a toolshed."}
+    rand_death = randint(1,len(deadlist))
     if player_role == 'surv':
         if day == 1:
             print("There is no danger here. You can freely rest.")
@@ -70,10 +70,14 @@ def day(day, suspts, energylv, name_list, murd, player_role, chosen):
             dot_spam()
             time.sleep(0.2)
             print("Oh, what's this? A murder had occured overnight.")
+            print(f"{chosen} {deadlist[rand_death]}")
+            print('There is a murderer among you and the others. Vote to eliminate the murderer!\n')
+    print("Let's take a look at the others.")
+    for name in
 
         
     time.sleep(2)
-    return day
+    return dead
 
 def wronginsert():
     print("Please answer with an acceptable input.\n")
@@ -157,7 +161,7 @@ def peek(murd, names):
 
 
 def hide(target):
-    hidingrandom = randint(1,8)
+    hidingrandom = randint(1,len(hideactions))
     hideactions = ["You hid in a cardboard box, hoping not to be found...", "You hid in the wardrobe, trying to stay as silent as possible...", "You hid under your bed whilst attempting to control your heavy breathing...", "You hid underneath the bathroom cabinet, surely they won't expect this...", "You hid in the attic, staying as still as possible...", "You hid under the dining table...Surely they can't see you down there...right? RIGHT???", "You dug 3000 kilometers below the surface into the mantle to greet Satan and treated yourself with a nice Subway sandwich. Then, you went into the deep sea to greet your good old friend 'Angus the Deep Sea Anglerfish' and had a great time catching up. Then, you returned to your house and found a knife...but it was a toy knife. So, you decided to climb on the ceiling and hope for the best.", "You hid in the kitchen cabinet, holding your breath."]
     hidetext = "Hiding"
     tensiontexts = ["...nothing happened.", "...you heard nothing.", "...you stayed silent, but somehow, the world seemed even quieter", "...nothing was happening."]
