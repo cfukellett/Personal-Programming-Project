@@ -75,7 +75,7 @@ def day(day, suspts, energylv, name_list, murd, player_role, chosen, player_name
     print("Let's take a look at the others.")
     name_list.pop(0)
     for name in name_list:
-
+        
 
         
     time.sleep(2)
