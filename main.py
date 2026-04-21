@@ -267,6 +267,7 @@ day_num = 0
 print(player_role)
 role_list = [player_role, comp1_role, comp2_role, comp3_role, comp4_role, comp5_role, comp6_role]
 murd, chosen = murdthing(player_role, role_list)
+dead = False
 while dead == False:
     day_num += 1
     energy_lv = energy(energy_points)
