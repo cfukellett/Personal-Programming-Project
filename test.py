@@ -8,6 +8,20 @@
 
 from random import randint
 
+name_list = ["Tom", "James", "Bob"]
+murd = 0
+botenergylist = []
+if murd != 0:
+    name_list = name_list.pop(murd)
+name_list = name_list.pop(0)
+person = 0
+for name in name_list:
+    person += 1
+    status = randint(1,1)
+    if status == 1:
+        botenergylist(person) += 5
+            
+
 thislist = ["John", "Sam", "Some guy"]
 thislist.pop(0)
 print(thislist)
