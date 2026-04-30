@@ -53,8 +53,13 @@ def energy(pts):
         lv = "Exhausted 🫩"
     return lv
 
+def botenergylv(name_list):
+    name_list = name_list.pop(0)
+    for name in name_list:
+        status = randint(1,)
 
 def day(day, suspts, energylv, name_list, murd, player_role, chosen, player_name):
+    botenergys = botenergylv(name_list)
     print(f"☀️--Day {day}--☀️")
     print("It's the start of a brand new day.")
     print(f"Here are your day {day} stats:")
@@ -75,6 +80,7 @@ def day(day, suspts, energylv, name_list, murd, player_role, chosen, player_name
     print("Let's take a look at the others.")
     name_list.pop(0)
     #for name in name_list:
+        
 
 
         
