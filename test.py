@@ -19,7 +19,9 @@ for name in name_list:
     person += 1
     status = randint(1,1)
     if status == 1:
-        botenergylist(person) += 5
+        thing += 5
+        botenergylist(name) = 5
+print(botenergylist)
             
 
 thislist = ["John", "Sam", "Some guy"]
