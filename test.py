@@ -15,12 +15,13 @@ if murd != 0:
     name_list = name_list.pop(murd)
 name_list = name_list.pop(0)
 person = 0
+energyboost = 0
 for name in name_list:
     person += 1
     status = randint(1,1)
     if status == 1:
-        thing += 5
-        botenergylist(name) = 5
+        energyboost += 5
+        botenergylist[person] = energyboost
 print(botenergylist)
             
 
