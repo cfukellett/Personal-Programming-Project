@@ -56,15 +56,29 @@ def energy(pts):
 def botenergylv(name_list, murd, day):
     if day == 1:
         botenergylist = []
-    if murd != 0:
-        name_list = name_list.pop(murd)
-    name_list = name_list.pop(0)
+        rep = False
+        if murd != 0:
+            name_list = name_list.pop(murd)
+        name_list.pop(0)
+    else:
+        rep = True
+    energyboost = 0
     person = 0
     for name in name_list:
-        person += 1
-        status = randint(1,1)
+        energyboost = 0
+        status = randint(1,3)
         if status == 1:
-            botenergylist(person) += 5
+            energyboost += 20
+        elif status == 2:
+            energyboost -= 30
+        elif status == 3:
+            energyboost -= 40
+        if not rep:
+            botenergylist[person] += energyboost
+        else:
+            botenergylist.append(energyboost)
+        person += 1
+    print(botenergylist)
             
 
 def day(day, suspts, energylv, name_list, murd, player_role, chosen, player_name):
