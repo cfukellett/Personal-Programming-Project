@@ -16,12 +16,16 @@ if murd != 0:
     print("done")
 name_list.pop(0)
 print(name_list)
-person = 0
-energyboost = 0
-for name in name_list:
+for i in range (3):
+    person = 0
     energyboost = 0
-    status = randint(1,1)
-    if status == 1:
-        energyboost += 5
-        botenergylist.append(energyboost)
-print(botenergylist)
+    for name in name_list:
+        person += 1
+        energyboost = 0
+        status = randint(1,1)
+        if status == 1:
+            energyboost += 5
+            #botenergylist[person] = botenergylist[person] + energyboost
+            #botenergylist.append(energyboost)
+            print(botenergylist[person])
+    print(botenergylist)
