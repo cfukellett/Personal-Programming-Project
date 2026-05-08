@@ -17,6 +17,7 @@ if murd != 0:
     print("done")
 name_list.pop(0)
 print(name_list)
+rep = 0
 for i in range (3):
     energyboost = 0
     person = 0
@@ -25,9 +26,10 @@ for i in range (3):
         status = randint(1,1)
         if status == 1:
             energyboost += 5
-            if len(botenergylist) != 0:
-                botenergylist[0] += energyboost
+            if rep != 0:
+                botenergylist[person] += energyboost
             else:
                 botenergylist.append(energyboost)
         person += 1
+    rep += 1
     print(botenergylist)
