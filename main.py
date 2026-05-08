@@ -56,7 +56,7 @@ def energy(pts):
 def botenergylv(name_list, murd, day):
     print(name_list)
     if day == 1:
-        botenergylist = []
+        botenergylist = ["", ""]
         rep = False
         if murd != 0:
             name_list.pop(murd)
@@ -74,11 +74,11 @@ def botenergylv(name_list, murd, day):
             energyboost -= 30
         elif status == 3:
             energyboost -= 40
-        if not rep:
-            print(botenergylist)
-            botenergylist[person] += energyboost
-        else:
-            botenergylist.append(energyboost)
+        #if not rep:
+        print(botenergylist)
+        botenergylist[person] += energyboost
+        #else:
+        #    botenergylist.append(energyboost)
         person += 1
     print(botenergylist)
             
