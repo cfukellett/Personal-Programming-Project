@@ -14,7 +14,7 @@ botenergylist = []
 if murd != 0:
     name_list = name_list.pop(murd)
     print("done")
-name_list = name_list.pop(0)
+name_list.pop(0)
 print(name_list)
 person = 0
 energyboost = 0
