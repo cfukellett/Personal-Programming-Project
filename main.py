@@ -310,4 +310,5 @@ while dead == False:
         dead, energy_points = night(player_role, chosen, murd, name_list, energy_points)
     if dead == True:
         overview(day_num, player_name, player_role, energy_lv, sus_points, murd, dead)
+    print(chosen)
     name_list.pop(chosen)
