@@ -54,6 +54,7 @@ def energy(pts):
     return lv
 
 def botenergylv(name_list, murd, day):
+    print(name_list)
     if day == 1:
         botenergylist = []
         rep = False
