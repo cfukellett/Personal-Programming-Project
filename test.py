@@ -21,7 +21,7 @@ for name in name_list:
     status = randint(1,1)
     if status == 1:
         energyboost += 5
-        botenergylist[person] += energyboost
+        botenergylist[person-1] = energyboost
 print(botenergylist)
             
 
