@@ -75,6 +75,7 @@ def botenergylv(name_list, murd, day):
         elif status == 3:
             energyboost -= 40
         if not rep:
+            print(botenergylist)
             botenergylist[person] += energyboost
         else:
             botenergylist.append(energyboost)
