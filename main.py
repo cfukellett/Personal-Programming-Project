@@ -59,7 +59,7 @@ def botenergylv(name_list, murd, day):
         botenergylist = []
         rep = False
         if murd != 0:
-            name_list = name_list.pop(murd)
+            name_list.pop(murd)
         name_list.pop(0)
     else:
         rep = True
