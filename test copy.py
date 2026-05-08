@@ -25,7 +25,9 @@ for i in range (3):
         status = randint(1,1)
         if status == 1:
             energyboost += 5
-            #botenergylist[person] = botenergylist[person] + energyboost
-            #botenergylist.append(energyboost)
-            print(botenergylist[person])
+            print(botenergylist)
+            if len(botenergylist) != 0:
+                botenergylist[person-1] += energyboost
+            else:
+                botenergylist.append(energyboost)
     print(botenergylist)
