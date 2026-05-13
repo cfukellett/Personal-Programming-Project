@@ -309,7 +309,7 @@ dead = False
 print(name_list)
 while dead == False:
     day_num += 1
-    #energy_lv = energy(energy_points)
+    energy_lv = energy(energy_points)
     if day_num == 1:
         botenergylist = []
     dead = day(day_num, sus_points, energy_lv, name_list, murd, player_role, chosen, player_name, botenergylist)
