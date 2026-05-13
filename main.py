@@ -106,7 +106,7 @@ def day(day, suspts, energylv, name_list, murd, player_role, chosen, player_name
             print(f"{chosen} {deadlist[rand_death]}")
             print('There is a murderer among you and the others. Vote to eliminate the murderer!\n')
             print("Let's take a look at the others.")
-    name_list.pop(0)
+            name_list.pop(0)
     print(name_list)
     #for name in name_list:
         
