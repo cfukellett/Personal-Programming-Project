@@ -165,6 +165,8 @@ def peek(murd, names):
     dead = False
     obs_rate = randint(1,1)
     murd_rate = randint(1,3)
+    print(names)
+    print(murd)
     if murd_rate != 3:
         chosen_one = names[murd]
     else:
