@@ -316,4 +316,3 @@ while dead == False:
         overview(day_num, player_name, player_role, energy_lv, sus_points, murd, dead)
     print(chosen)
     print(name_list)
-    name_list.pop(chosen)
