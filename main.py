@@ -234,6 +234,7 @@ def dot_spam(text):
 
 
 def playerchosenbias():
+    print('biased')
     chosen = randint(1,5)
     chosen2 = ""
     if chosen == 1:
