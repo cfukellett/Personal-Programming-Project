@@ -86,6 +86,7 @@ def botenergylv(name_list, murd, day, botenergylist):
             
 
 def day(day, suspts, energylv, name_list, murd, player_role, chosen, player_name, botenergylist):
+    print(name_list)
     botenergys = botenergylv(name_list, murd, day, botenergylist)
     print(f"☀️--Day {day}--☀️")
     print("It's the start of a brand new day.")
@@ -104,8 +105,9 @@ def day(day, suspts, energylv, name_list, murd, player_role, chosen, player_name
             print("Oh, what's this? A murder had occured overnight.")
             print(f"{chosen} {deadlist[rand_death]}")
             print('There is a murderer among you and the others. Vote to eliminate the murderer!\n')
-    print("Let's take a look at the others.")
+            print("Let's take a look at the others.")
     name_list.pop(0)
+    print(name_list)
     #for name in name_list:
         
 
