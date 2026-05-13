@@ -55,8 +55,7 @@ def energy(pts):
 
 def botenergylv(name_list, murd, day, botenergylist):
     namelist2 = []
-    for name in name_list:
-        namelist2.append(name)
+    namelist2= name_list.copy()
     print(namelist2)
     if day == 1:
         if murd != 0:
@@ -100,6 +99,7 @@ def day(day, suspts, energylv, name_list, murd, player_role, chosen, player_name
     print(f"⚡Energy Level: {energylv}")
     deadlist = {"was found with his eyes gouged out and his neck hanging on a branch… Terrifying! 😱", "had been impaled and had died from blood loss...", "was electrocuted, leaving their body completely unrecognisable...", "was having a midnight snack and suddenly suffered from a heart attack...Yes, this was caused by the murderer.", "somehow found an active volcano and jumped into it, burning themselves into ashes in the process.", "was found without skin in a toolshed."}
     rand_death = randint(1,len(deadlist))
+    print(rand_death)
     if player_role == 'surv':
         if day == 1:
             print("There is no danger here. You can freely rest.")
