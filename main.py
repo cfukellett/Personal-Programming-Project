@@ -308,10 +308,8 @@ murd, chosen = murdthing(player_role, role_list)
 dead = False
 print(name_list)
 while dead == False:
-    print(name_list)
     day_num += 1
-    print(name_list)
-    energy_lv = energy(energy_points)
+    #energy_lv = energy(energy_points)
     if day_num == 1:
         botenergylist = []
     dead = day(day_num, sus_points, energy_lv, name_list, murd, player_role, chosen, player_name, botenergylist)
