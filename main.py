@@ -53,20 +53,21 @@ def energy(pts):
         lv = "Exhausted 🫩"
     return lv
 
-def botenergylv(name_list2, murd, day, botenergylist):
-    print(name_list2)
+def botenergylv(name_list, murd, day, botenergylist):
+    namelist = name_list
+    print(namelist)
     if day == 1:
         rep = False
         if murd != 0:
-            name_list2.pop(murd)
-        name_list2.pop(0)
-        for name in name_list2:
+            namelist.pop(murd)
+        namelist.pop(0)
+        for name in namelist:
             botenergylist.append(0)
     else:
         rep = True
     energyboost = 0
     person = 0
-    for name in name_list2:
+    for name in namelist:
         energyboost = 0
         status = randint(1,3)
         if status == 1:
@@ -83,14 +84,13 @@ def botenergylv(name_list2, murd, day, botenergylist):
         #    botenergylist.append(energyboost)
         person += 1
     print(botenergylist)
-    print(name_list)
+    print(namelist)
     return botenergylist
             
 
 def day(day, suspts, energylv, name_list, murd, player_role, chosen, player_name, botenergylist):
     print(name_list)
-    name_list2 = name_list
-    botenergys = botenergylv(name_list2, murd, day, botenergylist)
+    botenergys = botenergylv(name_list, murd, day, botenergylist)
     print(name_list)
     print(f"☀️--Day {day}--☀️")
     print("It's the start of a brand new day.")
