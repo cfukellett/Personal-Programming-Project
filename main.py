@@ -83,6 +83,8 @@ def botenergylv(name_list, murd, day, botenergylist):
         #    botenergylist.append(energyboost)
         person += 1
     print(botenergylist)
+    print(name_list)
+    return botenergylist
             
 
 def day(day, suspts, energylv, name_list, murd, player_role, chosen, player_name, botenergylist):
