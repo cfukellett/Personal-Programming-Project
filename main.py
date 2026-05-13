@@ -164,13 +164,13 @@ def night(player_role, chosen, murd, name_list, energy_pts):
 def peek(murd, names):
     dead = False
     obs_rate = randint(1,1)
-    murd_rate = randint(1,3)
+    murd_rate = randint(1,2)
     print(names)
     print(murd)
     if murd_rate != 3:
         chosen_one = names[murd]
     else:
-        chosen_one = names[randint(1,6)]
+        chosen_one = names[randint(0,3)]
     dot_spam("You peeked out the window...")
     peektext = [f"...and saw {chosen_one} walking on the streets with their hands in their pockets...", f"...and saw {chosen_one} quietly sitting on a bench outside...", f"...and saw {chosen_one} breakdancing in an alleyway...?", f"...and saw {chosen_one} doing the Enma Palm Sign...", f"...and saw {chosen_one} floating in the air with a grin...Oh, you were hallucinating. {chosen_one} is really just standing there doing nothing.", f"...and saw {chosen_one} stretching out in the open..."]
     murdtext = [f"...and saw {chosen_one} holding a knife...", f"...and saw {chosen_one} with bloods splattered all over their hands...", f"...and saw {chosen_one} carrying a Hush Puppy..."]
