@@ -104,7 +104,7 @@ def day(day, suspts, energylv, name_list, murd, player_role, chosen, player_name
         if day == 1:
             print("There is no danger here. You can freely rest.")
         else:
-            dot_spam()
+            dot_spam("")
             time.sleep(0.2)
             print("Oh, what's this? A murder had occured overnight.")
             print(f"{chosen} {deadlist[rand_death]}")
