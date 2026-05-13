@@ -88,6 +88,7 @@ def botenergylv(name_list, murd, day, botenergylist):
 def day(day, suspts, energylv, name_list, murd, player_role, chosen, player_name, botenergylist):
     print(name_list)
     botenergys = botenergylv(name_list, murd, day, botenergylist)
+    print(name_list)
     print(f"☀️--Day {day}--☀️")
     print("It's the start of a brand new day.")
     print(f"Here are your day {day} stats:")
