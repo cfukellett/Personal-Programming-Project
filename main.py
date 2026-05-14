@@ -6,28 +6,22 @@ from colorist import ColorRGB, BgColorRGB, rgb, bg_rgb
 
 #ze olours
 def red(string):
-    rgb(255,0,0)
-    print(string)
+    rgb(string, 255,0,0)
 
 def blue(string):
-    rgb(0,0,255)
-    print(string)
+    rgb(string, 0,0,255)
 
 def green(string):
-    rgb(0,255,0)
-    print(string)
+    rgb(string, 0,255,0)
 
 def yellow(string):
-    rgb(255,255,0)
-    print(string)
+    rgb(string, 255,255,0)
 
 def green(string):
-    rgb(0,255,255)
-    print(string)
+    rgb(string, 0,255,255)
 
 def purple(string):
-    rgb(255,0,255)
-    print(string)
+    rgb(string, 255,0,255)
 
 def intro():
     print("--Welcome--")
@@ -37,7 +31,7 @@ def intro():
     yellow(f"Hello, {name}, welcome to the game.")
     time.sleep(1)
     red("Would you like to read the rules? (y/n):\n")
-    read_rules = input.lower()
+    read_rules = input().lower()
     while read_rules not in ['y', 'yes', 'n', 'no']:
         wronginsert()
         red("Would you like to read the rules? (y/n):\n")
