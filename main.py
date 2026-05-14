@@ -236,21 +236,21 @@ def dot_spam(text):
 
 def playerchosenbias():
     print('biased activate')
-    chosen = randint(1,5)
+    chosen = randint(1,1)
     chosen2 = ""
     if chosen == 1:
         chosen2 = "bias"
     else:
         chosen2 = "unbias"
     if chosen2 == "bias":
-        chosen = randint(1,6)
+        chosen = randint(1,1)
     else:
         chosen = 0
     return chosen
 
 def aicode(playerrole, c1role, c2role, c3role, c4role, c5role, c6role):
     role_list = [playerrole, c1role, c2role, c3role, c4role, c5role, c6role]
-    chosen = randint(0,6)
+    chosen = randint(0,0)
     if chosen == 0:
         chosen = playerchosenbias()
     while role_list[chosen] == 'murd':
@@ -285,9 +285,9 @@ def overview(daynum, name, role, energy_lv, sus_points, murd, dead):
     print(f"Final Energy Level: {energy_lv}")
     print(f"Final Suspicion Points: {sus_points}")
     if role == 'surv':
-        dot_spam("You survived for")
+        dot_spam("You survived for\n")
         print(f"{daynum} days.")
-        dot_spam("The murderer was")
+        dot_spam("The murderer was\n")
         print(f"{murd}.")
 
 def murdthing(player_role, role_list):
