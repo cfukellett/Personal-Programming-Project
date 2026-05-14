@@ -322,4 +322,9 @@ while dead == False:
     if dead == True:
         overview(day_num, player_name, player_role, energy_lv, sus_points, murd, dead)
     print(chosen)
+    if chosen == 0:
+        if dead == True:
+            name_list.pop(chosen)
+    else:
+        name_list.pop(chosen)
     print(name_list)
