@@ -34,7 +34,7 @@ def dot_spam(text, remove, colour):
     }
     for i in range(5):
         text += "."
-        colour(text, end='\r')
+        colours.get(colour, lambda: colour(text, end='\r'))
         time.sleep(0.3)
     time.sleep(1)
     print(" " * len(text), end='\r')
