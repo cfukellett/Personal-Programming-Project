@@ -193,7 +193,7 @@ def night(player_role, chosen, murd, name_list, energy_pts):
 
 def peek(murd, names):
     dead = False
-    obs_rate = randint(1,1)
+    obs_rate = randint(1,4)
     murd_rate = randint(1,2)
     print(names)
     print(murd)
@@ -210,7 +210,7 @@ def peek(murd, names):
         if murdtextrate == 1:
             allpeektext += murdtext
     allpeektextindex = len(allpeektext)-1
-    if obs_rate == 1:
+    if obs_rate != 1:
         if murdtextrate == 1:
             red(f"{allpeektext[allpeektextindex]}")
         else:
