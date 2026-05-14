@@ -278,12 +278,11 @@ def playerchosenbias():
 
 def aicode(playerrole, c1role, c2role, c3role, c4role, c5role, c6role, namelist):
     role_list = [playerrole, c1role, c2role, c3role, c4role, c5role, c6role]
-    namelen = len(namelist)
-    chosen = randint(0,namelen)
+    chosen = randint(0,len(namelist))
     if chosen == 0:
         chosen = playerchosenbias()
     while role_list[chosen] == 'murd':
-        chosen = randint(0,namelen)
+        chosen = randint(0,len(namelist))
         if chosen == 0:
             chosen = playerchosenbias()
     print(chosen)
@@ -306,7 +305,7 @@ def murdwho(people):
             break
     return count
 
-def overview(daynum, name, role, energy_lv, sus_points, murd, dead):
+def overview(daynum, name, role, energy_lv, sus_points, murd, dead, names):
     if dead == True:
         red("You have perished...This is quite tragic indeed.")
     yellow(f"{name}:")
@@ -317,7 +316,7 @@ def overview(daynum, name, role, energy_lv, sus_points, murd, dead):
         dot_spam("You survived for", False)
         purple(f"{daynum} days.")
         dot_spam("The murderer was", False)
-        red(f"{murd}.")
+        red(f"{names[murd]}.")
 
 def murdthing(player_role, role_list, namelist):
     if player_role == 'surv':
@@ -351,7 +350,7 @@ while dead == False:
     if dead == False:
         dead, energy_points = night(player_role, chosen, murd, name_list, energy_points)
     if dead == True:
-        overview(day_num, player_name, player_role, energy_lv, sus_points, murd, dead)
+        overview(day_num, player_name, player_role, energy_lv, sus_points, murd, dead, name_list)
     print(chosen)
     #if chosen == 0:
         #if dead == True:
