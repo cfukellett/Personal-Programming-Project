@@ -150,10 +150,12 @@ def night(player_role, chosen, murd, name_list, energy_pts):
     dead = False
     player_lh = ""
     if player_role == "surv":
-        player_sleep = input("Will you sleep? (y/n)\n").lower()
+        blue("Will you sleep? (y/n)\n")
+        player_sleep = input().lower()
         while player_sleep not in ['y', 'yes', 'n', 'no']:
             wronginsert()
-            player_sleep = input("Will you sleep? (y/n)\n").lower()
+            blue("Will you sleep? (y/n)\n")
+            player_sleep = input().lower()
         if player_sleep in ['y', 'yes']:
             player_sleep = True
             if chosen == 0:
@@ -285,7 +287,7 @@ def aicode(playerrole, c1role, c2role, c3role, c4role, c5role, c6role, namelist)
         chosen = randint(0,len(namelist))
         if chosen == 0:
             chosen = playerchosenbias()
-    print(chosen)
+    print(f"This is the chosen value", chosen)
     return chosen
     
 def compnames():
