@@ -112,10 +112,10 @@ def day(day, suspts, energylv, name_list, murd, player_role, chosen, player_name
     print(name_list)
     botenergys = botenergylv(name_list, murd, day, botenergylist)
     yellow(f"☀️--Day {day}--☀️")
-    blue("It's the start of a brand new day.")
-    blue(f"Here are your day {day} stats:")
+    purple("It's the start of a brand new day.")
+    purple(f"Here are your day {day} stats:")
     green(f"Your role: {player_role}")
-    purple(f"🤔 Suspicion Points: {suspts}")
+    blue(f"🤔 Suspicion Points: {suspts}")
     yellow(f"⚡Energy Level: {energylv}")
     deadlist = ["was found with his eyes gouged out and his neck hanging on a branch… Terrifying! 😱", "had been impaled and had died from blood loss...", "was electrocuted, leaving their body completely unrecognisable...", "was having a midnight snack and suddenly suffered from a heart attack...Yes, this was caused by the murderer.", "somehow found an active volcano and jumped into it, burning themselves into ashes in the process.", "was found without skin in a toolshed."]
     rand_death = randint(1,len(deadlist))
@@ -211,7 +211,10 @@ def peek(murd, names):
             allpeektext += murdtext
     allpeektextindex = len(allpeektext)-1
     if obs_rate == 1:
-        purple(f"{allpeektext[allpeektextindex]}")
+        if murdtextrate == 1:
+            red(f"{allpeektext[allpeektextindex]}")
+        else:
+            purple(f"{allpeektext[allpeektextindex]}")
         spotted = randint(1,10)
         if spotted == 1:
             time.sleep(1)
@@ -273,13 +276,13 @@ def playerchosenbias():
         chosen = 0
     return chosen
 
-def aicode(playerrole, c1role, c2role, c3role, c4role, c5role, c6role):
+def aicode(playerrole, c1role, c2role, c3role, c4role, c5role, c6role, namelist):
     role_list = [playerrole, c1role, c2role, c3role, c4role, c5role, c6role]
-    chosen = randint(0,6)
+    chosen = randint(0,6-len(namelist))
     if chosen == 0:
         chosen = playerchosenbias()
     while role_list[chosen] == 'murd':
-        chosen = randint(0,6)
+        chosen = randint(0,6-len(namelist))
         if chosen == 0:
             chosen = playerchosenbias()
     print(chosen)
@@ -315,9 +318,9 @@ def overview(daynum, name, role, energy_lv, sus_points, murd, dead):
         dot_spam("The murderer was", False)
         red(f"{murd}.")
 
-def murdthing(player_role, role_list):
+def murdthing(player_role, role_list, namelist):
     if player_role == 'surv':
-        chosen = aicode(player_role, comp1_role, comp2_role, comp3_role, comp4_role, comp5_role, comp6_role)
+        chosen = aicode(player_role, comp1_role, comp2_role, comp3_role, comp4_role, comp5_role, comp6_role, namelist)
         murd = murdwho(role_list)
     else:
         murd = 0
@@ -334,7 +337,7 @@ energy_points = randint(100,140)
 day_num = 0
 print(player_role)
 role_list = [player_role, comp1_role, comp2_role, comp3_role, comp4_role, comp5_role, comp6_role]
-murd, chosen = murdthing(player_role, role_list)
+murd, chosen = murdthing(player_role, role_list, name_list)
 dead = False
 print(name_list)
 while dead == False:
@@ -343,6 +346,7 @@ while dead == False:
     if day_num == 1:
         botenergylist = []
     dead = day(day_num, sus_points, energy_lv, name_list, murd, player_role, chosen, player_name, botenergylist)
+    aicode(player_role, comp1_role, comp2_role, comp3_role, comp4_role, comp5_role, comp6_role, name_list)
     if dead == False:
         dead, energy_points = night(player_role, chosen, murd, name_list, energy_points)
     if dead == True:
