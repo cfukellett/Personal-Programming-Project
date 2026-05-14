@@ -29,7 +29,7 @@ def roles():
         players[random_murd] = "murd"
     print("Your selected role is...") 
     select = "selecting"
-    dot_spam(select)
+    dot_spam(select, True)
     player = players[0]
     if player == "murd":
         print("🔪 murderer.\n")
@@ -104,13 +104,16 @@ def day(day, suspts, energylv, name_list, murd, player_role, chosen, player_name
         if day == 1:
             print("There is no danger here. You can freely rest.")
         else:
-            dot_spam("")
+            dot_spam("", True)
             time.sleep(0.2)
-            print("Oh, what's this? A murder had occured overnight.")
-            print(f"{name_list[chosen]} {deadlist[rand_death]}")
-            print('There is a murderer among you and the others. Vote to eliminate the murderer!\n')
-            print("Let's take a look at the others.")
-            name_list.pop(chosen)
+            if len(name_list) > 2:
+                print("Oh, what's this? A murder had occured overnight.")
+                print(f"{name_list[chosen]} {deadlist[rand_death]}")
+                print('There is a murderer among you and the others. Vote to eliminate the murderer!\n')
+                print("Let's take a look at the others.")
+                name_list.pop(chosen)
+            else:
+                dot_spam("The murderer has killed everyone except you.", False)
     print(name_list)
     #for name in name_list:
         
@@ -178,7 +181,7 @@ def peek(murd, names):
         chosen_one = names[murd]
     else:
         chosen_one = names[randint(0,3)]
-    dot_spam("You peeked out the window...")
+    dot_spam("You peeked out the window...", False)
     peektext = [f"...and saw {chosen_one} walking on the streets with their hands in their pockets...", f"...and saw {chosen_one} quietly sitting on a bench outside...", f"...and saw {chosen_one} breakdancing in an alleyway...?", f"...and saw {chosen_one} doing the Enma Palm Sign...", f"...and saw {chosen_one} floating in the air with a grin...Oh, you were hallucinating. {chosen_one} is really just standing there doing nothing.", f"...and saw {chosen_one} stretching out in the open..."]
     murdtext = [f"...and saw {chosen_one} holding a knife...", f"...and saw {chosen_one} with bloods splattered all over their hands...", f"...and saw {chosen_one} carrying a Hush Puppy..."]
     murdtextrate = randint(1,2)
@@ -192,7 +195,7 @@ def peek(murd, names):
         spotted = randint(1,10)
         if spotted == 1:
             time.sleep(1)
-            dot_spam(f"...Suddenly, {chosen_one} stopped...")
+            dot_spam(f"...Suddenly, {chosen_one} stopped...", False)
             time.sleep(1)
             print(f"Shivers go up your spine...{chosen_one} has found you.")
             time.sleep(1)
@@ -209,15 +212,15 @@ def hide(target):
     hidingrandom = randint(1,len(hideactions))
     hidetext = "Hiding"
     tensiontexts = ["...nothing happened.", "...you heard nothing.", "...you stayed silent, but somehow, the world seemed even quieter", "...nothing was happening."]
-    dot_spam(hidetext)
+    dot_spam(hidetext, True)
     print(f"{hideactions[hidingrandom]}")
     randomtension = randint(2,4)
     for i in range(randomtension):
-        dot_spam(".")
+        dot_spam(".", True)
         random.shuffle(tensiontexts)
         print(tensiontexts[0])
         time.sleep(1)
-    dot_spam(".")
+    dot_spam(".", True)
     if target == 0:
         print("...?")
         print("You heard what seemed like footsteps paddling around in your house.")
@@ -225,32 +228,34 @@ def hide(target):
     print("You felt safe.")
 
 
-def dot_spam(text):
+def dot_spam(text, remove):
     for i in range(5):
         text += "."
         print(text, end='\r')
         time.sleep(0.3)
     time.sleep(1)
     print(" " * len(text), end='\r')
+    if not remove:
+        print(text)
 
 
 def playerchosenbias():
-    print('biased activate')
-    chosen = randint(1,1)
+    print('Biased function is running. Gambling if player is chosen or not.')
+    chosen = randint(1,5)
     chosen2 = ""
     if chosen == 1:
         chosen2 = "bias"
     else:
         chosen2 = "unbias"
     if chosen2 == "bias":
-        chosen = randint(1,1)
+        chosen = randint(1,6)
     else:
         chosen = 0
     return chosen
 
 def aicode(playerrole, c1role, c2role, c3role, c4role, c5role, c6role):
     role_list = [playerrole, c1role, c2role, c3role, c4role, c5role, c6role]
-    chosen = randint(0,0)
+    chosen = randint(0,6)
     if chosen == 0:
         chosen = playerchosenbias()
     while role_list[chosen] == 'murd':
@@ -285,9 +290,9 @@ def overview(daynum, name, role, energy_lv, sus_points, murd, dead):
     print(f"Final Energy Level: {energy_lv}")
     print(f"Final Suspicion Points: {sus_points}")
     if role == 'surv':
-        dot_spam("You survived for\n")
+        dot_spam("You survived for", False)
         print(f"{daynum} days.")
-        dot_spam("The murderer was\n")
+        dot_spam("The murderer was", False)
         print(f"{murd}.")
 
 def murdthing(player_role, role_list):
