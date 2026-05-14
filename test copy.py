@@ -19,5 +19,6 @@ def dot_spam(text, remove):
     time.sleep(1)
     if remove == True:
         print(" " * len(text), end='\r')
+    print(text)
 
 dot_spam("The murderer has killed everyone except you.", False)
