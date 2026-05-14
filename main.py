@@ -128,7 +128,9 @@ def day(day, suspts, energylv, name_list, murd, player_role, chosen, player_name
             time.sleep(0.2)
             if len(name_list) > 2:
                 red("Oh, what's this? A murder had occured overnight.")
-                red(f"{name_list[chosen]} {deadlist[rand_death]}")
+                print(name_list)
+                print(f"This is the chosen value", chosen)
+                red(f"{name_list[chosen-1]} {deadlist[rand_death]}")
                 yellow('There is a murderer among you and the others. Vote to eliminate the murderer!\n')
                 purple("Let's take a look at the others.")
                 name_list.pop(chosen)
