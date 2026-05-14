@@ -279,7 +279,6 @@ def playerchosenbias():
 def aicode(playerrole, c1role, c2role, c3role, c4role, c5role, c6role, namelist):
     role_list = [playerrole, c1role, c2role, c3role, c4role, c5role, c6role]
     namelen = len(namelist)
-    namelen = 6-namelen
     chosen = randint(0,namelen)
     if chosen == 0:
         chosen = playerchosenbias()
