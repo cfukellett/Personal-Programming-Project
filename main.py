@@ -136,8 +136,8 @@ def day(day, suspts, energylv, name_list, murd, player_role, chosen, player_name
             purple("Let's take a look at the others.")
             person = 0
             for name in name_list:
+                print(name, botenergylist[person])
                 person += 1
-                print(name, )
             if len(name_list) < 2:
                 dot_spam("The murderer has killed everyone except you.", False)
     print(name_list)
