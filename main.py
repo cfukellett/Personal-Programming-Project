@@ -281,13 +281,13 @@ def playerchosenbias():
 def aicode(playerrole, c1role, c2role, c3role, c4role, c5role, c6role, namelist):
     role_list = [playerrole, c1role, c2role, c3role, c4role, c5role, c6role]
     chosen = randint(0,len(namelist))
+    print(f"This is the chosen value", chosen)
     if chosen == 0:
         chosen = playerchosenbias()
     while role_list[chosen] == 'murd':
         chosen = randint(0,len(namelist))
         if chosen == 0:
             chosen = playerchosenbias()
-    print(f"This is the chosen value", chosen)
     return chosen
     
 def compnames():
