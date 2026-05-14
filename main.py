@@ -119,6 +119,7 @@ def day(day, suspts, energylv, name_list, murd, player_role, chosen, player_name
     yellow(f"⚡Energy Level: {energylv}")
     deadlist = ["was found with his eyes gouged out and his neck hanging on a branch… Terrifying! 😱", "had been impaled and had died from blood loss...", "was electrocuted, leaving their body completely unrecognisable...", "was having a midnight snack and suddenly suffered from a heart attack...Yes, this was caused by the murderer.", "somehow found an active volcano and jumped into it, burning themselves into ashes in the process.", "was found without skin in a toolshed."]
     rand_death = randint(1,len(deadlist))
+    chosen-=1
     print(rand_death)
     if player_role == 'surv':
         if day == 1:
@@ -130,7 +131,7 @@ def day(day, suspts, energylv, name_list, murd, player_role, chosen, player_name
                 red("Oh, what's this? A murder had occured overnight.")
                 print(name_list)
                 print(f"This is the chosen value", chosen)
-                red(f"{name_list[chosen-1]} {deadlist[rand_death]}")
+                red(f"{name_list[chosen]} {deadlist[rand_death]}")
                 yellow('There is a murderer among you and the others. Vote to eliminate the murderer!\n')
                 purple("Let's take a look at the others.")
                 name_list.pop(chosen)
