@@ -1,20 +1,50 @@
 from random import randint
 import random
 import time
+import pygame
+from colorist import ColorRGB, BgColorRGB, rgb, bg_rgb
+
+#ze olours
+def red(string):
+    rgb(255,0,0)
+    print(string)
+
+def blue(string):
+    rgb(0,0,255)
+    print(string)
+
+def green(string):
+    rgb(0,255,0)
+    print(string)
+
+def yellow(string):
+    rgb(255,255,0)
+    print(string)
+
+def green(string):
+    rgb(0,255,255)
+    print(string)
+
+def purple(string):
+    rgb(255,0,255)
+    print(string)
 
 def intro():
     print("--Welcome--")
     time.sleep(1.2)
-    name = input("Please enter your name:\n")
-    print(f"Hello, {name}, welcome to the game.")
+    yellow("Please enter your name:\n")
+    name = input
+    yellow(f"Hello, {name}, welcome to the game.")
     time.sleep(1)
-    read_rules = input("Would you like to read the rules? (y/n):\n").lower()
+    red("Would you like to read the rules? (y/n):\n")
+    read_rules = input.lower()
     while read_rules not in ['y', 'yes', 'n', 'no']:
         wronginsert()
-        read_rules = input("Would you like to read the rules? (y/n):\n").lower()
+        red("Would you like to read the rules? (y/n):\n")
+    read_rules = input.lower()
     if read_rules in ['y', 'yes']:
-        print("rules here")
-    print("The game will now begin.")
+        red("rules here")
+    red("The game will now begin.")
     return name
 
 def roles():
@@ -32,9 +62,9 @@ def roles():
     dot_spam(select, True)
     player = players[0]
     if player == "murd":
-        print("🔪 murderer.\n")
+        red("🔪 murderer.\n")
     else:
-        print("😨survivor.\n")
+        blue("😨survivor.\n")
     time.sleep(2)
 
     return players
