@@ -27,18 +27,15 @@ def yellow(string):
 
 def purple(string):
     rgb(string, 255,0,255)
-
+str(purple)
 def dot_spam(text, remove, colour):
-    colours = {
-        "red" : red
-    }
     for i in range(5):
         text += "."
-        colours.get(colour, lambda: colour(text, end='\r'))
+        print(text, end='\r')
         time.sleep(0.3)
     time.sleep(1)
     print(" " * len(text), end='\r')
     if not remove:
         print(text)
 
-dot_spam("The murderer has killed everyone except you.", False, "red")
+dot_spam("The murderer has killed everyone except you", False, "red")

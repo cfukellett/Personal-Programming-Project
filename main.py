@@ -4,7 +4,7 @@ import time
 import pygame
 from colorist import ColorRGB, BgColorRGB, rgb, bg_rgb
 
-#ze olours
+#ze colours
 def red(string):
     rgb(string, 255,0,0)
 
@@ -127,15 +127,14 @@ def day(day, suspts, energylv, name_list, murd, player_role, chosen, player_name
         else:
             dot_spam("", True)
             time.sleep(0.2)
-            if len(name_list) > 2:
-                red("Oh, what's this? A murder had occured overnight.")
-                print(name_list)
-                print(f"This is the chosen value", chosen)
-                red(f"{name_list[chosen]} {deadlist[rand_death]}")
-                yellow('There is a murderer among you and the others. Vote to eliminate the murderer!\n')
-                purple("Let's take a look at the others.")
-                name_list.pop(chosen)
-            else:
+            red("Oh, what's this? A murder had occured overnight.")
+            print(name_list)
+            print(f"This is the chosen value", chosen)
+            red(f"{name_list[chosen]} {deadlist[rand_death]}")
+            name_list.pop(chosen)
+            yellow('There is a murderer among you and the others. Vote to eliminate the murderer!\n')
+            purple("Let's take a look at the others.")
+            if len(name_list) < 2:
                 dot_spam("The murderer has killed everyone except you.", False)
     print(name_list)
     #for name in name_list:
