@@ -157,6 +157,7 @@ def night(player_role, chosen, murd, name_list, energy_pts):
                 elif player_lh == "3":
                     player_lh = "none"
                     player_sleep = True
+                    break
                 else:
                     wronginsert()
             if player_lh != "3":
