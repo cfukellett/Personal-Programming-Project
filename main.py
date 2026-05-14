@@ -17,9 +17,6 @@ def green(string):
 def yellow(string):
     rgb(string, 255,255,0)
 
-def green(string):
-    rgb(string, 0,255,255)
-
 def purple(string):
     rgb(string, 255,0,255)
 
@@ -34,7 +31,7 @@ def intro():
     read_rules = input().lower()
     while read_rules not in ['y', 'yes', 'n', 'no']:
         wronginsert()
-        red("Would you like to read the rules? (y/n):\n")
+        yellow("Would you like to read the rules? (y/n):\n")
         read_rules = input.lower()
     if read_rules in ['y', 'yes']:
         red("rules here")
@@ -114,27 +111,26 @@ def botenergylv(name_list, murd, day, botenergylist):
 def day(day, suspts, energylv, name_list, murd, player_role, chosen, player_name, botenergylist):
     print(name_list)
     botenergys = botenergylv(name_list, murd, day, botenergylist)
-    print(name_list)
-    print(f"☀️--Day {day}--☀️")
-    print("It's the start of a brand new day.")
-    print(f"Here are your day {day} stats:")
-    print(f"Your role: {player_role}")
-    print(f"🤔 Suspicion Points: {suspts}")
-    print(f"⚡Energy Level: {energylv}")
+    yellow(f"☀️--Day {day}--☀️")
+    blue("It's the start of a brand new day.")
+    blue(f"Here are your day {day} stats:")
+    green(f"Your role: {player_role}")
+    purple(f"🤔 Suspicion Points: {suspts}")
+    yellow(f"⚡Energy Level: {energylv}")
     deadlist = ["was found with his eyes gouged out and his neck hanging on a branch… Terrifying! 😱", "had been impaled and had died from blood loss...", "was electrocuted, leaving their body completely unrecognisable...", "was having a midnight snack and suddenly suffered from a heart attack...Yes, this was caused by the murderer.", "somehow found an active volcano and jumped into it, burning themselves into ashes in the process.", "was found without skin in a toolshed."]
     rand_death = randint(1,len(deadlist))
     print(rand_death)
     if player_role == 'surv':
         if day == 1:
-            print("There is no danger here. You can freely rest.")
+            green("There is no danger here. You can freely rest.")
         else:
             dot_spam("", True)
             time.sleep(0.2)
             if len(name_list) > 2:
-                print("Oh, what's this? A murder had occured overnight.")
-                print(f"{name_list[chosen]} {deadlist[rand_death]}")
-                print('There is a murderer among you and the others. Vote to eliminate the murderer!\n')
-                print("Let's take a look at the others.")
+                red("Oh, what's this? A murder had occured overnight.")
+                red(f"{name_list[chosen]} {deadlist[rand_death]}")
+                yellow('There is a murderer among you and the others. Vote to eliminate the murderer!\n')
+                purple("Let's take a look at the others.")
                 name_list.pop(chosen)
             else:
                 dot_spam("The murderer has killed everyone except you.", False)
@@ -166,19 +162,19 @@ def night(player_role, chosen, murd, name_list, energy_pts):
             player_sleep = False
         if player_sleep == False:
             while player_lh != "1" and player_lh != "2" and player_lh != "3":
-                print("Will you take a peek outside or go into hiding? (Enter 1, 2 or 3)")
-                print("1. (Take a peek outside)")
-                print("2. (Hide in your house)")
-                print("3. Nevermind. I'm feeling sleepy.")
+                purple("Will you take a peek outside or go into hiding? (Enter 1, 2 or 3)")
+                red("1. (Take a peek outside)")
+                green("2. (Hide in your house)")
+                blue("3. Nevermind. I'm feeling sleepy.")
                 player_lh = input()
                 if player_lh == "1":
                     player_lh = "look"
-                    print("You decided to take a peek outside...")
+                    red("You decided to take a peek outside...")
                     dead = peek(murd, name_list)
                     break
                 elif player_lh == "2":
                     player_lh = "hide"
-                    print("You decided to hide for the night.")
+                    blue("You decided to hide for the night.")
                     hide(chosen)
                     break
                 elif player_lh == "3":
@@ -215,18 +211,18 @@ def peek(murd, names):
             allpeektext += murdtext
     allpeektextindex = len(allpeektext)-1
     if obs_rate == 1:
-        print(f"{allpeektext[allpeektextindex]}")
+        purple(f"{allpeektext[allpeektextindex]}")
         spotted = randint(1,10)
         if spotted == 1:
             time.sleep(1)
             dot_spam(f"...Suddenly, {chosen_one} stopped...", False)
             time.sleep(1)
-            print(f"Shivers go up your spine...{chosen_one} has found you.")
+            red(f"Shivers go up your spine...{chosen_one} has found you.")
             time.sleep(1)
-            print(f"You are now what people call 'dead'.")
+            red(f"You are now what people call 'dead'.")
             dead = True
     else:
-        print("...and saw nothing.")
+        green("...and saw nothing.")
     return dead
 
 
@@ -237,7 +233,7 @@ def hide(target):
     hidetext = "Hiding"
     tensiontexts = ["...nothing happened.", "...you heard nothing.", "...you stayed silent, but somehow, the world seemed even quieter", "...nothing was happening."]
     dot_spam(hidetext, True)
-    print(f"{hideactions[hidingrandom]}")
+    purple(f"{hideactions[hidingrandom]}")
     randomtension = randint(2,4)
     for i in range(randomtension):
         dot_spam(".", True)
@@ -247,9 +243,9 @@ def hide(target):
     dot_spam(".", True)
     if target == 0:
         print("...?")
-        print("You heard what seemed like footsteps paddling around in your house.")
-        print("After 5 minutes of tension, the footsteps faded away.")
-    print("You felt safe.")
+        purple("You heard what seemed like footsteps paddling around in your house.")
+        purple("After 5 minutes of tension, the footsteps faded away.")
+    green("You felt safe.")
 
 
 def dot_spam(text, remove):
@@ -308,16 +304,16 @@ def murdwho(people):
 
 def overview(daynum, name, role, energy_lv, sus_points, murd, dead):
     if dead == True:
-        print("You have perished...This is quite tragic indeed.")
-    print(f"{name}:")
-    print(f"Your role was {role}.")
-    print(f"Final Energy Level: {energy_lv}")
-    print(f"Final Suspicion Points: {sus_points}")
+        red("You have perished...This is quite tragic indeed.")
+    yellow(f"{name}:")
+    green(f"Your role was {role}.")
+    yellow(f"Final Energy Level: {energy_lv}")
+    blue(f"Final Suspicion Points: {sus_points}")
     if role == 'surv':
         dot_spam("You survived for", False)
-        print(f"{daynum} days.")
+        purple(f"{daynum} days.")
         dot_spam("The murderer was", False)
-        print(f"{murd}.")
+        red(f"{murd}.")
 
 def murdthing(player_role, role_list):
     if player_role == 'surv':
