@@ -181,7 +181,7 @@ def peek(murd, names):
         chosen_one = names[murd]
     else:
         chosen_one = names[randint(0,3)]
-    dot_spam("You peeked out the window...", False)
+    dot_spam("You peeked out the window", False)
     peektext = [f"...and saw {chosen_one} walking on the streets with their hands in their pockets...", f"...and saw {chosen_one} quietly sitting on a bench outside...", f"...and saw {chosen_one} breakdancing in an alleyway...?", f"...and saw {chosen_one} doing the Enma Palm Sign...", f"...and saw {chosen_one} floating in the air with a grin...Oh, you were hallucinating. {chosen_one} is really just standing there doing nothing.", f"...and saw {chosen_one} stretching out in the open..."]
     murdtext = [f"...and saw {chosen_one} holding a knife...", f"...and saw {chosen_one} with bloods splattered all over their hands...", f"...and saw {chosen_one} carrying a Hush Puppy..."]
     murdtextrate = randint(1,2)
@@ -328,9 +328,9 @@ while dead == False:
     if dead == True:
         overview(day_num, player_name, player_role, energy_lv, sus_points, murd, dead)
     print(chosen)
-    if chosen == 0:
-        if dead == True:
-            name_list.pop(chosen)
-    else:
-        name_list.pop(chosen)
+    #if chosen == 0:
+        #if dead == True:
+          #  name_list.pop(chosen)
+   # else:
+        #name_list.pop(chosen)
     print(name_list)
