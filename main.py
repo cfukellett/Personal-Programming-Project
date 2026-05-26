@@ -85,7 +85,7 @@ def botenergylv(name_list, murd, day, botenergylist):
         for name in namelist2:
             botenergylist.append(0)
     energyboost = 0
-    person = 1
+    person = 0
     print(namelist2)
     for name in range(len(namelist2)-1):
         energyboost = 0
