@@ -87,7 +87,7 @@ def botenergylv(name_list, murd, day, botenergylist):
     energyboost = 0
     person = 1
     print(namelist2)
-    for name in namelist2-1:
+    for name in range(len(namelist2)-1):
         energyboost = 0
         status = randint(1,5)
         if status == 1:
