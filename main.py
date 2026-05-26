@@ -110,11 +110,14 @@ def botenergylv(name_list, murd, day, botenergylist):
     print(botenergylist)
     print(namelist2)
     return botenergylist
-            
 
-def day(day, suspts, energylv, name_list, murd, player_role, chosen, player_name, botenergylist):
+def vote(name_list, suspts, energylv, murd):
+    
+    pass
+
+def day(day, suspts, energylv, name_list, murd, player_role, chosen, player_name):
     print(name_list)
-    botenergys = botenergylv(name_list, murd, day, botenergylist)
+    #botenergys = botenergylv(name_list, murd, day, botenergylist)
     yellow(f"☀️--Day {day}--☀️")
     purple("It's the start of a brand new day.")
     purple(f"Here are your day {day} stats:")
@@ -138,10 +141,11 @@ def day(day, suspts, energylv, name_list, murd, player_role, chosen, player_name
             name_list.pop(chosen)
             yellow('There is a murderer among you and the others. Vote to eliminate the murderer!\n')
             purple("Let's take a look at the others.")
+            vote(name_list, suspts, energylv, murd)
             person = 0
-            for name in name_list:
-                print(name, botenergylist[person-1])
-                person += 1
+            #for name in name_list:
+            #    print(name, botenergylist[person-1])
+            #    person += 1
             if len(name_list) < 2:
                 dot_spam("The murderer has killed everyone except you.", False)
     print(name_list)
@@ -357,9 +361,9 @@ print(name_list)
 while dead == False:
     day_num += 1
     energy_lv = energy(energy_points)
-    if day_num == 1:
-        botenergylist = []
-    dead = day(day_num, sus_points, energy_lv, name_list, murd, player_role, chosen, player_name, botenergylist)
+    #if day_num == 1:
+        #botenergylist = []
+    dead = day(day_num, sus_points, energy_lv, name_list, murd, player_role, chosen, player_name)
     aicode(player_role, comp1_role, comp2_role, comp3_role, comp4_role, comp5_role, comp6_role, name_list)
     if dead == False:
         dead, energy_points = night(player_role, chosen, murd, name_list, energy_points)
