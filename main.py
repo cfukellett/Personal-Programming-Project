@@ -111,12 +111,73 @@ def botenergylv(name_list, murd, day, botenergylist):
     print(namelist2)
     return botenergylist
 
-def vote(namelist, suspts, energylv, murd):
+def vote(namelist, suspts, energylv, murd, playername):
     yellow('There is a murderer among you and the others.\n')
-    purple("Everyone will be interrogated.")
-    print(namelist) 
+    print(namelist)
+    intenamelist = namelist
+    intenamelist.pop(0)
+    purple(f"You must interrogate every person.\n You will be given three options.\n Choose the correct option for better odds of deducing who the murderer is.")
+    defoptions = ["Plead", "Argue", "Denial", "Confess", "Silence"]
+    atkoptions = ["Object", "Argue", "Accuse", "Warn", "Silence"]
+    random.shuffle(atkoptions, defoptions)
+    for person in intenamelist:
+        blue(f"{person} is being interrogated.")
+        blue("Choose your interrogation option.")
+        random.shuffle(atkoptions)
+        blue(f"1. {atkoptions[0]}\n 2. {atkoptions[1]}\n, 3. {atkoptions[2]}\n")
+        blue("4. Skip\n 5. Reroll")
+        #the interrogated has these options: plead, argue, denial, confess, silence, reroll
+        #the interrogater has these options: object, argue, accuse, warn, silence, skip, reroll
+        #plead beats object, argue beats accuse, denial beats argue, confess beats warn, silence is a tie, reroll allows them to reroll their options
+        #object beats argue, argue beats denial, accuse beats confess, warn beats silence, silence beats plead, reroll allows them to reroll their options
+        atkchoice = input().lower()
+        while atkchoice not in ['1', '2', '3', '4', '5', 's', 'r']:
+            wronginsert()
+            blue("Choose your interrogation option.")
+            blue(f"1. {atkoptions[0]}\n 2. {atkoptions[1]}\n, 3. {atkoptions[2]}\n")
+            blue("4. Skip\n 5. Reroll")
+            atkchoice = input().lower()
+        if atkchoice == 'r':
+            atkchoice = intespec(atkoptions, atkchoice, 'reroll')
+        elif atkchoice == 's':
+            pass
+        defbotchoice = defoptions[0]
+        winlose = ''
+        atkchoice2 = atkoptions[atkchoice].lower()
+        defbotchoice2 = defbotchoice.lower()
+        if atkchoice2 == 'object':
+            if defbotchoice2 == 'plead':
+                winlose == 'l'
+            elif defbotchoice2 == 'argue':
+                winlose == 'w'
+            elif defbotchoice2 == 'denial':
+                winlose == 'w'
+            elif defbotchoice2 == 'confess':
+                winlose == 'w'
+            elif defbotchoice2 == 'silence':
+                winlose == 'w'
 
     pass
+
+
+def intespec(atkoptions, atkchoice, status):
+    if status == 'reroll':
+        rerolls = 3
+        while atkchoice == 'r':
+            if rerolls > 0:
+                rerolls -= 1
+                purple("You have chosen to reroll.")
+                red(f"Rerolls remaining: {rerolls}")
+                random.shuffle(atkoptions)
+                blue(f"1. {atkoptions[0]}\n 2. {atkoptions[1]}\n, 3. {atkoptions[2]}\n")
+                blue("4. Skip\n 5. Reroll")
+                while atkchoice not in ['1', '2', '3', '4', '5', 's', 'r']:
+                    wronginsert()
+                    blue("Choose your interrogation option.")
+                    blue(f"1. {atkoptions[0]}\n 2. {atkoptions[1]}\n, 3. {atkoptions[2]}\n")
+                    blue("4. Skip\n 5. Reroll")
+                    atkchoice = input().lower()
+    return atkchoice
 
 def day(day, suspts, energylv, name_list, murd, player_role, chosen, player_name):
     print(name_list)
@@ -142,7 +203,7 @@ def day(day, suspts, energylv, name_list, murd, player_role, chosen, player_name
             print(f"This is the chosen value", chosen)
             red(f"{name_list[chosen]} {deadlist[rand_death]}")
             name_list.pop(chosen)
-            vote(name_list, suspts, energylv, murd)
+            vote(name_list, suspts, energylv, murd, player_name)
             person = 0
             #for name in name_list:
             #    print(name, botenergylist[person-1])
