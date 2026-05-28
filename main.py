@@ -111,8 +111,11 @@ def botenergylv(name_list, murd, day, botenergylist):
     print(namelist2)
     return botenergylist
 
-def vote(name_list, suspts, energylv, murd):
-    
+def vote(namelist, suspts, energylv, murd):
+    yellow('There is a murderer among you and the others.\n')
+    purple("Everyone will be interrogated.")
+    print(namelist) 
+
     pass
 
 def day(day, suspts, energylv, name_list, murd, player_role, chosen, player_name):
@@ -139,8 +142,6 @@ def day(day, suspts, energylv, name_list, murd, player_role, chosen, player_name
             print(f"This is the chosen value", chosen)
             red(f"{name_list[chosen]} {deadlist[rand_death]}")
             name_list.pop(chosen)
-            yellow('There is a murderer among you and the others. Vote to eliminate the murderer!\n')
-            purple("Let's take a look at the others.")
             vote(name_list, suspts, energylv, murd)
             person = 0
             #for name in name_list:
