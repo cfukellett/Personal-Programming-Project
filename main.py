@@ -151,11 +151,58 @@ def vote(namelist, suspts, energylv, murd, playername):
             elif defbotchoice2 == 'argue':
                 winlose == 'w'
             elif defbotchoice2 == 'denial':
+                winlose == 'l'
+            elif defbotchoice2 == 'confess':
+                winlose == 't'
+            elif defbotchoice2 == 'silence':
                 winlose == 'w'
+        elif atkchoice2 == 'argue':
+            if defbotchoice2 == 'plead':
+                winlose == 'w'
+            elif defbotchoice2 == 'argue':
+                winlose == 't'
+            elif defbotchoice2 == 'denial':
+                winlose == 'l'
+            elif defbotchoice2 == 'confess':
+                winlose == 'w'
+            elif defbotchoice2 == 'silence':
+                winlose == 'l'
+        elif atkchoice2 == 'accuse':
+            if defbotchoice2 == 'plead':
+                winlose == 't'
+            elif defbotchoice2 == 'argue':
+                winlose == 'l'
+            elif defbotchoice2 == 'denial':
+                winlose == 'l'
             elif defbotchoice2 == 'confess':
                 winlose == 'w'
             elif defbotchoice2 == 'silence':
                 winlose == 'w'
+        elif atkchoice2 == 'warn':
+            if defbotchoice2 == 'plead':
+                winlose == 'l'
+            elif defbotchoice2 == 'argue':
+                winlose == 'l'
+            elif defbotchoice2 == 'denial':
+                winlose == 't'
+            elif defbotchoice2 == 'confess':
+                winlose == 'w'
+            elif defbotchoice2 == 'silence':
+                winlose == 'w'
+        elif atkchoice2 == 'silence':
+            if defbotchoice2 == 'plead':
+                winlose == 'w'
+            elif defbotchoice2 == 'argue':
+                winlose == 'l'
+            elif defbotchoice2 == 'denial':
+                winlose == 'l'
+            elif defbotchoice2 == 'confess':
+                winlose == 'w'
+            elif defbotchoice2 == 'silence':
+                winlose == 't'
+        if winlose == 'w':
+            green(f"{person} ")
+
 
     pass
 
@@ -203,6 +250,7 @@ def day(day, suspts, energylv, name_list, murd, player_role, chosen, player_name
             print(f"This is the chosen value", chosen)
             red(f"{name_list[chosen]} {deadlist[rand_death]}")
             name_list.pop(chosen)
+            print(murd)
             vote(name_list, suspts, energylv, murd, player_name)
             person = 0
             #for name in name_list:
