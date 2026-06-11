@@ -135,7 +135,7 @@ def vote(namelist, suspts, energylv, murd, playername):
             wronginsert()
             blue("Choose your interrogation option.")
             blue(f"1. {atkoptions[0]}\n2. {atkoptions[1]}\n3. {atkoptions[2]}\n4. Skip\n 5. Reroll")
-            atkchoice = input()
+            atkchoice = int(input())
         if atkchoice == 5:
             atkchoice = intespec(atkoptions, atkchoice, 'reroll')
         elif atkchoice == 4:
@@ -143,7 +143,7 @@ def vote(namelist, suspts, energylv, murd, playername):
             pass
         defbotchoice = defoptions[0]
         winlose = ''
-        atkchoice2 = atkoptions[atkchoice].lower()
+        atkchoice2 = atkoptions[atkchoice-1].lower()
         defbotchoice2 = defbotchoice.lower()
         if atkchoice2 == 'object':
             if defbotchoice2 == 'plead':
