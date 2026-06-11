@@ -119,7 +119,8 @@ def vote(namelist, suspts, energylv, murd, playername):
     purple(f"You must interrogate every person.\n You will be given three options.\n Choose the correct option for better odds of deducing who the murderer is.")
     defoptions = ["Plead", "Argue", "Denial", "Confess", "Silence"]
     atkoptions = ["Object", "Argue", "Accuse", "Warn", "Silence"]
-    random.shuffle(atkoptions, defoptions)
+    random.shuffle(atkoptions)
+    random.shuffle(defoptions)
     for person in intenamelist:
         blue(f"{person} is being interrogated.")
         blue("Choose your interrogation option.")
@@ -250,7 +251,7 @@ def day(day, suspts, energylv, name_list, murd, player_role, chosen, player_name
             print(f"This is the chosen value", chosen)
             red(f"{name_list[chosen]} {deadlist[rand_death]}")
             name_list.pop(chosen)
-            print(murd)
+            print(f"This is the murd value: {murd}")
             vote(name_list, suspts, energylv, murd, player_name)
             person = 0
             #for name in name_list:
