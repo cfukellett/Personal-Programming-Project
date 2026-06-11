@@ -131,11 +131,10 @@ def vote(namelist, suspts, energylv, murd, playername):
         #plead beats object, argue beats accuse, denial beats argue, confess beats warn, silence is a tie, reroll allows them to reroll their options
         #object beats argue, argue beats denial, accuse beats confess, warn beats silence, silence beats plead, reroll allows them to reroll their options
         atkchoice = input()
-        while atkchoice not in range(1,5):
+        while atkchoice < 1 or atkchoice > 5:
             wronginsert()
             blue("Choose your interrogation option.")
-            blue(f"1. {atkoptions[0]}\n 2. {atkoptions[1]}\n, 3. {atkoptions[2]}\n")
-            blue("4. Skip\n 5. Reroll")
+            blue(f"1. {atkoptions[0]}\n2. {atkoptions[1]}\n3. {atkoptions[2]}\n4. Skip\n 5. Reroll")
             atkchoice = input()
         if atkchoice == 5:
             atkchoice = intespec(atkoptions, atkchoice, 'reroll')
