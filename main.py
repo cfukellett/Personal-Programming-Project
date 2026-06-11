@@ -216,8 +216,7 @@ def intespec(atkoptions, atkchoice, status):
                 purple("You have chosen to reroll.")
                 red(f"Rerolls remaining: {rerolls}")
                 random.shuffle(atkoptions)
-                blue(f"1. {atkoptions[0]}\n2. {atkoptions[1]}\n3. {atkoptions[2]}\n")
-                blue("4. Skip\n 5. Reroll")
+                blue(f"1. {atkoptions[0]}\n2. {atkoptions[1]}\n3. {atkoptions[2]}\n4. Skip\n 5. Reroll")
                 while 1 < atkchoice < 5:
                     wronginsert()
                     blue("Choose your interrogation option.")
