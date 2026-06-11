@@ -125,8 +125,8 @@ def vote(namelist, suspts, energylv, murd, playername):
         blue(f"{person} is being interrogated.")
         blue("Choose your interrogation option.")
         random.shuffle(atkoptions)
-        blue(f"1. {atkoptions[0]}\n 2. {atkoptions[1]}\n, 3. {atkoptions[2]}\n")
-        blue("4. Skip\n 5. Reroll")
+        blue(f"1. {atkoptions[0]}\n2. {atkoptions[1]}\n3. {atkoptions[2]}\n")
+        blue("4. Skip\n5. Reroll")
         #the interrogated has these options: plead, argue, denial, confess, silence, reroll
         #the interrogater has these options: object, argue, accuse, warn, silence, skip, reroll
         #plead beats object, argue beats accuse, denial beats argue, confess beats warn, silence is a tie, reroll allows them to reroll their options
