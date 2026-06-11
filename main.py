@@ -210,19 +210,18 @@ def vote(namelist, suspts, energylv, murd, playername):
 def intespec(atkoptions, atkchoice, status):
     if status == 'reroll':
         rerolls = 3
-        while atkchoice == 'r':
+        while atkchoice == 5:
             if rerolls > 0:
                 rerolls -= 1
                 purple("You have chosen to reroll.")
                 red(f"Rerolls remaining: {rerolls}")
                 random.shuffle(atkoptions)
-                blue(f"1. {atkoptions[0]}\n 2. {atkoptions[1]}\n, 3. {atkoptions[2]}\n")
+                blue(f"1. {atkoptions[0]}\n2. {atkoptions[1]}\n3. {atkoptions[2]}\n")
                 blue("4. Skip\n 5. Reroll")
-                while atkchoice not in ['1', '2', '3', '4', '5', 's', 'r']:
+                while 1 < atkchoice < 5:
                     wronginsert()
                     blue("Choose your interrogation option.")
-                    blue(f"1. {atkoptions[0]}\n 2. {atkoptions[1]}\n, 3. {atkoptions[2]}\n")
-                    blue("4. Skip\n 5. Reroll")
+                    blue(f"1. {atkoptions[0]}\n2. {atkoptions[1]}\n3. {atkoptions[2]}\n4. Skip\n 5. Reroll")
                     atkchoice = input().lower()
     return atkchoice
 
