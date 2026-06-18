@@ -131,15 +131,15 @@ def vote(namelist, suspts, energylv, murd, playername):
         #the interrogater has these options: object, argue, accuse, warn, silence, skip, reroll
         #plead beats object, argue beats accuse, denial beats argue, confess beats warn, silence is a tie, reroll allows them to reroll their options
         #object beats argue, argue beats denial, accuse beats confess, warn beats silence, silence beats plead, reroll allows them to reroll their options
-        atkchoice = int(input())
-        while atkchoice < 1 or atkchoice > 4:
+        atkchoice = input()
+        while atkchoice not in ['1', '2', '3', '4']:
             wronginsert()
             blue("Choose your interrogation option.")
             blue(f"1. {atkoptions[0]}\n2. {atkoptions[1]}\n3. {atkoptions[2]}\n4. Skip")
-            atkchoice = int(input())
+            atkchoice = input()
         #if atkchoice == 5:
         #    atkchoice = intespec(atkoptions, atkchoice, 'reroll')
-        if atkchoice == 4:
+        if int(atkchoice) == 4:
             red("You chose to skip this interrogation...")
             pass
         defbotchoice = defoptions[0]
