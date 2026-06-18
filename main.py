@@ -126,20 +126,20 @@ def vote(namelist, suspts, energylv, murd, playername):
         blue(f"{person} is being interrogated.")
         blue("Choose your interrogation option.")
         random.shuffle(atkoptions)
-        blue(f"1. {atkoptions[0]}\n2. {atkoptions[1]}\n3. {atkoptions[2]}\n4. Skip\n5. Reroll")
+        blue(f"1. {atkoptions[0]}\n2. {atkoptions[1]}\n3. {atkoptions[2]}\n4. Skip")
         #the interrogated has these options: plead, argue, denial, confess, silence, reroll
         #the interrogater has these options: object, argue, accuse, warn, silence, skip, reroll
         #plead beats object, argue beats accuse, denial beats argue, confess beats warn, silence is a tie, reroll allows them to reroll their options
         #object beats argue, argue beats denial, accuse beats confess, warn beats silence, silence beats plead, reroll allows them to reroll their options
         atkchoice = int(input())
-        while atkchoice < 1 or atkchoice > 5:
+        while atkchoice < 1 or atkchoice > 4:
             wronginsert()
             blue("Choose your interrogation option.")
-            blue(f"1. {atkoptions[0]}\n2. {atkoptions[1]}\n3. {atkoptions[2]}\n4. Skip\n 5. Reroll")
+            blue(f"1. {atkoptions[0]}\n2. {atkoptions[1]}\n3. {atkoptions[2]}\n4. Skip")
             atkchoice = int(input())
-        if atkchoice == 5:
-            atkchoice = intespec(atkoptions, atkchoice, 'reroll')
-        elif atkchoice == 4:
+        #if atkchoice == 5:
+        #    atkchoice = intespec(atkoptions, atkchoice, 'reroll')
+        if atkchoice == 4:
             red("You chose to skip this interrogation...")
             pass
         defbotchoice = defoptions[0]
