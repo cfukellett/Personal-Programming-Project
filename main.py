@@ -144,7 +144,7 @@ def vote(namelist, suspts, energylv, murd, playername):
             pass
         defbotchoice = defoptions[0]
         winlose = ''
-        atkchoice2 = atkoptions[atkchoice-1].lower()
+        atkchoice2 = atkoptions[int(atkchoice)-1].lower()
         defbotchoice2 = defbotchoice.lower()
         if atkchoice2 == 'object':
             green(f"{playername}(you) : Objection!")
@@ -206,6 +206,8 @@ def vote(namelist, suspts, energylv, murd, playername):
                 winlose == 'w'
             elif defbotchoice2 == 'silence':
                 winlose == 't'
+        green(f"You chose: {atkchoice2}")
+        red(f"{person} chose: {defbotchoice2}")
         if winlose == 'w':
             red(f"{person}: Oh no.")
             playsound("ohno.mp3")
