@@ -3,6 +3,7 @@ import random
 import time
 import pygame
 from colorist import ColorRGB, BgColorRGB, rgb, bg_rgb
+from playsound3 import playsound
 
 #ze colours
 def red(string):
@@ -146,6 +147,7 @@ def vote(namelist, suspts, energylv, murd, playername):
         atkchoice2 = atkoptions[atkchoice-1].lower()
         defbotchoice2 = defbotchoice.lower()
         if atkchoice2 == 'object':
+            green(f"{playername}(you) : Objection!")
             if defbotchoice2 == 'plead':
                 winlose == 'l'
             elif defbotchoice2 == 'argue':
@@ -157,6 +159,7 @@ def vote(namelist, suspts, energylv, murd, playername):
             elif defbotchoice2 == 'silence':
                 winlose == 'w'
         elif atkchoice2 == 'argue':
+            green(f"{playername}(you) : Redditors, lend me your power!")
             if defbotchoice2 == 'plead':
                 winlose == 'w'
             elif defbotchoice2 == 'argue':
@@ -168,6 +171,7 @@ def vote(namelist, suspts, energylv, murd, playername):
             elif defbotchoice2 == 'silence':
                 winlose == 'l'
         elif atkchoice2 == 'accuse':
+            green(f"{playername}(you) : I call cap.")
             if defbotchoice2 == 'plead':
                 winlose == 't'
             elif defbotchoice2 == 'argue':
@@ -179,6 +183,7 @@ def vote(namelist, suspts, energylv, murd, playername):
             elif defbotchoice2 == 'silence':
                 winlose == 'w'
         elif atkchoice2 == 'warn':
+            green(f"{playername} (you): Don't do that again...")
             if defbotchoice2 == 'plead':
                 winlose == 'l'
             elif defbotchoice2 == 'argue':
@@ -190,6 +195,7 @@ def vote(namelist, suspts, energylv, murd, playername):
             elif defbotchoice2 == 'silence':
                 winlose == 'w'
         elif atkchoice2 == 'silence':
+            green(f"{playername} (you): ...")
             if defbotchoice2 == 'plead':
                 winlose == 'w'
             elif defbotchoice2 == 'argue':
@@ -201,8 +207,14 @@ def vote(namelist, suspts, energylv, murd, playername):
             elif defbotchoice2 == 'silence':
                 winlose == 't'
         if winlose == 'w':
-            green(f"{person} ")
-
+            red(f"{person}: Oh no.")
+            playsound("ohno.mp3")
+        elif winlose == 'l':
+            red(f"{person}: Are you sure?")
+            playsound("areyousure.mp3")
+        elif winlose == 't':
+            green(f"{playername}(you): ...")
+            red(f"{person}: ...")
 
     pass
 
