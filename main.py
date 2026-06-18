@@ -113,6 +113,7 @@ def botenergylv(name_list, murd, day, botenergylist):
     return botenergylist
 
 def vote(namelist, suspts, energylv, murd, playername):
+    print(f"This is the murd value: {murd}")
     yellow('There is a murderer among you and the others.\n')
     print(namelist)
     intenamelist = namelist
@@ -211,13 +212,110 @@ def vote(namelist, suspts, energylv, murd, playername):
         if winlose == 'w':
             red(f"{person}: Oh no.")
             playsound("ohno.mp3")
+            green("You won the interrogation!")
+            if namelist[murd] == person:
+                red(f"{person} is quite suspicious...")
         elif winlose == 'l':
             red(f"{person}: Are you sure?")
             playsound("areyousure.mp3")
+            blue("You lost the interrogation...")
         elif winlose == 't':
             green(f"{playername}(you): ...")
             red(f"{person}: ...")
+            playsound("crow.mp3")
+            blue("You...both lost the interrogation?")
+    red("It is now your turn to be interrogated.")
+    random.shuffle(atkoptions)
+    random.shuffle(defoptions)
+    blue(f"1. {defoptions[0]}\n2. {defoptions[1]}\n3. {defoptions[2]}")
+    defchoice = input()
+    while defchoice not in ['1', '2', '3']:
+        wronginsert()
+        blue("Choose your interrogation option.")
+        blue(f"1. {defoptions[0]}\n2. {defoptions[1]}\n3. {defoptions[2]}\n4. Skip")
+        defchoice = input()
+    atkbotchoice = atkoptions[0]
+    winlose = ''
+    defchoice2 = defoptions[int(defchoice)-1].lower()
+    atkbotchoice2 = atkbotchoice.lower()
+    if defchoice2 == 'plead':
+        green(f"{playername}(you): S-sir, please!!")
+        if defbotchoice2 == 'object':
+            winlose = 'l'
+        elif defbotchoice2 == 'argue':
+            winlose = 'w'
+        elif defbotchoice2 == 'accuse':
+            winlose = 't'
+        elif defbotchoice2 == 'warn':
+            winlose = 'l'
+        elif defbotchoice2 == 'silence':
+            winlose = 'w'
+    elif defchoice2 == 'argue':
+        green(f"{playername}(you): Redditors, lend me your power!")
+        if defbotchoice2 == 'object':
+            winlose = 'w'
+        elif defbotchoice2 == 'argue':
+            winlose = 't'
+        elif defbotchoice2 == 'accuse':
+            winlose = 'l'
+        elif defbotchoice2 == 'warn':
+            winlose = 'l'
+        elif defbotchoice2 == 'silence':
+            winlose = 'w'
+    elif defchoice2 == 'denial':
+        green(f"{playername}(you): I didn't do it bro!! trust")
+        if defbotchoice2 == 'object':
+            winlose = 'w'
+        elif defbotchoice2 == 'argue':
+            winlose = 'l'
+        elif defbotchoice2 == 'accuse':
+            winlose = 'l'
+        elif defbotchoice2 == 'warn':
+            winlose = 'w'
+        elif defbotchoice2 == 'silence':
+            winlose = 't'
+    elif defchoice2 == 'confess':
+        green(f"{playername}(you): Yeah. I did that.")
+        if defbotchoice2 == 'object':
+            winlose = 'w'
+        elif defbotchoice2 == 'argue':
+            winlose = 't'
+        elif defbotchoice2 == 'accuse':
+            winlose = 'l'
+        elif defbotchoice2 == 'warn':
+            winlose = 'l'
+        elif defbotchoice2 == 'silence':
+            winlose = 'l'
+    elif defchoice2 == 'silence':
+        green(f"{playername}(you): ...")
+        if defbotchoice2 == 'object':
+            winlose = 'w'
+        elif defbotchoice2 == 'argue':
+            winlose = 't'
+        elif defbotchoice2 == 'accuse':
+            winlose = 'l'
+        elif defbotchoice2 == 'warn':
+            winlose = 'l'
+        elif defbotchoice2 == 'silence':
+            winlose = 'l'
 
+    green(f"You chose: {atkchoice2}")
+    red(f"{person} chose: {defbotchoice2}")
+    if winlose == 'w':
+        red(f"{person}: Oh no.")
+        playsound("ohno.mp3")
+        green("You won the interrogation!")
+        if namelist[murd] == person:
+            red(f"{person} is quite suspicious...")
+    elif winlose == 'l':
+        red(f"{person}: Are you sure?")
+        playsound("areyousure.mp3")
+        blue("You lost the interrogation...")
+    elif winlose == 't':
+        green(f"{playername}(you): ...")
+        red(f"{person}: ...")
+        playsound("crow.mp3")
+        blue("You...both lost the interrogation?")
     pass
 
 
