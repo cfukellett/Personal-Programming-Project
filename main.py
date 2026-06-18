@@ -280,7 +280,7 @@ def day(day, suspts, energylv, name_list, murd, player_role, chosen, player_name
 def wronginsert():
     print("Please answer with an acceptable input.\n")
 
-def night(player_role, chosen, murd, name_list, energy_pts):
+def night(player_role, chosen, murd, name_list, energypts):
     dead = False
     player_lh = ""
     if player_role == "surv":
@@ -306,26 +306,23 @@ def night(player_role, chosen, murd, name_list, energy_pts):
                 if player_lh == "1":
                     player_lh = "look"
                     red("You decided to take a peek outside...")
+                    energypts -= 30
                     dead = peek(murd, name_list)
                     break
                 elif player_lh == "2":
                     player_lh = "hide"
                     blue("You decided to hide for the night.")
                     hide(chosen)
+                    energypts -= 30
                     break
                 elif player_lh == "3":
                     player_lh = "none"
                     player_sleep = True
+                    energypts+=20
                     break
                 else:
                     wronginsert()
-            if player_lh != "3":
-                energy_pts -= 30
-            else:
-                energy_pts += 20
-        else:
-            energy_pts += 20
-    return dead, energy_pts
+    return dead, energypts
 
 def peek(murd, names):
     dead = False
