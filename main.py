@@ -147,65 +147,65 @@ def vote(namelist, suspts, energylv, murd, playername):
         atkchoice2 = atkoptions[int(atkchoice)-1].lower()
         defbotchoice2 = defbotchoice.lower()
         if atkchoice2 == 'object':
-            green(f"{playername}(you) : Objection!")
+            green(f"{playername}(you): Objection!")
             if defbotchoice2 == 'plead':
-                winlose == 'l'
+                winlose = 'l'
             elif defbotchoice2 == 'argue':
-                winlose == 'w'
+                winlose = 'w'
             elif defbotchoice2 == 'denial':
-                winlose == 'l'
+                winlose = 'l'
             elif defbotchoice2 == 'confess':
-                winlose == 't'
+                winlose = 't'
             elif defbotchoice2 == 'silence':
-                winlose == 'w'
+                winlose = 'w'
         elif atkchoice2 == 'argue':
-            green(f"{playername}(you) : Redditors, lend me your power!")
+            green(f"{playername}(you): Redditors, lend me your power!")
             if defbotchoice2 == 'plead':
-                winlose == 'w'
+                winlose = 'w'
             elif defbotchoice2 == 'argue':
-                winlose == 't'
+                winlose = 't'
             elif defbotchoice2 == 'denial':
-                winlose == 'l'
+                winlose = 'l'
             elif defbotchoice2 == 'confess':
-                winlose == 'w'
+                winlose = 'w'
             elif defbotchoice2 == 'silence':
-                winlose == 'l'
+                winlose = 'l'
         elif atkchoice2 == 'accuse':
-            green(f"{playername}(you) : I call cap.")
+            green(f"{playername}(you): I call cap.")
             if defbotchoice2 == 'plead':
-                winlose == 't'
+                winlose = 't'
             elif defbotchoice2 == 'argue':
-                winlose == 'l'
+                winlose = 'l'
             elif defbotchoice2 == 'denial':
-                winlose == 'l'
+                winlose = 'l'
             elif defbotchoice2 == 'confess':
-                winlose == 'w'
+                winlose = 'w'
             elif defbotchoice2 == 'silence':
-                winlose == 'w'
+                winlose = 'w'
         elif atkchoice2 == 'warn':
             green(f"{playername} (you): Don't do that again...")
             if defbotchoice2 == 'plead':
-                winlose == 'l'
+                winlose = 'l'
             elif defbotchoice2 == 'argue':
-                winlose == 'l'
+                winlose = 'l'
             elif defbotchoice2 == 'denial':
-                winlose == 't'
+                winlose = 't'
             elif defbotchoice2 == 'confess':
-                winlose == 'w'
+                winlose = 'w'
             elif defbotchoice2 == 'silence':
-                winlose == 'w'
+                winlose = 'w'
         elif atkchoice2 == 'silence':
             green(f"{playername} (you): ...")
             if defbotchoice2 == 'plead':
-                winlose == 'w'
+                winlose = 'w'
             elif defbotchoice2 == 'argue':
-                winlose == 'l'
+                winlose = 'l'
             elif defbotchoice2 == 'denial':
-                winlose == 'l'
+                winlose = 'l'
             elif defbotchoice2 == 'confess':
-                winlose == 'w'
+                winlose = 'w'
             elif defbotchoice2 == 'silence':
-                winlose == 't'
+                winlose = 't'
         green(f"You chose: {atkchoice2}")
         red(f"{person} chose: {defbotchoice2}")
         if winlose == 'w':
