@@ -355,6 +355,7 @@ def day(day, suspts, energylv, name_list, murd, player_role, chosen, player_name
             time.sleep(0.2)
             red("Oh, what's this? A murder had occured overnight.")
             print(name_list)
+            print(f"This is the murd value before the chosen value has been assigned: {murd}")
             print(f"This is the chosen value", chosen)
             red(f"{name_list[chosen]} {deadlist[rand_death]}")
             name_list.pop(chosen)
