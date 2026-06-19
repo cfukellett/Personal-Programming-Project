@@ -240,73 +240,71 @@ def vote(namelist, suspts, energylv, murd, playername):
     atkbotchoice2 = atkbotchoice.lower()
     if defchoice2 == 'plead':
         green(f"{playername}(you): S-sir, please!!")
-        if defbotchoice2 == 'object':
+        if atkbotchoice == 'object':
             winlose = 'l'
-        elif defbotchoice2 == 'argue':
+        elif atkbotchoice == 'argue':
             winlose = 'w'
-        elif defbotchoice2 == 'accuse':
+        elif atkbotchoice == 'accuse':
             winlose = 't'
-        elif defbotchoice2 == 'warn':
+        elif atkbotchoice == 'warn':
             winlose = 'l'
-        elif defbotchoice2 == 'silence':
+        elif atkbotchoice == 'silence':
             winlose = 'w'
     elif defchoice2 == 'argue':
         green(f"{playername}(you): Redditors, lend me your power!")
-        if defbotchoice2 == 'object':
+        if atkbotchoice == 'object':
             winlose = 'w'
-        elif defbotchoice2 == 'argue':
+        elif atkbotchoice == 'argue':
             winlose = 't'
-        elif defbotchoice2 == 'accuse':
+        elif atkbotchoice == 'accuse':
             winlose = 'l'
-        elif defbotchoice2 == 'warn':
+        elif atkbotchoice == 'warn':
             winlose = 'l'
-        elif defbotchoice2 == 'silence':
+        elif atkbotchoice == 'silence':
             winlose = 'w'
     elif defchoice2 == 'denial':
         green(f"{playername}(you): I didn't do it bro!! trust")
-        if defbotchoice2 == 'object':
+        if atkbotchoice == 'object':
             winlose = 'w'
-        elif defbotchoice2 == 'argue':
+        elif atkbotchoice == 'argue':
             winlose = 'l'
-        elif defbotchoice2 == 'accuse':
+        elif atkbotchoice == 'accuse':
             winlose = 'l'
-        elif defbotchoice2 == 'warn':
+        elif atkbotchoice == 'warn':
             winlose = 'w'
-        elif defbotchoice2 == 'silence':
+        elif atkbotchoice == 'silence':
             winlose = 't'
     elif defchoice2 == 'confess':
         green(f"{playername}(you): Yeah. I did that.")
-        if defbotchoice2 == 'object':
-            winlose = 'w'
-        elif defbotchoice2 == 'argue':
+        if atkbotchoice == 'object':
             winlose = 't'
-        elif defbotchoice2 == 'accuse':
+        elif atkbotchoice == 'argue':
+            winlose = 'w'
+        elif atkbotchoice == 'accuse':
             winlose = 'l'
-        elif defbotchoice2 == 'warn':
-            winlose = 'l'
-        elif defbotchoice2 == 'silence':
+        elif atkbotchoice == 'warn':
+            winlose = 'w'
+        elif atkbotchoice == 'silence':
             winlose = 'l'
     elif defchoice2 == 'silence':
         green(f"{playername}(you): ...")
-        if defbotchoice2 == 'object':
+        if atkbotchoice == 'object':
             winlose = 'w'
-        elif defbotchoice2 == 'argue':
+        elif atkbotchoice == 'argue':
+            winlose = 'l'
+        elif atkbotchoice == 'accuse':
+            winlose = 'l'
+        elif atkbotchoice == 'warn':
+            winlose = 'w'
+        elif atkbotchoice == 'silence':
             winlose = 't'
-        elif defbotchoice2 == 'accuse':
-            winlose = 'l'
-        elif defbotchoice2 == 'warn':
-            winlose = 'l'
-        elif defbotchoice2 == 'silence':
-            winlose = 'l'
 
-    green(f"You chose: {atkchoice2}")
-    red(f"{person} chose: {defbotchoice2}")
+    green(f"You chose: {defchoice2}")
+    red(f"{person} chose: {atkbotchoice}")
     if winlose == 'w':
-        red(f"{person}: Oh no.")
-        playsound("ohno.mp3")
-        green("You won the interrogation!")
-        if namelist[murd] == person:
-            red(f"{person} is quite suspicious...")
+        red(f"{playername}(you): I'm outta here!")
+        playsound("byebye.mp3")
+        green("You went through with the interrogation without seeming suspicious!")
     elif winlose == 'l':
         red(f"{person}: Are you sure?")
         playsound("areyousure.mp3")
