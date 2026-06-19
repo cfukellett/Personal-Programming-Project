@@ -119,6 +119,8 @@ def vote(namelist, suspts, energylv, murd, playername):
     intenamelist = namelist
     intenamelist.pop(0)
     purple(f"You must interrogate every person.\nYou will be given three options.\nChoose the correct option for better odds of deducing who the murderer is.")
+    green("Input any key when you are ready!\n")
+    ReallyRandomInputThatWillNeverBeUsed = input()
     defoptions = ["Plead", "Argue", "Denial", "Confess", "Silence"]
     atkoptions = ["Object", "Argue", "Accuse", "Warn", "Silence"]
     random.shuffle(atkoptions)
@@ -224,6 +226,7 @@ def vote(namelist, suspts, energylv, murd, playername):
             red(f"{person}: ...")
             playsound("crow.mp3")
             blue("You...both lost the interrogation?")
+        time.sleep(1)
     red("It is now your turn to be interrogated.")
     random.shuffle(atkoptions)
     random.shuffle(defoptions)
@@ -237,7 +240,7 @@ def vote(namelist, suspts, energylv, murd, playername):
     atkbotchoice = atkoptions[0]
     winlose = ''
     defchoice2 = defoptions[int(defchoice)-1].lower()
-    atkbotchoice2 = atkbotchoice.lower()
+    atkbotchoice = atkbotchoice.lower()
     if defchoice2 == 'plead':
         green(f"{playername}(you): S-sir, please!!")
         if atkbotchoice == 'object':
@@ -314,6 +317,7 @@ def vote(namelist, suspts, energylv, murd, playername):
         red(f"{person}: ...")
         playsound("crow.mp3")
         blue("You...both lost the interrogation?")
+    time.sleep(1)
     pass
 
 
