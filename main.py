@@ -209,23 +209,24 @@ def vote(namelist, suspts, energylv, murd, playername):
                 winlose = 'w'
             elif defbotchoice2 == 'silence':
                 winlose = 't'
-        green(f"You chose: {atkchoice2}")
-        red(f"{person} chose: {defbotchoice2}")
-        if winlose == 'w':
-            red(f"{person}: Oh no.")
-            playsound("ohno.mp3")
-            green("You won the interrogation!")
-            if namelist[murd] == person:
-                red(f"{person} is quite suspicious...")
-        elif winlose == 'l':
-            red(f"{person}: Are you sure?")
-            playsound("areyousure.mp3")
-            blue("You lost the interrogation...")
-        elif winlose == 't':
-            green(f"{playername}(you): ...")
-            red(f"{person}: ...")
-            playsound("crow.mp3")
-            blue("You...both lost the interrogation?")
+        if atkchoice != '4':
+            green(f"You chose: {atkchoice2}")
+            red(f"{person} chose: {defbotchoice2}")
+            if winlose == 'w':
+                red(f"{person}: Oh no.")
+                playsound("ohno.mp3")
+                green("You won the interrogation!")
+                if namelist[murd] == person:
+                    red(f"{person} is quite suspicious...\n")
+            elif winlose == 'l':
+                red(f"{person}: Are you sure?")
+                playsound("areyousure.mp3")
+                blue("You lost the interrogation...\n")
+            elif winlose == 't':
+                green(f"{playername}(you): ...")
+                red(f"{person}: ...")
+                playsound("crow.mp3")
+                blue("You...both lost the interrogation?\n")
         time.sleep(1)
     red("It is now your turn to be interrogated.")
     random.shuffle(atkoptions)
@@ -301,23 +302,37 @@ def vote(namelist, suspts, energylv, murd, playername):
             winlose = 'w'
         elif atkbotchoice == 'silence':
             winlose = 't'
-
     green(f"You chose: {defchoice2}")
     red(f"{person} chose: {atkbotchoice}")
     if winlose == 'w':
         red(f"{playername}(you): I'm outta here!")
         playsound("byebye.mp3")
-        green("You went through with the interrogation without seeming suspicious!")
+        green("You went through with the interrogation without seeming suspicious!\n")
     elif winlose == 'l':
         red(f"{person}: Are you sure?")
         playsound("areyousure.mp3")
-        blue("You lost the interrogation...")
+        blue("You lost the interrogation...\n")
     elif winlose == 't':
         green(f"{playername}(you): ...")
         red(f"{person}: ...")
         playsound("crow.mp3")
-        blue("You...both lost the interrogation?")
+        blue("You...both lost the interrogation?\n")
     time.sleep(1)
+    purple("It's time to vote.\nIf you think someone is suspicious, vote them out!\nAlternatively, you can also skip your vote.")
+    nameindex = 1
+    for name in namelist:
+        if name != namelist[0]:
+            blue(f"{nameindex}. {name}")
+            nameindex += 1
+    blue(f"{nameindex}. Skip")
+    playervote = input("Type in the number of the person who you would like to vote out, or type '5' to skip your vote.")
+    while 1 > int(playervote) or int(playervote) > nameindex or playervote.isalpha():
+        wronginsert()
+        playervote = input("Type in the number of the person who you would like to vote out, or type '5' to skip your vote.")
+    if playervote == '5':
+        red("You skipped your vote...")
+    else:
+        purple(f"You voted for {namelist[int(playervote)]}")
     pass
 
 
