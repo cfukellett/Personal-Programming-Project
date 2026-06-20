@@ -144,6 +144,7 @@ def vote(namelist, suspts, energylv, murd, playername):
         #    atkchoice = intespec(atkoptions, atkchoice, 'reroll')
         if int(atkchoice) == 4:
             red("You chose to skip this interrogation...")
+            atkchoice2 == "none"
             pass
         defbotchoice = defoptions[0]
         winlose = ''
@@ -317,7 +318,8 @@ def vote(namelist, suspts, energylv, murd, playername):
         red(f"{person}: ...")
         playsound("crow.mp3")
         blue("You...both lost the interrogation?\n")
-    time.sleep(1)
+
+    time.sleep(2)
     purple("It's time to vote.\nIf you think someone is suspicious, vote them out!\nAlternatively, you can also skip your vote.")
     nameindex = 1
     for name in namelist:
@@ -325,10 +327,10 @@ def vote(namelist, suspts, energylv, murd, playername):
             blue(f"{nameindex}. {name}")
             nameindex += 1
     blue(f"{nameindex}. Skip")
-    playervote = input("Type in the number of the person who you would like to vote out, or type '5' to skip your vote.")
+    playervote = input("Type in the number of the person who you would like to vote out,\nor type '5' to skip your vote.")
     while 1 > int(playervote) or int(playervote) > nameindex or playervote.isalpha():
         wronginsert()
-        playervote = input("Type in the number of the person who you would like to vote out, or type '5' to skip your vote.")
+        playervote = input("Type in the number of the person who you would like to vote out,\nor type '5' to skip your vote.")
     if playervote == '5':
         red("You skipped your vote...")
     else:
