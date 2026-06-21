@@ -34,7 +34,7 @@ def intro():
     read_rules = read_rules.lower()
     while read_rules not in ['y', 'yes', 'n', 'no']:
         wronginsert()
-        yellow("Would you like to read the rules? (y/n):\n")
+        red("Would you like to read the rules? (y/n):\n")
         read_rules = input()
         read_rules = read_rules.lower()
     if read_rules in ['y', 'yes']:
@@ -428,7 +428,8 @@ def vote(namelist, suspts, energylv, murd, playername, day, dayrandomvar, murdna
             chosenvoted = 'tie'
         blue(f"The majority of the votes are in...")
         time.sleep(2)
-        if chosenvoted != 'tie' or chosenvoted !='skip':
+        print(chosenvoted)
+        if chosenvoted != 'tie' or chosenvoted != 'skip':
             chosenvotedname = namelist[chosenvoted]
             yellow(f"{chosenvotedname} received the most votes...")
             print(f"This is the murd value: {murd}")
