@@ -343,15 +343,15 @@ def vote(namelist, suspts, energylv, murd, playername, day, dayrandomvar):
     purple("It's time to vote.\nIf you think someone is suspicious, vote them out!\nAlternatively, you can also skip your vote.\n")
     nameindex = 1
     for name in namelist:
-        if name != namelist[0]:
+        if playername != namelist[0]:
             blue(f"{nameindex}. {name}")
             nameindex += 1
     blue(f"{nameindex}. Skip")
-    playervote = input("Type in the number of the person who you would like to vote out,\nor type '5' to skip your vote.\n")
+    playervote = input(f"Type in the number of the person who you would like to vote out,\nor type '{nameindex}' to skip your vote.\n")
     while 1 > int(playervote) or int(playervote) > nameindex or playervote.isalpha():
         wronginsert()
-        playervote = input("Type in the number of the person who you would like to vote out,\nor type '5' to skip your vote.\n")
-    if playervote == '5':
+        playervote = input(f"Type in the number of the person who you would like to vote out,\nor type '{nameindex}' to skip your vote.\n")
+    if playervote == str(nameindex):
         red("You skipped your vote...")
     else:
         purple(f"You voted for {namelist[int(playervote)]}.")
