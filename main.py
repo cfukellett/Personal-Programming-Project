@@ -115,6 +115,7 @@ def botenergylv(name_list, murd, day, botenergylist):
 def vote(namelist, suspts, energylv, murd, playername, day, dayrandomvar):
     print(f"This is the murd value: {murd}")
     yellow('There is a murderer among you and the others.\n')
+    time.sleep(2)
     print(namelist)
     intenamelist = namelist
     intenamelist.pop(0)
@@ -228,8 +229,11 @@ def vote(namelist, suspts, energylv, murd, playername, day, dayrandomvar):
                 red(f"{person}: ...")
                 playsound("crow.mp3")
                 blue("You...both lost the interrogation?\n")
-        time.sleep(1)
+        time.sleep(2)
     red("It is now your turn to be interrogated.")
+    time.sleep(2)
+    red("Choose the correct option to clear their suspicion towards you!")
+    time.sleep(2)
     random.shuffle(atkoptions)
     random.shuffle(defoptions)
     blue(f"1. {defoptions[0]}\n2. {defoptions[1]}\n3. {defoptions[2]}")
@@ -329,14 +333,14 @@ def vote(namelist, suspts, energylv, murd, playername, day, dayrandomvar):
             blue(f"{nameindex}. {name}")
             nameindex += 1
     blue(f"{nameindex}. Skip")
-    playervote = input("Type in the number of the person who you would like to vote out,\nor type '5' to skip your vote.")
+    playervote = input("Type in the number of the person who you would like to vote out,\nor type '5' to skip your vote.\n")
     while 1 > int(playervote) or int(playervote) > nameindex or playervote.isalpha():
         wronginsert()
-        playervote = input("Type in the number of the person who you would like to vote out,\nor type '5' to skip your vote.")
+        playervote = input("Type in the number of the person who you would like to vote out,\nor type '5' to skip your vote.\n")
     if playervote == '5':
         red("You skipped your vote...")
     else:
-        purple(f"You voted for {namelist[int(playervote)]}")
+        purple(f"You voted for {namelist[int(playervote)]}.")
     if suspts >= 200:
         playervotedchance = 1
     elif suspts >= 150:
@@ -450,10 +454,12 @@ def day(day, suspts, energylv, name_list, murd, player_role, chosen, player_name
             dot_spam("", True)
             time.sleep(0.2)
             red("Oh, what's this? A murder had occured overnight.")
+            time.sleep(2)
             print(name_list)
             print(f"This is the murd value before the chosen value has been assigned: {murd}")
             print(f"This is the chosen value", chosen)
             red(f"{name_list[chosen]} {deadlist[rand_death]}")
+            time.sleep(2)
             name_list.pop(chosen)
             print(f"This is the murd value: {murd}")
             vote(name_list, suspts, energylv, murd, player_name, day, dayrandomvar)
