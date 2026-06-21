@@ -356,7 +356,7 @@ def vote(namelist, suspts, energylv, murd, playername, day, dayrandomvar):
     if playervote == str(nameindex):
         red("You skipped your vote...")
     else:
-        purple(f"You voted for {namelist[int(playervote)]}.")
+        purple(f"You voted for {namelist[int(playervote)-1]}.")
     if suspts >= 200:
         playervotedchance = 1
     elif suspts >= 150:
@@ -374,8 +374,7 @@ def vote(namelist, suspts, energylv, murd, playername, day, dayrandomvar):
     else:
         playergetsvoted = False
 
-    botskip = 0
-    botplayervote = 0
+    botplayervote = 1
     botselfvote = 0
     if playergetsvoted == True:
         red(f"The majority decided to vote for you...")
