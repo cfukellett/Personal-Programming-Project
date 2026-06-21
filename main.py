@@ -147,9 +147,10 @@ def vote(namelist, suspts, energylv, murd, playername, day, dayrandomvar):
         if int(atkchoice) == 4:
             red("You chose to skip this interrogation...")
             atkchoice2 == "none"
+        else:
+            atkchoice2 = atkoptions[int(atkchoice)-1].lower()
         defbotchoice = defoptions[0]
         winlose = ''
-        atkchoice2 = atkoptions[int(atkchoice)-1].lower()
         defbotchoice2 = defbotchoice.lower()
         if atkchoice2 == 'object':
             green(f"{playername}(you): Objection!")
