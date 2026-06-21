@@ -695,7 +695,10 @@ def overview(daynum, name, role, energy_lv, sus_points, murd, dead, names):
     blue(f"Final Suspicion Points: {sus_points}")
     if role == 'surv':
         dot_spam("You survived for", False)
-        purple(f"{daynum} days.")
+        if daynum == 1:
+            purple(f"...1 day?\nWow. You must be really bad at this game.")
+        else:
+            purple(f"{daynum} days.")
         dot_spam("The murderer was", False)
         red(f"{names[murd]}.")
 
