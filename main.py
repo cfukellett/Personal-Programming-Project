@@ -354,7 +354,9 @@ def vote(namelist, suspts, energylv, murd, playername, day, dayrandomvar):
     else:
         playergetsvoted = False
 
-
+    botskip = 0
+    botplayervote = 0
+    botselfvote = 0
     if playergetsvoted == True:
         red(f"The majority decided to vote for you...")
         return dead
@@ -369,6 +371,44 @@ def vote(namelist, suspts, energylv, murd, playername, day, dayrandomvar):
                 votewithplayer = True
             else:
                 votewithplayer = False
+            if votewithplayer == True:
+                if int(playervote) == 5:
+                    blue(f"{name} trusts your vote and has skipped their vote.")
+                    botplayervote += 1
+                else:
+                    blue(f"{name} trusts your vote and has voted for {namelist[int(playervote)]}.")
+                    botplayervote += 1
+            else:
+                blue(f"{name} has kept their vote hidden from you...")
+                botselfvote = 0
+            time.sleep(1.5)
+        if botselfvote > botplayervote:
+            largestvote = 'bot'
+        elif botselfvote < botplayervote:
+            largestvote = 'player'
+        else:
+            largestvote = 'tie'
+        if largestvote == 'bot':
+            chosenvoted = randint(1,len(namelist))
+        elif largestvote == 'player':
+            if playervote != '5':
+                chosenvoted = int(playervote)
+            else:
+                chosenvoted = 'skip'
+        elif largestvote == 'tie':
+            chosenvoted = 'tie'
+        blue(f"The majority of the votes are in...")
+        time.sleep(2)
+        if chosenvoted != 'tie' or chosenvoted !='skip':
+            chosenvotedname = namelist[chosenvoted]
+            yellow(f"{chosenvotedname} received the most votes...")
+            namelist = namelist.pop(chosenvoted)
+            time.sleep(1.5)
+            red(f"{chosenvotedname} has been eliminated.")
+        elif chosenvoted == 'tie':
+            yellow(f"There was a tie in the votes!\nThe votes will be skipped.")
+        elif chosenvoted == 'skip':
+            yellow(f"The majority voted to skip!")
 
 
 def intespec(atkoptions, atkchoice, status):
