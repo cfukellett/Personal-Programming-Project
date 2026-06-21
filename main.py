@@ -426,11 +426,11 @@ def vote(namelist, suspts, energylv, murd, playername, day, dayrandomvar, murdna
             else:
                 chosenvoted = 'skip'
         elif largestvote == 'tie':
-            chosenvoted = 'tie'
+            chosenvoted = 'skip'
         blue(f"The majority of the votes are in...")
         time.sleep(2)
         print(chosenvoted)
-        if chosenvoted != 'tie' or chosenvoted != 'skip':
+        if chosenvoted != 'skip':
             chosenvotedname = namelist[chosenvoted]
             yellow(f"{chosenvotedname} received the most votes...")
             print(f"This is the murd value: {murd}")
