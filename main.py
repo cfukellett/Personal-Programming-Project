@@ -387,7 +387,10 @@ def vote(namelist, suspts, energylv, murd, playername, day, dayrandomvar):
                 dayrandomvar = 100-(15*day)
             votewithplayer = randint(1,dayrandomvar)
             if votewithplayer <= 20:
-                votewithplayer = True
+                if name != namelist[murd]:
+                    votewithplayer = True
+                else:
+                    votewithplayer = False
             else:
                 votewithplayer = False
             if votewithplayer == True:
