@@ -242,7 +242,7 @@ def vote(namelist, suspts, energylv, murd, playername, day, dayrandomvar):
     while defchoice not in ['1', '2', '3']:
         wronginsert()
         blue("Choose your interrogation option.")
-        blue(f"1. {defoptions[0]}\n2. {defoptions[1]}\n3. {defoptions[2]}\n4. Skip")
+        blue(f"1. {defoptions[0]}\n2. {defoptions[1]}\n3. {defoptions[2]}")
         defchoice = input()
     atkbotchoice = atkoptions[0]
     winlose = ''
@@ -474,6 +474,8 @@ def day(day, suspts, energylv, name_list, murd, player_role, chosen, player_name
             #    person += 1
             if len(name_list) < 2:
                 dot_spam("The murderer has killed everyone except you.", False)
+    if player_name != name_list[0]:
+        name_list.insert(0,player_name)
     print(name_list)
     #for name in name_list:
         
