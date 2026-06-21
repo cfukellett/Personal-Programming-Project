@@ -327,7 +327,7 @@ def vote(namelist, suspts, energylv, murd, playername, day, dayrandomvar):
     if winlose == 'w':
         green(f"{playername}(you): I'm outta here!")
         playsound("byebye.mp3")
-        green("You went through with the interrogation without seeming suspicious!\n")
+        yellow("You went through with the interrogation without seeming suspicious!\n")
         suspts -= 20
     elif winlose == 'l':
         red(f"{person}: Are you sure?")
@@ -630,7 +630,7 @@ def dot_spam(text, remove):
         print(text)
 
 
-def playerchosenbias():
+def playerchosenbias(namelist, murd):
     print('Biased function is running. Gambling if player is chosen or not.')
     chosen = randint(1,5)
     chosen2 = ""
@@ -639,7 +639,8 @@ def playerchosenbias():
     else:
         chosen2 = "unbias"
     if chosen2 == "bias":
-        chosen = randint(1,6)
+        while chosen == namelist[murd]:
+            chosen = randint(1,len(namelist)-1)
     else:
         chosen = 0
     return chosen
@@ -650,12 +651,11 @@ def aicode(playerrole, c1role, c2role, c3role, c4role, c5role, c6role, namelist)
     chosen -= 1
     print(f"This is the chosen value", chosen)
     if chosen == 0:
-        chosen = playerchosenbias()
+        chosen = playerchosenbias(namelist)
     while role_list[chosen] == 'murd':
-        chosen = randint(1,len(namelist))
-        chosen -= 1
+        chosen = randint(0,len(namelist)-1)
         if chosen == 0:
-            chosen = playerchosenbias()
+            chosen = playerchosenbias(namelist)
     return chosen
     
 def compnames():
@@ -710,9 +710,11 @@ role_list = [player_role, comp1_role, comp2_role, comp3_role, comp4_role, comp5_
 murd, chosen = murdthing(player_role, role_list, name_list)
 dead = False
 print(name_list)
+murdname = name_list[murd]
 dayrandomvar = 100
 murddead = False
 while dead == False:
+    murd = name_list.index(murdname)
     day_num += 1
     energy_lv = energy(energy_points)
     #if day_num == 1:
