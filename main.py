@@ -120,11 +120,15 @@ def vote(namelist, suspts, energylv, murd, playername, day, dayrandomvar):
     intenamelist = namelist
     intenamelist.pop(0)
     purple(f"You must interrogate every person.\nYou will be given three options.\nChoose the correct option for better odds of deducing who the murderer is.")
-    if day == 1:
+    if day <= 2:
         ReallyRandomInputThatWillNeverBeUsed = input("Start Interrogation\n")
     else:
-        ReallyRandomInputThatWillNeverBeUsed = input("1. Start Interrogation\n2. I'm getting bored of this interrogation slop. SKIP!!!")
-    if ReallyRandomInputThatWillNeverBeUsed:
+        ReallyRandomInputThatWillNeverBeUsed = input("1. Start Interrogation\n2. I'm getting bored of this interrogation slop. SKIP!!!\n")
+        while ReallyRandomInputThatWillNeverBeUsed not in ['1', '2']:
+            wronginsert()
+            ReallyRandomInputThatWillNeverBeUsed = input("1. Start Interrogation\n2. I'm getting bored of this interrogation slop. SKIP!!!\n")
+    
+    if ReallyRandomInputThatWillNeverBeUsed == '1':
         defoptions = ["Plead", "Argue", "Denial", "Confess", "Silence"]
         atkoptions = ["Object", "Argue", "Accuse", "Warn", "Silence"]
         random.shuffle(atkoptions)
