@@ -311,7 +311,7 @@ def vote(namelist, suspts, energylv, murd, playername, day, dayrandomvar):
     green(f"You chose: {defchoice2}")
     red(f"{person} chose: {atkbotchoice}")
     if winlose == 'w':
-        red(f"{playername}(you): I'm outta here!")
+        green(f"{playername}(you): I'm outta here!")
         playsound("byebye.mp3")
         green("You went through with the interrogation without seeming suspicious!\n")
         suspts -= 20
@@ -385,7 +385,7 @@ def vote(namelist, suspts, energylv, murd, playername, day, dayrandomvar):
                     botplayervote += 1
             else:
                 blue(f"{name} has kept their vote hidden from you...")
-                botselfvote = 0
+                botselfvote += 1
             time.sleep(1.5)
     
         if botselfvote > botplayervote:
