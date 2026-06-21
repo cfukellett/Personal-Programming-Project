@@ -429,11 +429,12 @@ def vote(namelist, suspts, energylv, murd, playername, day, dayrandomvar):
         if chosenvoted != 'tie' or chosenvoted !='skip':
             chosenvotedname = namelist[chosenvoted]
             yellow(f"{chosenvotedname} received the most votes...")
-            namelist = namelist.pop(chosenvoted)
+            print(f"This is the murd value: {murd}")
             time.sleep(1.5)
             red(f"{chosenvotedname} has been eliminated.")
             if chosenvoted == murd:
                 murddead = True
+            namelist = namelist.pop(chosenvoted)
         elif chosenvoted == 'tie':
             yellow(f"There was a tie in the votes!\nThe votes will be skipped.")
         elif chosenvoted == 'skip':
