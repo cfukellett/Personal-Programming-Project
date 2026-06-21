@@ -709,6 +709,7 @@ murd, chosen = murdthing(player_role, role_list, name_list)
 dead = False
 print(name_list)
 dayrandomvar = 100
+murddead = False
 while dead == False:
     day_num += 1
     energy_lv = energy(energy_points)
