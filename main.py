@@ -30,11 +30,13 @@ def intro():
     yellow(f"Hello, {name}, welcome to the game.")
     time.sleep(1)
     red("Would you like to read the rules? (y/n):\n")
-    read_rules = input().lower()
+    read_rules = input()
+    read_rules = read_rules.lower()
     while read_rules not in ['y', 'yes', 'n', 'no']:
         wronginsert()
         yellow("Would you like to read the rules? (y/n):\n")
-        read_rules = input.lower()
+        read_rules = input()
+        read_rules = read_rules.lower()
     if read_rules in ['y', 'yes']:
         red("rules here")
     red("The game will now begin.")
