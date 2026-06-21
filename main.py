@@ -415,7 +415,7 @@ def vote(namelist, suspts, energylv, murd, playername, day, dayrandomvar, murdna
             largestvote = 'player'
         else:
             largestvote = 'tie'
-        
+        skiportie = ''
         if largestvote == 'bot':
             chosenvoted = randint(1,len(namelist)-1)
             print("largest vote is bot")
@@ -425,8 +425,10 @@ def vote(namelist, suspts, energylv, murd, playername, day, dayrandomvar, murdna
                 chosenvoted = int(playervote)-1
             else:
                 chosenvoted = 'skip'
+                skiportie = 'skip'
         elif largestvote == 'tie':
             chosenvoted = 'skip'
+            skiportie = 'tie'
         blue(f"The majority of the votes are in...")
         time.sleep(2)
         print(chosenvoted)
@@ -441,10 +443,11 @@ def vote(namelist, suspts, energylv, murd, playername, day, dayrandomvar, murdna
                 print("Murd has been eliminated!")
                 murddead = True
             namelist = namelist.pop(chosenvoted)
-        elif chosenvoted == 'tie':
-            yellow(f"There was a tie in the votes!\nThe votes will be skipped.")
         elif chosenvoted == 'skip':
-            yellow(f"The majority voted to skip!")
+            if skiportie == 'tie':
+                yellow(f"There was a tie in the votes!\nThe votes will be skipped.")
+            else:
+                yellow("The majority agreed to skip the vote.")
     return murddead
 
 def intespec(atkoptions, atkchoice, status):
