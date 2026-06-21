@@ -147,7 +147,6 @@ def vote(namelist, suspts, energylv, murd, playername, day, dayrandomvar):
         if int(atkchoice) == 4:
             red("You chose to skip this interrogation...")
             atkchoice2 == "none"
-            pass
         defbotchoice = defoptions[0]
         winlose = ''
         atkchoice2 = atkoptions[int(atkchoice)-1].lower()
