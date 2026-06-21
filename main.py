@@ -699,4 +699,6 @@ while dead == False:
           #  name_list.pop(chosen)
    # else:
         #name_list.pop(chosen)
+    if player_name != name_list[0]:
+        name_list.insert(0,player_name)
     print(name_list)
