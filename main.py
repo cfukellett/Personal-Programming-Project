@@ -395,7 +395,7 @@ def vote(namelist, suspts, energylv, murd, playername, day, dayrandomvar):
                     blue(f"{name} trusts your vote and has skipped their vote.")
                     botplayervote += 1
                 else:
-                    blue(f"{name} trusts your vote and has voted for {namelist[int(playervote)]}.")
+                    blue(f"{name} trusts your vote and has voted for {namelist[int(playervote)-1]}.")
                     botplayervote += 1
             else:
                 blue(f"{name} has kept their vote hidden from you...")
@@ -652,11 +652,11 @@ def aicode(playerrole, c1role, c2role, c3role, c4role, c5role, c6role, namelist,
         chosen = randint(0,len(namelist)-1)
     print(f"This is the chosen value", chosen)
     if chosen == 0:
-        chosen = playerchosenbias(namelist)
+        chosen = playerchosenbias(namelist, murd)
     while role_list[chosen] == 'murd':
         chosen = randint(0,len(namelist)-1)
         if chosen == 0:
-            chosen = playerchosenbias(namelist)
+            chosen = playerchosenbias(namelist), murd
     return chosen
     
 def compnames():
