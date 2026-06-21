@@ -127,7 +127,7 @@ def vote(namelist, suspts, energylv, murd, playername, day, dayrandomvar):
     if day <= 2:
         green("Input anything to begin the interrogation!")
         ReallyRandomInputThatWillNeverBeUsed = input()
-        ReallyRandomInputThatWillNeverBeUsed = 1
+        ReallyRandomInputThatWillNeverBeUsed = '1'
     else:
         green("1. Start Interrogation\n2. I'm getting bored of this interrogation slop. SKIP!!!\n")
         ReallyRandomInputThatWillNeverBeUsed = input()
