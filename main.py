@@ -29,16 +29,16 @@ def intro():
     name = input()
     yellow(f"Hello, {name}, welcome to the game.")
     time.sleep(1)
-    red("Would you like to read the rules? (y/n):\n")
-    read_rules = input()
-    read_rules = read_rules.lower()
-    while read_rules not in ['y', 'yes', 'n', 'no']:
-        wronginsert()
-        red("Would you like to read the rules? (y/n):\n")
-        read_rules = input()
-        read_rules = read_rules.lower()
-    if read_rules in ['y', 'yes']:
-        red("rules here")
+    # red("Would you like to read the rules? (y/n):\n")
+    # read_rules = input()
+    # read_rules = read_rules.lower()
+    # while read_rules not in ['y', 'yes', 'n', 'no']:
+    #     wronginsert()
+    #     red("Would you like to read the rules? (y/n):\n")
+    #     read_rules = input()
+    #     read_rules = read_rules.lower()
+    # if read_rules in ['y', 'yes']:
+    #     red("rules here")
     red("The game will now begin.")
     return name
 
@@ -258,7 +258,7 @@ def vote(namelist, suspts, energylv, murd, playername, day, dayrandomvar, murdna
     while defchoice not in ['1', '2', '3']:
         wronginsert()
         blue("Choose your interrogation option.")
-        blue(f"1. {defoptions[0]}\n2. {defoptions[1]}\n3. {defoptions[2]}")
+        blue(f"1. {defoptions[0]}\n2. {defoptions[1]}\n3. {defoptions[2]}\n")
         defchoice = input()
     atkbotchoice = atkoptions[0]
     winlose = ''
