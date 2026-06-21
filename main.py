@@ -323,6 +323,7 @@ def vote(namelist, suspts, energylv, murd, playername, day, dayrandomvar):
         elif atkbotchoice == 'silence':
             winlose = 't'
     green(f"You chose: {defchoice2}")
+    person = namelist[randint(1,len(namelist)-1)]
     red(f"{person} chose: {atkbotchoice}")
     if winlose == 'w':
         green(f"{playername}(you): I'm outta here!")
