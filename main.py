@@ -4,6 +4,7 @@ import time
 import pygame
 from colorist import ColorRGB, BgColorRGB, rgb, bg_rgb
 from playsound3 import playsound
+import sys
 
 #ze colours
 def red(string):
@@ -113,6 +114,7 @@ def botenergylv(name_list, murd, day, botenergylist):
     return botenergylist
 
 def vote(namelist, suspts, energylv, murd, playername, day, dayrandomvar):
+    murddead = False
     print(f"This is the murd value: {murd}")
     print(f"This is the murderer's name: {namelist[murd]}")
     yellow('There is a murderer among you and the others.\n')
@@ -427,11 +429,13 @@ def vote(namelist, suspts, energylv, murd, playername, day, dayrandomvar):
             namelist = namelist.pop(chosenvoted)
             time.sleep(1.5)
             red(f"{chosenvotedname} has been eliminated.")
+            if chosenvoted == murd:
+                murddead = True
         elif chosenvoted == 'tie':
             yellow(f"There was a tie in the votes!\nThe votes will be skipped.")
         elif chosenvoted == 'skip':
             yellow(f"The majority voted to skip!")
-
+    return murddead
 
 def intespec(atkoptions, atkchoice, status):
     if status == 'reroll':
@@ -450,7 +454,7 @@ def intespec(atkoptions, atkchoice, status):
                     atkchoice = input().lower()
     return atkchoice
 
-def day(day, suspts, energylv, name_list, murd, player_role, chosen, player_name, dayrandomvar):
+def day(day, suspts, energylv, name_list, murd, player_role, chosen, player_name, dayrandomvar, murddead):
     print(name_list)
     #botenergys = botenergylv(name_list, murd, day, botenergylist)
     yellow(f"☀️--Day {day}--☀️")
@@ -471,22 +475,30 @@ def day(day, suspts, energylv, name_list, murd, player_role, chosen, player_name
         else:
             dot_spam("", True)
             time.sleep(0.2)
-            red("Oh, what's this? A murder had occured overnight.")
-            time.sleep(2)
-            print(name_list)
-            print(f"This is the murd value before the chosen value has been assigned: {murd}")
-            print(f"This is the chosen value", chosen)
-            red(f"{name_list[chosen]} {deadlist[rand_death]}")
-            time.sleep(2)
-            name_list.pop(chosen)
-            print(f"This is the murd value: {murd}")
-            vote(name_list, suspts, energylv, murd, player_name, day, dayrandomvar)
-            person = 0
-            #for name in name_list:
-            #    print(name, botenergylist[person-1])
-            #    person += 1
-            if len(name_list) < 2:
-                dot_spam("The murderer has killed everyone except you.", False)
+            if murddead == False:
+                red("Oh, what's this? A murder had occured overnight.")
+                time.sleep(2)
+                print(name_list)
+                print(f"This is the murd value before the chosen value has been assigned: {murd}")
+                print(f"This is the chosen value", chosen)
+                red(f"{name_list[chosen]} {deadlist[rand_death]}")
+                time.sleep(2)
+                name_list.pop(chosen)
+                print(f"This is the murd value: {murd}")
+                murddead = vote(name_list, suspts, energylv, murd, player_name, day, dayrandomvar)
+                person = 0
+                #for name in name_list:
+                #    print(name, botenergylist[person-1])
+                #    person += 1
+                if len(name_list) < 2:
+                    dot_spam("The murderer has killed everyone except you.", False)
+            else:
+                yellow("No murder had occurred overnight.")
+                dot_spam("which means", False)
+                green(f"The murderer has been eliminated! Hooray!\n(end of game)")
+                sys.exit()
+                
+            
     if player_name != name_list[0]:
         name_list.insert(0,player_name)
     print(name_list)
@@ -496,12 +508,12 @@ def day(day, suspts, energylv, name_list, murd, player_role, chosen, player_name
 
         
     time.sleep(2)
-    return dead
+    return dead, murddead
 
 def wronginsert():
     print("Please answer with an acceptable input.\n")
 
-def night(player_role, chosen, murd, name_list, energypts):
+def night(player_role, chosen, murd, name_list, energypts, murddead):
     dead = False
     player_lh = ""
     if player_role == "surv":
@@ -528,7 +540,7 @@ def night(player_role, chosen, murd, name_list, energypts):
                     player_lh = "look"
                     red("You decided to take a peek outside...")
                     energypts -= 30
-                    dead = peek(murd, name_list)
+                    dead = peek(murd, name_list, murddead)
                     break
                 elif player_lh == "2":
                     player_lh = "hide"
@@ -545,13 +557,13 @@ def night(player_role, chosen, murd, name_list, energypts):
                     wronginsert()
     return dead, energypts
 
-def peek(murd, names):
+def peek(murd, names, murddead):
     dead = False
     obs_rate = randint(1,4)
     murd_rate = randint(1,3)
     print(names)
     print(murd)
-    if murd_rate == 3:
+    if murd_rate == 3 and murddead == False:
         chosen_one = names[murd]
     else:
         chosen_one = names[randint(0,3)]
@@ -560,17 +572,17 @@ def peek(murd, names):
     murdtext = [f"...and saw {chosen_one} holding a knife...", f"...and saw {chosen_one} with bloods splattered all over their hands...", f"...and saw {chosen_one} carrying a Hush Puppy..."]
     murdtextrate = randint(1,2)
     allpeektext = peektext
-    if chosen_one == names[murd]:
+    if chosen_one == names[murd] and murddead == False:
         if murdtextrate == 1:
             allpeektext += murdtext
     allpeektextindex = len(allpeektext)-1
     if obs_rate != 1:
-        if murdtextrate == 1:
+        if murdtextrate == 1 and murddead == False:
             red(f"{allpeektext[allpeektextindex]}")
         else:
             purple(f"{allpeektext[allpeektextindex]}")
         spotted = randint(1,10)
-        if spotted == 1:
+        if spotted == 1 and murddead == False:
             time.sleep(1)
             dot_spam(f"...Suddenly, {chosen_one} stopped...", False)
             time.sleep(1)
@@ -702,10 +714,10 @@ while dead == False:
     energy_lv = energy(energy_points)
     #if day_num == 1:
         #botenergylist = []
-    dead = day(day_num, sus_points, energy_lv, name_list, murd, player_role, chosen, player_name, dayrandomvar)
+    dead, murddead = day(day_num, sus_points, energy_lv, name_list, murd, player_role, chosen, player_name, dayrandomvar, murddead)
     aicode(player_role, comp1_role, comp2_role, comp3_role, comp4_role, comp5_role, comp6_role, name_list)
     if dead == False:
-        dead, energy_points = night(player_role, chosen, murd, name_list, energy_points)
+        dead, energy_points = night(player_role, chosen, murd, name_list, energy_points, murddead)
     if dead == True:
         overview(day_num, player_name, player_role, energy_lv, sus_points, murd, dead, name_list)
     print(chosen)
