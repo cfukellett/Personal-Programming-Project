@@ -630,7 +630,7 @@ def dot_spam(text, remove):
 
 
 def playerchosenbias(namelist, murd):
-    print('Biased function is running. Gambling if player is chosen or not.')
+    print('playerchosenbias function is running. gambling time!')
     chosen = randint(1,5)
     chosen2 = ""
     if chosen == 1:
@@ -644,10 +644,12 @@ def playerchosenbias(namelist, murd):
         chosen = 0
     return chosen
 
-def aicode(playerrole, c1role, c2role, c3role, c4role, c5role, c6role, namelist):
+def aicode(playerrole, c1role, c2role, c3role, c4role, c5role, c6role, namelist, day, murd):
     role_list = [playerrole, c1role, c2role, c3role, c4role, c5role, c6role]
-    chosen = randint(1,len(namelist))
-    chosen -= 1
+    if day == 1:
+        chosen = randint(1,len(namelist)-1)
+    else:
+        chosen = randint(0,len(namelist)-1)
     print(f"This is the chosen value", chosen)
     if chosen == 0:
         chosen = playerchosenbias(namelist)
@@ -687,9 +689,9 @@ def overview(daynum, name, role, energy_lv, sus_points, murd, dead, names):
         dot_spam("The murderer was", False)
         red(f"{names[murd]}.")
 
-def murdthing(player_role, role_list, namelist):
+def murdthing(player_role, role_list, namelist, daynum, murd):
     if player_role == 'surv':
-        chosen = aicode(player_role, comp1_role, comp2_role, comp3_role, comp4_role, comp5_role, comp6_role, namelist)
+        chosen = aicode(player_role, comp1_role, comp2_role, comp3_role, comp4_role, comp5_role, comp6_role, namelist, daynum, murd)
         murd = murdwho(role_list)
     else:
         murd = 0
@@ -706,7 +708,8 @@ energy_points = randint(100,140)
 day_num = 0
 print(player_role)
 role_list = [player_role, comp1_role, comp2_role, comp3_role, comp4_role, comp5_role, comp6_role]
-murd, chosen = murdthing(player_role, role_list, name_list)
+murd = 0
+murd, chosen = murdthing(player_role, role_list, name_list, day_num, murd)
 dead = False
 print(name_list)
 murdname = name_list[murd]
