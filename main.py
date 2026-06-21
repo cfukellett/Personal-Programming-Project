@@ -81,7 +81,7 @@ def energy(pts):
 def botenergylv(name_list, murd, day, botenergylist):
     namelist2 = []
     namelist2= name_list.copy()
-    print(namelist2)
+    #print(namelist2)
     if day == 1:
         if murd != 0:
             namelist2.pop(murd)
@@ -90,7 +90,7 @@ def botenergylv(name_list, murd, day, botenergylist):
             botenergylist.append(0)
     energyboost = 0
     person = 0
-    print(namelist2)
+    #print(namelist2)
     for name in range(len(namelist2)-1):
         energyboost = 0
         status = randint(1,5)
@@ -105,23 +105,23 @@ def botenergylv(name_list, murd, day, botenergylist):
         elif status == 5:
             energyboost -= 30
         #if not rep:
-        print(botenergylist)
-        print(person)
+        #print(botenergylist)
+        #print(person)
         botenergylist[person] += energyboost
         #else:
         #    botenergylist.append(energyboost)
         person += 1
-    print(botenergylist)
-    print(namelist2)
+    #print(botenergylist)
+    #print(namelist2)
     return botenergylist
 
 def vote(namelist, suspts, energylv, murd, playername, day, dayrandomvar, murdname):
     murddead = False
-    print(f"This is the murd value: {murd}")
-    print(f"This is the murderer's name: {namelist[murd]}")
+    #print(f"This is the murd value: {murd}")
+    #print(f"This is the murderer's name: {namelist[murd]}")
     yellow('There is a murderer among you and the others.\n')
     time.sleep(2)
-    print(namelist)
+    #print(namelist)
     intenamelist = namelist
     intenamelist.pop(0)
     defoptions = ["Plead", "Argue", "Denial", "Confess", "Silence"]
@@ -418,9 +418,9 @@ def vote(namelist, suspts, energylv, murd, playername, day, dayrandomvar, murdna
         skiportie = ''
         if largestvote == 'bot':
             chosenvoted = randint(1,len(namelist)-1)
-            print("largest vote is bot")
+            #print("largest vote is bot")
         elif largestvote == 'player':
-            print("largest vote is player")
+            #print("largest vote is player")
             if playervote != '5':
                 chosenvoted = int(playervote)-1
             else:
@@ -431,16 +431,16 @@ def vote(namelist, suspts, energylv, murd, playername, day, dayrandomvar, murdna
             skiportie = 'tie'
         blue(f"The majority of the votes are in...")
         time.sleep(2)
-        print(chosenvoted)
+        #print(chosenvoted)
         if chosenvoted != 'skip':
             chosenvotedname = namelist[chosenvoted]
             yellow(f"{chosenvotedname} received the most votes...")
-            print(f"This is the murd value: {murd}")
+            #print(f"This is the murd value: {murd}")
             time.sleep(1.5)
             red(f"{chosenvotedname} has been eliminated.")
-            print(murdname)
+            #(murdname)
             if chosenvotedname == murdname:
-                print("Murd has been eliminated!")
+                #print("Murd has been eliminated!")
                 murddead = True
             namelist = namelist.pop(chosenvoted)
         elif chosenvoted == 'skip':
@@ -468,7 +468,7 @@ def intespec(atkoptions, atkchoice, status):
     return atkchoice
 
 def day(day, suspts, energylv, name_list, murd, player_role, chosen, player_name, dayrandomvar, murddead, murdname):
-    print(name_list)
+    #print(name_list)
     #botenergys = botenergylv(name_list, murd, day, botenergylist)
     yellow(f"☀️--Day {day}--☀️")
     purple("It's the start of a brand new day.")
@@ -483,7 +483,7 @@ def day(day, suspts, energylv, name_list, murd, player_role, chosen, player_name
     rand_death = randint(0,(len(deadlist)-1))
     if dayrandomvar > 10:
         dayrandomvar -= 10
-    print(f"This is the value for rand_death", rand_death)
+    #print(f"This is the value for rand_death", rand_death)
     if player_role == 'surv':
         if day == 1:
             green("There is no danger here. You can freely rest.")
@@ -494,23 +494,23 @@ def day(day, suspts, energylv, name_list, murd, player_role, chosen, player_name
                 if len(name_list) > 3:
                     red("Oh, what's this? A murder had occurred overnight.")
                     time.sleep(2)
-                    print(name_list)
-                    print(f"This is the murd value before the chosen value has been assigned: {murd}")
-                    print(f"This is the chosen value", chosen)
+                    #print(name_list)
+                    #print(f"This is the murd value before the chosen value has been assigned: {murd}")
+                    #print(f"This is the chosen value", chosen)
                     if chosen > (len(name_list)-1):
                         chosen -= 1
                     if chosen == murd:
                         chosen -= 1
                     if chosen == 0:
-                        print(f"Chosen value was 0, now changing")
+                        #print(f"Chosen value was 0, now changing")
                         chosen = randint(1,len(name_list)-1)
-                        print(f"This is the new chosen value", chosen)
+                        #print(f"This is the new chosen value", chosen)
                     red(f"{name_list[chosen]} {deadlist[rand_death]}")
                     time.sleep(2)
                     name_list.pop(chosen)
                     if murd > (len(name_list)-1):
                         murd -= 1
-                    print(f"This is the murd value: {murd}")
+                    #print(f"This is the murd value: {murd}")
                     murddead = vote(name_list, suspts, energylv, murd, player_name, day, dayrandomvar, murdname)
                     person = 0
                     #for name in name_list:
@@ -529,7 +529,7 @@ def day(day, suspts, energylv, name_list, murd, player_role, chosen, player_name
             
     if player_name != name_list[0]:
         name_list.insert(0,player_name)
-    print(name_list)
+    #print(name_list)
     #for name in name_list:
         
 
@@ -589,8 +589,8 @@ def peek(murd, names, murddead):
     dead = False
     obs_rate = randint(1,4)
     murd_rate = randint(1,3)
-    print(names)
-    print(murd)
+    #print(names)
+    #print(murd)
     if murd_rate == 3 and murddead == False:
         chosen_one = names[murd]
     else:
@@ -657,7 +657,7 @@ def dot_spam(text, remove):
 
 
 def playerchosenbias(namelist, murd):
-    print('playerchosenbias function is running. gambling time!')
+    #print('playerchosenbias function is running. gambling time!')
     chosen = randint(1,5)
     chosen2 = ""
     if chosen == 1:
@@ -677,7 +677,7 @@ def aicode(playerrole, c1role, c2role, c3role, c4role, c5role, c6role, namelist,
         chosen = randint(1,len(namelist)-1)
     else:
         chosen = randint(0,len(namelist)-1)
-    print(f"This is the chosen value from aicode", chosen)
+    #print(f"This is the chosen value from aicode", chosen)
     if chosen == 0:
         chosen = playerchosenbias(namelist, murd)
     while role_list[chosen] == 'murd':
@@ -736,14 +736,14 @@ name_list = [player_name, comp1name, comp2name, comp3name, comp4name, comp5name,
 sus_points = 0
 energy_points = randint(100,140)
 day_num = 0
-print(player_role)
+#print(player_role)
 role_list = [player_role, comp1_role, comp2_role, comp3_role, comp4_role, comp5_role, comp6_role]
 murd = 0
 murd, chosen = murdthing(player_role, role_list, name_list, day_num, murd)
 dead = False
-print(name_list)
+#print(name_list)
 murdname = name_list[murd]
-print(f"Murd name before game starts: {murdname}")
+#print(f"Murd name before game starts: {murdname}")
 dayrandomvar = 100
 murddead = False
 while dead == False:
@@ -760,7 +760,7 @@ while dead == False:
         dead, energy_points = night(player_role, chosen, murd, name_list, energy_points, murddead)
     if dead == True:
         overview(day_num, player_name, player_role, energy_lv, sus_points, murd, dead, name_list)
-    print(chosen)
+    #print(chosen)
     #if chosen == 0:
         #if dead == True:
           #  name_list.pop(chosen)
@@ -768,4 +768,4 @@ while dead == False:
         #name_list.pop(chosen)
     if player_name != name_list[0]:
         name_list.insert(0,player_name)
-    print(name_list)
+    #print(name_list)
