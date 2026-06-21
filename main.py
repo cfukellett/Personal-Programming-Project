@@ -233,7 +233,7 @@ def vote(namelist, suspts, energylv, murd, playername, day, dayrandomvar):
         time.sleep(2)
     red("It is now your turn to be interrogated.")
     time.sleep(2)
-    red("Choose the correct option to clear their suspicion towards you!")
+    red("Choose the correct option to clear their suspicion towards you!\n")
     time.sleep(2)
     random.shuffle(atkoptions)
     random.shuffle(defoptions)
@@ -396,7 +396,7 @@ def vote(namelist, suspts, energylv, murd, playername, day, dayrandomvar):
             largestvote = 'tie'
         
         if largestvote == 'bot':
-            chosenvoted = randint(1,len(namelist))
+            chosenvoted = randint(1,len(namelist)-1)
             print("largest vote is bot")
         elif largestvote == 'player':
             print("largest vote is player")
