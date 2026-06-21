@@ -368,7 +368,7 @@ def vote(namelist, suspts, energylv, murd, playername, day, dayrandomvar, murdna
         playervotedchance = randint(1,7)
     elif suspts >= 50:
         playervotedchance = randint(1,12)
-    elif suspts >= 1:
+    elif suspts >= 25:
         playervotedchance = randint(1,30)
     else:
         playervotedchance = 0
@@ -436,7 +436,8 @@ def vote(namelist, suspts, energylv, murd, playername, day, dayrandomvar, murdna
             print(f"This is the murd value: {murd}")
             time.sleep(1.5)
             red(f"{chosenvotedname} has been eliminated.")
-            if chosenvoted == murd:
+            if chosenvotedname == murdname:
+                print("Murd has been eliminated!")
                 murddead = True
             namelist = namelist.pop(chosenvoted)
         elif chosenvoted == 'tie':
