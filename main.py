@@ -490,6 +490,10 @@ def day(day, suspts, energylv, name_list, murd, player_role, chosen, player_name
                 print(name_list)
                 print(f"This is the murd value before the chosen value has been assigned: {murd}")
                 print(f"This is the chosen value", chosen)
+                if chosen == 0:
+                    print(f"Chosen value was 0, now changing")
+                    chosen = randint(1,6)
+                    print(f"This is the new chosen value", chosen)
                 red(f"{name_list[chosen]} {deadlist[rand_death]}")
                 time.sleep(2)
                 name_list.pop(chosen)
