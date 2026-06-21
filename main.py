@@ -9,8 +9,7 @@ import os
 pygame.mixer.init()
 pygame.mixer.music.load("bgm.mp3")
 pygame.mixer.music.play(-1)
-os.system('cls' if os.name == 'nt' else 'clear')
-time.sleep(1)
+
 #ze colours
 def red(string):
     rgb(string, 255,0,0)
@@ -734,6 +733,8 @@ def murdthing(player_role, role_list, namelist, daynum, murd):
 
 #compnames()
 #player_lh = int(input())
+os.system('cls' if os.name == 'nt' else 'clear')
+print("\n")
 player_name = intro()
 player_role, comp1_role, comp2_role, comp3_role, comp4_role, comp5_role, comp6_role = roles()
 comp1name, comp2name, comp3name, comp4name, comp5name, comp6name = compnames()
