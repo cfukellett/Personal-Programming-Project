@@ -381,6 +381,7 @@ def vote(namelist, suspts, energylv, murd, playername, day, dayrandomvar, murdna
     botselfvote = 0
     if playergetsvoted == True:
         red(f"The majority decided to vote for you...")
+        dead = True
         return dead
     else:
         for name in namelist:
