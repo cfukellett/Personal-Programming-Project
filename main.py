@@ -493,6 +493,8 @@ def day(day, suspts, energylv, name_list, murd, player_role, chosen, player_name
                 red(f"{name_list[chosen]} {deadlist[rand_death]}")
                 time.sleep(2)
                 name_list.pop(chosen)
+                if murd > (len(name_list)-1):
+                    murd -= 1
                 print(f"This is the murd value: {murd}")
                 murddead = vote(name_list, suspts, energylv, murd, player_name, day, dayrandomvar, murdname)
                 person = 0
@@ -517,7 +519,7 @@ def day(day, suspts, energylv, name_list, murd, player_role, chosen, player_name
 
         
     time.sleep(2)
-    return dead, murddead
+    return dead, murddead, murd
 
 def wronginsert():
     print("Please answer with an acceptable input.\n")
@@ -729,7 +731,7 @@ while dead == False:
     energy_lv = energy(energy_points)
     #if day_num == 1:
         #botenergylist = []
-    dead, murddead = day(day_num, sus_points, energy_lv, name_list, murd, player_role, chosen, player_name, dayrandomvar, murddead, murdname)
+    dead, murddead, murd = day(day_num, sus_points, energy_lv, name_list, murd, player_role, chosen, player_name, dayrandomvar, murddead, murdname)
     aicode(player_role, comp1_role, comp2_role, comp3_role, comp4_role, comp5_role, comp6_role, name_list, day_num, murd)
     if dead == False:
         dead, energy_points = night(player_role, chosen, murd, name_list, energy_points, murddead)
