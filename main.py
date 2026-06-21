@@ -488,30 +488,32 @@ def day(day, suspts, energylv, name_list, murd, player_role, chosen, player_name
             dot_spam("", True)
             time.sleep(0.2)
             if murddead == False:
-                red("Oh, what's this? A murder had occurred overnight.")
-                time.sleep(2)
-                print(name_list)
-                print(f"This is the murd value before the chosen value has been assigned: {murd}")
-                print(f"This is the chosen value", chosen)
-                if chosen > (len(name_list)-1):
-                    chosen -= 1
-                if chosen == 0:
-                    print(f"Chosen value was 0, now changing")
-                    chosen = randint(1,len(name_list)-1)
-                    print(f"This is the new chosen value", chosen)
-                red(f"{name_list[chosen]} {deadlist[rand_death]}")
-                time.sleep(2)
-                name_list.pop(chosen)
-                if murd > (len(name_list)-1):
-                    murd -= 1
-                print(f"This is the murd value: {murd}")
-                murddead = vote(name_list, suspts, energylv, murd, player_name, day, dayrandomvar, murdname)
-                person = 0
-                #for name in name_list:
-                #    print(name, botenergylist[person-1])
-                #    person += 1
-                if len(name_list) < 2:
-                    dot_spam("The murderer has killed everyone except you.", False)
+                if len(name_list) > 3:
+                    red("Oh, what's this? A murder had occurred overnight.")
+                    time.sleep(2)
+                    print(name_list)
+                    print(f"This is the murd value before the chosen value has been assigned: {murd}")
+                    print(f"This is the chosen value", chosen)
+                    if chosen > (len(name_list)-1):
+                        chosen -= 1
+                    if chosen == 0:
+                        print(f"Chosen value was 0, now changing")
+                        chosen = randint(1,len(name_list)-1)
+                        print(f"This is the new chosen value", chosen)
+                    red(f"{name_list[chosen]} {deadlist[rand_death]}")
+                    time.sleep(2)
+                    name_list.pop(chosen)
+                    if murd > (len(name_list)-1):
+                        murd -= 1
+                    print(f"This is the murd value: {murd}")
+                    murddead = vote(name_list, suspts, energylv, murd, player_name, day, dayrandomvar, murdname)
+                    person = 0
+                    #for name in name_list:
+                    #    print(name, botenergylist[person-1])
+                    #    person += 1
+                else: 
+                    print("testing for lms")
+                    sys.exit()
             else:
                 yellow("No murder had occurred overnight.")
                 dot_spam("which means", False)
