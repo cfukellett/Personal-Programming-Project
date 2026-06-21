@@ -5,10 +5,12 @@ import pygame
 from colorist import ColorRGB, BgColorRGB, rgb, bg_rgb
 from playsound3 import playsound
 import sys
+import os
 pygame.mixer.init()
 pygame.mixer.music.load("bgm.mp3")
 pygame.mixer.music.play(-1)
-
+os.system('cls' if os.name == 'nt' else 'clear')
+time.sleep(1)
 #ze colours
 def red(string):
     rgb(string, 255,0,0)
