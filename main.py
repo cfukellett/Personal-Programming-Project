@@ -619,7 +619,7 @@ def hide(target):
     hideactions = ["You hid in a cardboard box, hoping not to be found...", "You hid in the wardrobe, trying to stay as silent as possible...", "You hid under your bed whilst attempting to control your heavy breathing...", "You hid underneath the bathroom cabinet, surely they won't expect this...", "You hid in the attic, staying as still as possible...", "You hid under the dining table...Surely they can't see you down there...right? RIGHT???", "You dug 3000 kilometers below the surface into the mantle to greet Satan and treated yourself with a nice Subway sandwich. Then, you went into the deep sea to greet your good old friend 'Angus the Deep Sea Anglerfish' and had a great time catching up. Then, you returned to your house and found a knife...but it was a toy knife. So, you decided to climb on the ceiling and hope for the best.", "You hid in the kitchen cabinet, holding your breath."]
     hidingrandom = randint(1,len(hideactions)-1)
     hidetext = "Hiding"
-    tensiontexts = ["...nothing happened.", "...you heard nothing.", "...you stayed silent, but somehow, the world seemed even quieter", "...nothing was happening."]
+    tensiontexts = ["...nothing happened.", "...you heard nothing.", "...you stayed silent, but somehow, the world seemed even quieter.", "...nothing was happening."]
     dot_spam(hidetext, True)
     purple(f"{hideactions[hidingrandom]}")
     randomtension = randint(2,4)
@@ -634,7 +634,7 @@ def hide(target):
         purple("You heard what seemed like footsteps paddling around in your house.")
         purple("After 5 minutes of tension, the footsteps faded away.")
     green("You felt safe.")
-
+    time.sleep(1.5)
 
 def dot_spam(text, remove):
     for i in range(5):
