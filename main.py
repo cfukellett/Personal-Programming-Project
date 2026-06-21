@@ -398,7 +398,7 @@ def vote(namelist, suspts, energylv, murd, playername, day, dayrandomvar, murdna
             else:
                 votewithplayer = False
             if votewithplayer == True:
-                if int(playervote) == 5:
+                if int(playervote) == nameindex:
                     blue(f"{name} trusts your vote and has skipped their vote.")
                     botplayervote += 1
                 else:
@@ -517,7 +517,8 @@ def day(day, suspts, energylv, name_list, murd, player_role, chosen, player_name
                     #    print(name, botenergylist[person-1])
                     #    person += 1
                 else: 
-                    print("testing for lms")
+                    print("(normally there would be a special gamemode between the last survivor and the killer here)")
+                    print("(pretend you won i guess!!)")
                     sys.exit()
             else:
                 yellow("No murder had occurred overnight.")
