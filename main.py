@@ -235,7 +235,7 @@ def vote(namelist, suspts, energylv, murd, playername, day, dayrandomvar, murdna
                     red(f"{person}: Oh no.")
                     playsound("ohno.mp3")
                     green("You won the interrogation!")
-                    if namelist[murd] == person:
+                    if namelist[murd-1] == person:
                         red(f"{person} is quite suspicious...\n")
                 elif winlose == 'l':
                     red(f"{person}: Are you sure?")
