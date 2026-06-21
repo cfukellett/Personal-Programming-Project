@@ -319,6 +319,7 @@ def vote(namelist, suspts, energylv, murd, playername, day, dayrandomvar):
         red(f"{person}: Are you sure?")
         playsound("areyousure.mp3")
         blue("You lost the interrogation...\n")
+        red("Everyone is now more suspicious of you.\n")
         suspts += 50
     elif winlose == 't':
         green(f"{playername}(you): ...")
