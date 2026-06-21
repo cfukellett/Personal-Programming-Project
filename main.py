@@ -136,6 +136,7 @@ def vote(namelist, suspts, energylv, murd, playername, day, dayrandomvar):
         #plead beats object, argue beats accuse, denial beats argue, confess beats warn, silence is a tie, reroll allows them to reroll their options
         #object beats argue, argue beats denial, accuse beats confess, warn beats silence, silence beats plead, reroll allows them to reroll their options
         atkchoice = input()
+        atkchoice2 = ''
         while atkchoice not in ['1', '2', '3', '4']:
             wronginsert()
             blue("Choose your interrogation option.")
