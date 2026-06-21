@@ -387,15 +387,19 @@ def vote(namelist, suspts, energylv, murd, playername, day, dayrandomvar):
                 blue(f"{name} has kept their vote hidden from you...")
                 botselfvote = 0
             time.sleep(1.5)
+    
         if botselfvote > botplayervote:
             largestvote = 'bot'
         elif botselfvote < botplayervote:
             largestvote = 'player'
         else:
             largestvote = 'tie'
+        
         if largestvote == 'bot':
             chosenvoted = randint(1,len(namelist))
+            print("largest vote is bot")
         elif largestvote == 'player':
+            print("largest vote is player")
             if playervote != '5':
                 chosenvoted = int(playervote)
             else:
