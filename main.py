@@ -112,7 +112,7 @@ def botenergylv(name_list, murd, day, botenergylist):
     print(namelist2)
     return botenergylist
 
-def vote(namelist, suspts, energylv, murd, playername):
+def vote(namelist, suspts, energylv, murd, playername, day, dayrandomvar):
     print(f"This is the murd value: {murd}")
     yellow('There is a murderer among you and the others.\n')
     print(namelist)
@@ -309,10 +309,12 @@ def vote(namelist, suspts, energylv, murd, playername):
         red(f"{playername}(you): I'm outta here!")
         playsound("byebye.mp3")
         green("You went through with the interrogation without seeming suspicious!\n")
+        suspts -= 20
     elif winlose == 'l':
         red(f"{person}: Are you sure?")
         playsound("areyousure.mp3")
         blue("You lost the interrogation...\n")
+        suspts += 50
     elif winlose == 't':
         green(f"{playername}(you): ...")
         red(f"{person}: ...")
@@ -335,7 +337,38 @@ def vote(namelist, suspts, energylv, murd, playername):
         red("You skipped your vote...")
     else:
         purple(f"You voted for {namelist[int(playervote)]}")
-    pass
+    if suspts >= 200:
+        playervotedchance = 1
+    elif suspts >= 150:
+        playervotedchance = randint(1,3)
+    elif suspts >= 100:
+        playervotedchance = randint(1,7)
+    elif suspts >= 50:
+        playervotedchance = randint(1,12)
+    elif suspts >= 1:
+        playervotedchance = randint(1,30)
+    else:
+        playervotedchance = 0
+    if playervotedchance == 1:
+        playergetsvoted = True
+    else:
+        playergetsvoted = False
+
+
+    if playergetsvoted == True:
+        red(f"The majority decided to vote for you...")
+        return dead
+    else:
+        for name in namelist:
+            if day > 5:
+                dayrandomvar = 25
+            else:
+                dayrandomvar = 100-(15*day)
+            votewithplayer = randint(1,dayrandomvar)
+            if votewithplayer <= 20:
+                votewithplayer = True
+            else:
+                votewithplayer = False
 
 
 def intespec(atkoptions, atkchoice, status):
@@ -355,7 +388,7 @@ def intespec(atkoptions, atkchoice, status):
                     atkchoice = input().lower()
     return atkchoice
 
-def day(day, suspts, energylv, name_list, murd, player_role, chosen, player_name):
+def day(day, suspts, energylv, name_list, murd, player_role, chosen, player_name, dayrandomvar):
     print(name_list)
     #botenergys = botenergylv(name_list, murd, day, botenergylist)
     yellow(f"☀️--Day {day}--☀️")
@@ -367,6 +400,8 @@ def day(day, suspts, energylv, name_list, murd, player_role, chosen, player_name
     deadlist = ["was found with his eyes gouged out and his neck hanging on a branch… Terrifying! 😱", "had been impaled and had died from blood loss...", "was electrocuted, leaving their body completely unrecognisable...", "was having a midnight snack and suddenly suffered from a heart attack...Yes, this was caused by the murderer.", "somehow found an active volcano and jumped into it, burning themselves into ashes in the process.", "was found without skin in a toolshed."]
     rand_death = randint(0,(len(deadlist)-1))
     chosen-=1
+    if dayrandomvar > 10:
+        dayrandomvar -= 10
     print(f"This is the value for rand_death", rand_death)
     if player_role == 'surv':
         if day == 1:
@@ -381,7 +416,7 @@ def day(day, suspts, energylv, name_list, murd, player_role, chosen, player_name
             red(f"{name_list[chosen]} {deadlist[rand_death]}")
             name_list.pop(chosen)
             print(f"This is the murd value: {murd}")
-            vote(name_list, suspts, energylv, murd, player_name)
+            vote(name_list, suspts, energylv, murd, player_name, day, dayrandomvar)
             person = 0
             #for name in name_list:
             #    print(name, botenergylist[person-1])
@@ -595,12 +630,13 @@ role_list = [player_role, comp1_role, comp2_role, comp3_role, comp4_role, comp5_
 murd, chosen = murdthing(player_role, role_list, name_list)
 dead = False
 print(name_list)
+dayrandomvar = 100
 while dead == False:
     day_num += 1
     energy_lv = energy(energy_points)
     #if day_num == 1:
         #botenergylist = []
-    dead = day(day_num, sus_points, energy_lv, name_list, murd, player_role, chosen, player_name)
+    dead = day(day_num, sus_points, energy_lv, name_list, murd, player_role, chosen, player_name, dayrandomvar)
     aicode(player_role, comp1_role, comp2_role, comp3_role, comp4_role, comp5_role, comp6_role, name_list)
     if dead == False:
         dead, energy_points = night(player_role, chosen, murd, name_list, energy_points)
