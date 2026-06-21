@@ -644,9 +644,9 @@ def playerchosenbias(namelist, murd):
     chosen = randint(1,5)
     chosen2 = ""
     if chosen == 1:
-        chosen2 = "bias"
-    else:
         chosen2 = "unbias"
+    else:
+        chosen2 = "bias"
     if chosen2 == "bias":
         while chosen == namelist[murd]:
             chosen = randint(1,len(namelist)-1)
@@ -660,7 +660,7 @@ def aicode(playerrole, c1role, c2role, c3role, c4role, c5role, c6role, namelist,
         chosen = randint(1,len(namelist)-1)
     else:
         chosen = randint(0,len(namelist)-1)
-    print(f"This is the chosen value", chosen)
+    print(f"This is the chosen value from aicode", chosen)
     if chosen == 0:
         chosen = playerchosenbias(namelist, murd)
     while role_list[chosen] == 'murd':
