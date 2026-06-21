@@ -496,6 +496,8 @@ def day(day, suspts, energylv, name_list, murd, player_role, chosen, player_name
                     print(f"This is the chosen value", chosen)
                     if chosen > (len(name_list)-1):
                         chosen -= 1
+                    if chosen == murd:
+                        chosen -= 1
                     if chosen == 0:
                         print(f"Chosen value was 0, now changing")
                         chosen = randint(1,len(name_list)-1)
