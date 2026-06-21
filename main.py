@@ -436,6 +436,7 @@ def vote(namelist, suspts, energylv, murd, playername, day, dayrandomvar, murdna
             print(f"This is the murd value: {murd}")
             time.sleep(1.5)
             red(f"{chosenvotedname} has been eliminated.")
+            print(murdname)
             if chosenvotedname == murdname:
                 print("Murd has been eliminated!")
                 murddead = True
@@ -487,7 +488,7 @@ def day(day, suspts, energylv, name_list, murd, player_role, chosen, player_name
             dot_spam("", True)
             time.sleep(0.2)
             if murddead == False:
-                red("Oh, what's this? A murder had occured overnight.")
+                red("Oh, what's this? A murder had occurred overnight.")
                 time.sleep(2)
                 print(name_list)
                 print(f"This is the murd value before the chosen value has been assigned: {murd}")
