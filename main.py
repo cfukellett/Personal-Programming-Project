@@ -113,7 +113,7 @@ def botenergylv(name_list, murd, day, botenergylist):
     print(namelist2)
     return botenergylist
 
-def vote(namelist, suspts, energylv, murd, playername, day, dayrandomvar):
+def vote(namelist, suspts, energylv, murd, playername, day, dayrandomvar, murdname):
     murddead = False
     print(f"This is the murd value: {murd}")
     print(f"This is the murderer's name: {namelist[murd]}")
@@ -244,7 +244,7 @@ def vote(namelist, suspts, energylv, murd, playername, day, dayrandomvar):
                     red(f"{person}: ...")
                     playsound("crow.mp3")
                     blue("You...both lost the interrogation?\n")
-            time.sleep(2)
+            time.sleep(1.5)
     red("It is now your turn to be interrogated.")
     time.sleep(2)
     red("Choose the correct option to clear their suspicion towards you!\n")
@@ -388,7 +388,7 @@ def vote(namelist, suspts, energylv, murd, playername, day, dayrandomvar):
                 dayrandomvar = 100-(15*day)
             votewithplayer = randint(1,dayrandomvar)
             if votewithplayer <= 20:
-                if name != namelist[murd]:
+                if name != murdname:
                     votewithplayer = True
                 else:
                     votewithplayer = False
@@ -419,7 +419,7 @@ def vote(namelist, suspts, energylv, murd, playername, day, dayrandomvar):
         elif largestvote == 'player':
             print("largest vote is player")
             if playervote != '5':
-                chosenvoted = int(playervote)
+                chosenvoted = int(playervote)-1
             else:
                 chosenvoted = 'skip'
         elif largestvote == 'tie':
@@ -458,7 +458,7 @@ def intespec(atkoptions, atkchoice, status):
                     atkchoice = input().lower()
     return atkchoice
 
-def day(day, suspts, energylv, name_list, murd, player_role, chosen, player_name, dayrandomvar, murddead):
+def day(day, suspts, energylv, name_list, murd, player_role, chosen, player_name, dayrandomvar, murddead, murdname):
     print(name_list)
     #botenergys = botenergylv(name_list, murd, day, botenergylist)
     yellow(f"☀️--Day {day}--☀️")
@@ -491,7 +491,7 @@ def day(day, suspts, energylv, name_list, murd, player_role, chosen, player_name
                 time.sleep(2)
                 name_list.pop(chosen)
                 print(f"This is the murd value: {murd}")
-                murddead = vote(name_list, suspts, energylv, murd, player_name, day, dayrandomvar)
+                murddead = vote(name_list, suspts, energylv, murd, player_name, day, dayrandomvar, murdname)
                 person = 0
                 #for name in name_list:
                 #    print(name, botenergylist[person-1])
@@ -661,7 +661,7 @@ def aicode(playerrole, c1role, c2role, c3role, c4role, c5role, c6role, namelist,
     while role_list[chosen] == 'murd':
         chosen = randint(0,len(namelist)-1)
         if chosen == 0:
-            chosen = playerchosenbias(namelist), murd
+            chosen = playerchosenbias(namelist, murd)
     return chosen
     
 def compnames():
@@ -726,7 +726,7 @@ while dead == False:
     energy_lv = energy(energy_points)
     #if day_num == 1:
         #botenergylist = []
-    dead, murddead = day(day_num, sus_points, energy_lv, name_list, murd, player_role, chosen, player_name, dayrandomvar, murddead)
+    dead, murddead = day(day_num, sus_points, energy_lv, name_list, murd, player_role, chosen, player_name, dayrandomvar, murddead, murdname)
     aicode(player_role, comp1_role, comp2_role, comp3_role, comp4_role, comp5_role, comp6_role, name_list, day_num, murd)
     if dead == False:
         dead, energy_points = night(player_role, chosen, murd, name_list, energy_points, murddead)
