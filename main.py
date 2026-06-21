@@ -145,7 +145,7 @@ def vote(namelist, suspts, energylv, murd, playername, day, dayrandomvar):
         #if atkchoice == 5:
         #    atkchoice = intespec(atkoptions, atkchoice, 'reroll')
         if int(atkchoice) == 4:
-            red("You chose to skip this interrogation...")
+            red("You chose to skip this interrogation...\n")
             atkchoice2 == "none"
         else:
             atkchoice2 = atkoptions[int(atkchoice)-1].lower()
