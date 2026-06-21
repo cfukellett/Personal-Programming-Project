@@ -737,6 +737,7 @@ murd, chosen = murdthing(player_role, role_list, name_list, day_num, murd)
 dead = False
 print(name_list)
 murdname = name_list[murd]
+print(f"Murd name before game starts: {murdname}")
 dayrandomvar = 100
 murddead = False
 while dead == False:
