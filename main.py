@@ -114,6 +114,7 @@ def botenergylv(name_list, murd, day, botenergylist):
 
 def vote(namelist, suspts, energylv, murd, playername, day, dayrandomvar):
     print(f"This is the murd value: {murd}")
+    print(f"This is the murderer's name: {namelist[murd]}")
     yellow('There is a murderer among you and the others.\n')
     time.sleep(2)
     print(namelist)
@@ -145,6 +146,7 @@ def vote(namelist, suspts, energylv, murd, playername, day, dayrandomvar):
             #the interrogater has these options: object, argue, accuse, warn, silence, skip, reroll
             #plead beats object, argue beats accuse, denial beats argue, confess beats warn, silence is a tie, reroll allows them to reroll their options
             #object beats argue, argue beats denial, accuse beats confess, warn beats silence, silence beats plead, reroll allows them to reroll their options
+            #i have come from the future (2 weeks) i am here to say that the notes above are all false 
             atkchoice = input()
             atkchoice2 = ''
             while atkchoice not in ['1', '2', '3', '4']:
@@ -546,10 +548,10 @@ def night(player_role, chosen, murd, name_list, energypts):
 def peek(murd, names):
     dead = False
     obs_rate = randint(1,4)
-    murd_rate = randint(1,2)
+    murd_rate = randint(1,3)
     print(names)
     print(murd)
-    if murd_rate != 3:
+    if murd_rate == 3:
         chosen_one = names[murd]
     else:
         chosen_one = names[randint(0,3)]
