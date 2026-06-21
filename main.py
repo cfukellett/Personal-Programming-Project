@@ -125,8 +125,9 @@ def vote(namelist, suspts, energylv, murd, playername, day, dayrandomvar):
     random.shuffle(defoptions)
     purple(f"You must interrogate every person.\nYou will be given three options.\nChoose the correct option for better odds of deducing who the murderer is.")
     if day <= 2:
-        green("Input anything to begin the interrogation!\n")
+        green("Input anything to begin the interrogation!")
         ReallyRandomInputThatWillNeverBeUsed = input()
+        ReallyRandomInputThatWillNeverBeUsed = 1
     else:
         green("1. Start Interrogation\n2. I'm getting bored of this interrogation slop. SKIP!!!\n")
         ReallyRandomInputThatWillNeverBeUsed = input()
