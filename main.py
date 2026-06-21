@@ -726,7 +726,8 @@ murdname = name_list[murd]
 dayrandomvar = 100
 murddead = False
 while dead == False:
-    murd = name_list.index(murdname)
+    if murddead == False:
+        murd = name_list.index(murdname)
     day_num += 1
     energy_lv = energy(energy_points)
     #if day_num == 1:
