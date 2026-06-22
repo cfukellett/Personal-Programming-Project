@@ -181,7 +181,7 @@ def vote(namelist, suspts, energylv, murd, playername, day, dayrandomvar, murdna
                 elif defbotchoice2 == 'denial':
                     winlose = 'l'
                 elif defbotchoice2 == 'confess':
-                    winlose = 't'
+                    winlose = 'l'
                 elif defbotchoice2 == 'silence':
                     winlose = 'w'
             elif atkchoice2 == 'argue':
@@ -189,7 +189,7 @@ def vote(namelist, suspts, energylv, murd, playername, day, dayrandomvar, murdna
                 if defbotchoice2 == 'plead':
                     winlose = 'w'
                 elif defbotchoice2 == 'argue':
-                    winlose = 't'
+                    winlose = 'l'
                 elif defbotchoice2 == 'denial':
                     winlose = 'l'
                 elif defbotchoice2 == 'confess':
@@ -199,7 +199,7 @@ def vote(namelist, suspts, energylv, murd, playername, day, dayrandomvar, murdna
             elif atkchoice2 == 'accuse':
                 green(f"{playername}(you): I call cap.")
                 if defbotchoice2 == 'plead':
-                    winlose = 't'
+                    winlose = 'l'
                 elif defbotchoice2 == 'argue':
                     winlose = 'l'
                 elif defbotchoice2 == 'denial':
@@ -215,7 +215,7 @@ def vote(namelist, suspts, energylv, murd, playername, day, dayrandomvar, murdna
                 elif defbotchoice2 == 'argue':
                     winlose = 'l'
                 elif defbotchoice2 == 'denial':
-                    winlose = 't'
+                    winlose = 'l'
                 elif defbotchoice2 == 'confess':
                     winlose = 'w'
                 elif defbotchoice2 == 'silence':
@@ -231,7 +231,7 @@ def vote(namelist, suspts, energylv, murd, playername, day, dayrandomvar, murdna
                 elif defbotchoice2 == 'confess':
                     winlose = 'w'
                 elif defbotchoice2 == 'silence':
-                    winlose = 't'
+                    winlose = 'l'
             if atkchoice != '4':
                 green(f"You chose: {atkchoice2}")
                 red(f"{person} chose: {defbotchoice2}")
@@ -275,7 +275,7 @@ def vote(namelist, suspts, energylv, murd, playername, day, dayrandomvar, murdna
         elif atkbotchoice == 'argue':
             winlose = 'w'
         elif atkbotchoice == 'accuse':
-            winlose = 't'
+            winlose = 'l'
         elif atkbotchoice == 'warn':
             winlose = 'l'
         elif atkbotchoice == 'silence':
@@ -523,6 +523,7 @@ def day(day, suspts, energylv, name_list, murd, player_role, chosen, player_name
                 else: 
                     print("(normally there would be a special gamemode between the last survivor and the killer here)")
                     print("(pretend you won i guess!!)")
+                    lms(energylv, murdname, player_name)
                     sys.exit()
             else:
                 yellow("No murder had occurred overnight.")
@@ -535,12 +536,25 @@ def day(day, suspts, energylv, name_list, murd, player_role, chosen, player_name
         name_list.insert(0,player_name)
     #print(name_list)
     #for name in name_list:
-        
-
-
-        
     time.sleep(2)
     return dead, murddead, murd
+
+def lms(energylv, murdname, playername):
+    purple(f"LAST SURVIVOR STANDING:\n{playername} VS {murdname}")
+    purple("To survive, you must participate in a brutal fight to the death against the murderer...")
+    yellow("Would you like to read the rules for this special gamemode? (y/n)\n")
+    readrules = input()
+    readrules = readrules.lower()
+    while readrules not in ['y', 'yes', 'n', 'no']:
+        wronginsert()
+        red("Would you like to read the rules? (y/n):\n")
+        readrules = input()
+        readrules = readrules.lower()
+    if readrules in ['y', 'yes']:
+        yellow("Your initial HP will be determined on your energy level.\nThe more your energy level, the higher your initial HP will be.\n")
+    atkoptions = ["Punch", "Block", "Kick"]
+
+    pass
 
 def wronginsert():
     print("Please answer with an acceptable input.\n")
