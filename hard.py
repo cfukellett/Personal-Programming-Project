@@ -425,7 +425,7 @@ def vote(namelist, suspts, energylv, murd, playername, day, dayrandomvar, murdna
             #print("largest vote is bot")
         elif largestvote == 'player':
             #print("largest vote is player")
-            if playervote != '5':
+            if playervote != str(len(namelist)):
                 chosenvoted = int(playervote)-1
             else:
                 chosenvoted = 'skip'
@@ -533,6 +533,7 @@ def day(day, suspts, energylv, name_list, murd, player_role, chosen, player_name
                 pygame.mixer.music.load("win.mp3")
                 pygame.mixer.music.play(-1)
                 playsound("cheer.mp3")
+                time.sleep(15)
                 sys.exit()
                 
             
