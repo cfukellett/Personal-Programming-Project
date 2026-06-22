@@ -526,10 +526,9 @@ def day(day, suspts, energylv, name_list, murd, player_role, chosen, player_name
                 dot_spam("which means", False)
                 green(f"The murderer has been eliminated! Hooray!\n(end of game)")
                 pygame.mixer.music.stop()
-                pygame.mixer.music.load("win.mp3")
-                pygame.mixer.music.play(-1)
+                playsound("win.mp3")
                 playsound("cheer.mp3")
-                time.sleep(15)
+                time.sleep(7)
                 sys.exit()
                 
             
