@@ -551,7 +551,16 @@ def lms(energylv, murdname, playername):
         readrules = input()
         readrules = readrules.lower()
     if readrules in ['y', 'yes']:
-        yellow("Your initial HP will be determined on your energy level.\nThe more your energy level, the higher your initial HP will be.\n")
+        yellow("Your initial HP will be determined on your energy level.\nThe more your energy level, the higher your initial HP will be.")
+        yellow("The survivor starts off without a weapon, while the murderer starts off with a knife.")
+        yellow("If you do not have a weapon, you are able to choose 1 out of 4 options.")
+        yellow("1. Punch (deals 15 HP on successful hit)\n2. Block (heals 10 HP on successful hit)\n3. Kick (deals 5 HP and heals 5 HP on successful hit)\n4.Steal (steals the opposing's knife)")
+        yellow("If you have a weapon, you are able to choose 1 out of 4 options.")
+        yellow("1. Stab (deals 25 HP on successful hit)\n2. Block (heals 10 HP on successful hit)\n3. Kick (deals 5 HP and heals 5 HP on successful hit)\n4. Throw (deals 35 HP on successful hit)")
+        yellow("Punch/Stab beats Kick\nBlock beats Punch/Stab\nKick beats Block")
+        yellow("Steal beats Stab/Punch and Throw but loses to everything else")
+        yellow("Throw beats everything except Steal and has a 50/50 chance to miss (lose)")
+        purple("This is all very straightforward and definitely not confusing in anyway, right?\nGood!")
     atkoptions = ["Punch", "Block", "Kick"]
 
     pass
