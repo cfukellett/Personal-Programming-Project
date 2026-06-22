@@ -120,6 +120,7 @@ def botenergylv(name_list, murd, day, botenergylist):
     return botenergylist
 
 def vote(namelist, suspts, energylv, murd, playername, day, dayrandomvar, murdname):
+    dead = False
     murddead = False
     print(f"This is the murd value: {murd}")
     print(f"This is the murderer's name: {namelist[murd]}")
@@ -452,7 +453,7 @@ def vote(namelist, suspts, energylv, murd, playername, day, dayrandomvar, murdna
                 yellow(f"There was a tie in the votes!\nThe votes will be skipped.")
             else:
                 yellow("The majority agreed to skip the vote.")
-    return murddead, suspts
+    return murddead, suspts, dead
 
 def intespec(atkoptions, atkchoice, status):
     if status == 'reroll':
