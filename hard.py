@@ -501,11 +501,7 @@ def day(day, suspts, energylv, name_list, murd, player_role, chosen, player_name
                     #print(name_list)
                     #print(f"This is the murd value before the chosen value has been assigned: {murd}")
                     #print(f"This is the chosen value", chosen)
-                    if chosen > (len(name_list)-1):
-                        chosen -= 1
-                    if chosen == murd:
-                        chosen -= 1
-                    if chosen == 0:
+                    while chosen > (len(name_list)-1) or chosen == 0 or chosen == murd:
                         #print(f"Chosen value was 0, now changing")
                         chosen = randint(1,len(name_list)-1)
                         #print(f"This is the new chosen value", chosen)
@@ -626,7 +622,7 @@ def peek(murd, names, murddead):
     if murd_rate == 3 and murddead == False:
         chosen_one = names[murd]
     else:
-        chosen_one = names[randint(0,3)]
+        chosen_one = names[randint(1,len(names)-1)]
     dot_spam("You peeked out the window", False)
     peektext = [f"...and saw {chosen_one} walking on the streets with their hands in their pockets...", f"...and saw {chosen_one} quietly sitting on a bench outside...", f"...and saw {chosen_one} breakdancing in an alleyway...?", f"...and saw {chosen_one} doing the Enma Palm Sign...", f"...and saw {chosen_one} floating in the air with a grin...Oh, you were hallucinating. {chosen_one} is really just standing there doing nothing.", f"...and saw {chosen_one} stretching out in the open..."]
     murdtext = [f"...and saw {chosen_one} holding a knife...", f"...and saw {chosen_one} with bloods splattered all over their hands...", f"...and saw {chosen_one} carrying a Hush Puppy..."]
@@ -753,8 +749,8 @@ def overview(daynum, name, role, energy_lv, sus_points, murd, dead, names):
 
 def murdthing(player_role, role_list, namelist, daynum, murd):
     if player_role == 'surv':
-        chosen = aicode(player_role, comp1_role, comp2_role, comp3_role, comp4_role, comp5_role, comp6_role, namelist, daynum, murd)
         murd = murdwho(role_list)
+        chosen = aicode(player_role, comp1_role, comp2_role, comp3_role, comp4_role, comp5_role, comp6_role, namelist, daynum, murd)
     else:
         murd = 0
     return murd, chosen
