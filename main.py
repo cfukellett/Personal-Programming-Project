@@ -33,16 +33,16 @@ def intro():
     name = input()
     yellow(f"Hello, {name}, welcome to the game.")
     time.sleep(1)
-    # red("Would you like to read the rules? (y/n):\n")
-    # read_rules = input()
-    # read_rules = read_rules.lower()
-    # while read_rules not in ['y', 'yes', 'n', 'no']:
-    #     wronginsert()
-    #     red("Would you like to read the rules? (y/n):\n")
-    #     read_rules = input()
-    #     read_rules = read_rules.lower()
-    # if read_rules in ['y', 'yes']:
-    #     red("rules here")
+    red("Would you like to read the rules? (y/n):\n")
+    read_rules = input()
+    read_rules = read_rules.lower()
+    while read_rules not in ['y', 'yes', 'n', 'no']:
+        wronginsert()
+        red("Would you like to read the rules? (y/n):\n")
+        read_rules = input()
+        read_rules = read_rules.lower()
+    if read_rules in ['y', 'yes']:
+        red("rules here")
     red("The game will now begin.")
     return name
 
@@ -563,7 +563,7 @@ def lms(energylv, murdname, playername):
         purple("This is all very straightforward and definitely not confusing in anyway, right?\nGood!")
     playerknife = False
     atkoptions = ["Punch", "Block", "Kick", "Steal"]
-    while 
+    #while 
 
     pass
 
