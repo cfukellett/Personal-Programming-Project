@@ -425,7 +425,7 @@ def vote(namelist, suspts, energylv, murd, playername, day, dayrandomvar, murdna
             print("largest vote is bot")
         elif largestvote == 'player':
             print("largest vote is player")
-            if playervote != str(len(namelist)):
+            if playervote != str(len(namelist)+1):
                 chosenvoted = int(playervote)-1
             else:
                 chosenvoted = 'skip'
@@ -452,7 +452,7 @@ def vote(namelist, suspts, energylv, murd, playername, day, dayrandomvar, murdna
                 yellow(f"There was a tie in the votes!\nThe votes will be skipped.")
             else:
                 yellow("The majority agreed to skip the vote.")
-    return murddead
+    return murddead, suspts
 
 def intespec(atkoptions, atkchoice, status):
     if status == 'reroll':
@@ -511,7 +511,7 @@ def day(day, suspts, energylv, name_list, murd, player_role, chosen, player_name
                     if murd > (len(name_list)-1):
                         murd -= 1
                     print(f"This is the murd value: {murd}")
-                    murddead = vote(name_list, suspts, energylv, murd, player_name, day, dayrandomvar, murdname)
+                    murddead, suspts = vote(name_list, suspts, energylv, murd, player_name, day, dayrandomvar, murdname)
                     person = 0
                     #for name in name_list:
                     #    print(name, botenergylist[person-1])
@@ -538,7 +538,7 @@ def day(day, suspts, energylv, name_list, murd, player_role, chosen, player_name
     print(name_list)
     #for name in name_list:
     time.sleep(2)
-    return dead, murddead, murd
+    return dead, murddead, murd, suspts
 
 def lms(energylv, murdname, playername):
     purple(f"LAST SURVIVOR STANDING:\n{playername} VS {murdname}")
@@ -785,7 +785,7 @@ while dead == False:
     energy_lv = energy(energy_points)
     #if day_num == 1:
         #botenergylist = []
-    dead, murddead, murd = day(day_num, sus_points, energy_lv, name_list, murd, player_role, chosen, player_name, dayrandomvar, murddead, murdname)
+    dead, murddead, murd, sus_points = day(day_num, sus_points, energy_lv, name_list, murd, player_role, chosen, player_name, dayrandomvar, murddead, murdname)
     if murddead == False:
         aicode(player_role, comp1_role, comp2_role, comp3_role, comp4_role, comp5_role, comp6_role, name_list, day_num, murd)
     if dead == False:
