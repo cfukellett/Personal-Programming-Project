@@ -519,8 +519,8 @@ def day(day, suspts, energylv, name_list, murd, player_role, chosen, player_name
                     #    person += 1
                 else: 
                     print("(normally there would be a special gamemode between the last survivor and the killer here)")
-                    print("(pretend you won i guess!!)")
-                    lms(energylv, murdname, player_name)
+                    red("(pretend you lost i guess!!)")
+                    #lms(energylv, murdname, player_name)
                     sys.exit()
             else:
                 yellow("No murder had occurred overnight.")
@@ -561,7 +561,9 @@ def lms(energylv, murdname, playername):
         yellow("Steal beats Stab/Punch and Throw but loses to everything else")
         yellow("Throw beats everything except Steal and has a 50/50 chance to miss (lose)")
         purple("This is all very straightforward and definitely not confusing in anyway, right?\nGood!")
-    atkoptions = ["Punch", "Block", "Kick"]
+    playerknife = False
+    atkoptions = ["Punch", "Block", "Kick", "Steal"]
+    while 
 
     pass
 
