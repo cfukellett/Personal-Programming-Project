@@ -64,7 +64,7 @@ def rules():
     green("Afterwards, all players must vote for who they believe is the murderer.")
     yellow("Some players may find you trustworthy and follow your vote,\nwhile others may keep their votes hidden from you.")
     purple("The game ends if the murderer successfully murders everyone\n(1 survivor left is a win for the murderer)\nor if the survivors successfully eliminate the murderer!")
-    yellow("That wasn't confusing at all, right?\nInput anything to continue.")
+    yellow("That wasn't confusing at all, right?\n(it's easier to understand as you go along)\nInput anything to continue.")
     RandomInputThingHiEveryoneHowAreYouAllImDoingVeryWellThisFineEveningInFactIAmFeelingQuiteEnergeticActuallyNoImNotAlrightBye = input()
 
 def roles():
