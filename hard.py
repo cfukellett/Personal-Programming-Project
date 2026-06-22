@@ -628,7 +628,9 @@ def peek(murd, names, murddead):
     murdtext = [f"...and saw {chosen_one} holding a knife...", f"...and saw {chosen_one} with bloods splattered all over their hands...", f"...and saw {chosen_one} carrying a Hush Puppy..."]
     murdtextrate = randint(1,2)
     allpeektext = peektext
-    if chosen_one == names[murd-1] and murddead == False:
+    print(f"value for murd: {murd}")
+    print(f"value for chosen one: {chosen_one}")
+    if chosen_one == names[murd] and murddead == False:
         if murdtextrate == 1:
             allpeektext += murdtext
     allpeektextindex = len(allpeektext)-1
