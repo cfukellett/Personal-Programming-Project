@@ -386,7 +386,7 @@ def vote(namelist, suspts, energylv, murd, playername, day, dayrandomvar, murdna
     if playergetsvoted == True:
         red(f"The majority decided to vote for you...")
         dead = True
-        return dead
+        return False, suspts, dead
     else:
         for name in namelist:
             if day > 5:
@@ -471,7 +471,7 @@ def intespec(atkoptions, atkchoice, status):
                     atkchoice = input().lower()
     return atkchoice
 
-def day(day, suspts, energylv, name_list, murd, player_role, chosen, player_name, dayrandomvar, murddead, murdname):
+def day(day, suspts, energylv, name_list, murd, player_role, chosen, player_name, dayrandomvar, murddead, murdname, dead):
     print(name_list)
     #botenergys = botenergylv(name_list, murd, day, botenergylist)
     yellow(f"☀️--Day {day}--☀️")
@@ -511,7 +511,7 @@ def day(day, suspts, energylv, name_list, murd, player_role, chosen, player_name
                     if murd > (len(name_list)-1):
                         murd -= 1
                     print(f"This is the murd value: {murd}")
-                    murddead, suspts = vote(name_list, suspts, energylv, murd, player_name, day, dayrandomvar, murdname)
+                    murddead, suspts, dead = vote(name_list, suspts, energylv, murd, player_name, day, dayrandomvar, murdname)
                     person = 0
                     #for name in name_list:
                     #    print(name, botenergylist[person-1])
@@ -783,7 +783,7 @@ while dead == False:
     energy_lv = energy(energy_points)
     #if day_num == 1:
         #botenergylist = []
-    dead, murddead, murd, sus_points = day(day_num, sus_points, energy_lv, name_list, murd, player_role, chosen, player_name, dayrandomvar, murddead, murdname)
+    dead, murddead, murd, sus_points = day(day_num, sus_points, energy_lv, name_list, murd, player_role, chosen, player_name, dayrandomvar, murddead, murdname, dead)
     if murddead == False:
         aicode(player_role, comp1_role, comp2_role, comp3_role, comp4_role, comp5_role, comp6_role, name_list, day_num, murd)
     if dead == False:
