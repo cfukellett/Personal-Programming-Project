@@ -591,9 +591,11 @@ def lms(energylv, murdname, playername):
 def wronginsert():
     print("Please answer with an acceptable input.\n")
 
-def night(player_role, chosen, murd, name_list, energypts, murddead):
+def night(player_role, chosen, murd, name_list, energypts, murddead, day):
     dead = False
     player_lh = ""
+    yellow(f"🌙--Night {day}--🌙")
+    purple("The moon has risen...It is now night time.")
     if player_role == "surv":
         blue("Will you sleep? (y/n)\n")
         player_sleep = input().lower()
@@ -811,7 +813,7 @@ while dead == False:
     if murddead == False:
         aicode(player_role, comp1_role, comp2_role, comp3_role, comp4_role, comp5_role, comp6_role, name_list, day_num, murd)
     if dead == False:
-        dead, energy_points = night(player_role, chosen, murd, name_list, energy_points, murddead)
+        dead, energy_points = night(player_role, chosen, murd, name_list, energy_points, murddead, day_num)
     if dead == True:
         overview(day_num, player_name, player_role, energy_lv, sus_points, murd, dead, name_list)
     print(chosen)
