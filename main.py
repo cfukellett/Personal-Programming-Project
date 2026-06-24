@@ -646,7 +646,8 @@ def night(player_role, chosen, murd, name_list, energypts, murddead, day):
                 else:
                     wronginsert()
     if player_sleep == True:
-        blue("Sleeping...😴💤💤")
+        blue("Sleeping...😴💤💤\n")
+        time.sleep(1.5)
     return dead, energypts
 
 def peek(murd, names, murddead):

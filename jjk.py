@@ -687,12 +687,12 @@ def hide(target, rcl):
     hidetext = "Hiding"
     tensiontexts = ["...nothing happened.", "...you heard nothing.", "...you stayed silent, but somehow, the world seemed even quieter.", "...nothing was happening."]
     dot_spam(hidetext, True)
-    purple(f"{hideactions[hidingrandom]}")
+    purple(f"{rcl[randint(1,len(rcl)-1)]}")
     randomtension = randint(2,4)
     for i in range(randomtension):
         dot_spam(".", True)
         random.shuffle(tensiontexts)
-        print(tensiontexts[0])
+        print(rcl[randint(1,len(rcl)-1)])
         time.sleep(1)
     dot_spam(".", True)
     if target == 0:
