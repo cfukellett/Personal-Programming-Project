@@ -88,7 +88,7 @@ def roles():
     if player == "murd":
         red("🔪 murderer.\n")
     else:
-        blue("😨survivor.\n")
+        blue("😨 sorcerer.\n")
     time.sleep(2)
 
     return players
@@ -96,15 +96,15 @@ def roles():
 
 def energy(pts):
     if pts >= 200:
-        lv = "Hyper 🤩"
+        lv = "Sukuna Level 🤩"
     elif pts >= 150:
-        lv = "Energetic 😁"
+        lv = "Yuta Level 😁"
     elif pts >= 100:
         lv = "Neutral 😐"
     elif pts >= 50:
-        lv = "Tired 😫"
+        lv = "Low 😫"
     else:
-        lv = "Exhausted 🫩"
+        lv = "Minimal 🫩"
     return lv
 
 def botenergylv(name_list, murd, day, botenergylist):
@@ -149,37 +149,37 @@ def vote(namelist, suspts, energylv, murd, playername, day, dayrandomvar, murdna
     murddead = False
     #print(f"This is the murd value: {murd}")
     #print(f"This is the murderer's name: {namelist[murd]}")
-    yellow('There is a murderer among you and the others.\n')
+    yellow('There is a curse user among you and the others.\n')
     time.sleep(2)
     #print(namelist)
     intenamelist = namelist
     intenamelist.pop(0)
-    defoptions = ["Plead", "Argue", "Denial", "Confess", "Silence"]
-    atkoptions = ["Object", "Argue", "Accuse", "Warn", "Silence"]
+    defoptions = ["DA", "HWB", "Simple Domain", "FBE", "RCT"]
+    atkoptions = ["CE Manipulation", "CT", "CT Amplification", "CTR", "Imaginary Technique"]
     random.shuffle(atkoptions)
     random.shuffle(defoptions)
-    purple(f"You must interrogate every person.\nYou will be given three options.\nChoose the correct option for better odds of deducing who the murderer is.")
+    purple(f"You must fight every person.\nYou will be given three options.\nChoose the correct option for better odds of deducing who the curse user is.")
     if day <= 2:
-        green("Input anything to begin the interrogation!")
+        green("Input anything to begin the fight!")
         ReallyRandomInputThatWillNeverBeUsed = input()
         ReallyRandomInputThatWillNeverBeUsed = '1'
     else:
-        green("1. Start Interrogation\n2. I'm getting bored of this interrogation slop. SKIP!!!\n")
+        green("1. Start Fight\n2. I'm getting bored of this fight slop. SKIP!!!\n")
         ReallyRandomInputThatWillNeverBeUsed = input()
         while ReallyRandomInputThatWillNeverBeUsed not in ['1', '2']:
             wronginsert()
-            green("1. Start Interrogation\n2. I'm getting bored of this interrogation slop. SKIP!!!\n")
+            green("1. Start Fight\n2. I'm getting bored of this fight slop. SKIP!!!\n")
             ReallyRandomInputThatWillNeverBeUsed = input()
     if ReallyRandomInputThatWillNeverBeUsed == '1':
         for person in intenamelist:
-            blue(f"{person} is being interrogated.")
-            blue("Choose your interrogation option.")
+            blue(f"You are fighting{person}.")
+            blue("Choose your fighting option.")
             random.shuffle(atkoptions)
             blue(f"1. {atkoptions[0]}\n2. {atkoptions[1]}\n3. {atkoptions[2]}\n4. Skip")
-            #the interrogated has these options: plead, argue, denial, confess, silence, reroll
-            #the interrogater has these options: object, argue, accuse, warn, silence, skip, reroll
-            #plead beats object, argue beats accuse, denial beats argue, confess beats warn, silence is a tie, reroll allows them to reroll their options
-            #object beats argue, argue beats denial, accuse beats confess, warn beats silence, silence beats plead, reroll allows them to reroll their options
+            #the interrogated has these options: da, hwb, simple domain, fbe, rct, reroll
+            #the interrogater has these options: object, hwb, accuse, warn, rct, skip, reroll
+            #da beats object, hwb beats accuse, simple domain beats hwb, fbe beats warn, rct is a tie, reroll allows them to reroll their options
+            #object beats hwb, hwb beats simple domain, accuse beats fbe, warn beats rct, rct beats da, reroll allows them to reroll their options
             #i have come from the future (2 weeks) i am here to say that the notes above are all false 
             atkchoice = input()
             atkchoice2 = ''
@@ -198,65 +198,65 @@ def vote(namelist, suspts, energylv, murd, playername, day, dayrandomvar, murdna
             defbotchoice = defoptions[0]
             winlose = ''
             defbotchoice2 = defbotchoice.lower()
-            if atkchoice2 == 'object':
-                green(f"{playername}(you): Objection!")
-                if defbotchoice2 == 'plead':
+            if atkchoice2 == 'ce manipulation':
+                green(f"{playername}(you): Throughout heaven and Earth, I alone am the honored one.")
+                if defbotchoice2 == 'da':
                     winlose = 'l'
-                elif defbotchoice2 == 'argue':
+                elif defbotchoice2 == 'hwb':
                     winlose = 'w'
-                elif defbotchoice2 == 'denial':
+                elif defbotchoice2 == 'simple domain':
                     winlose = 'l'
-                elif defbotchoice2 == 'confess':
+                elif defbotchoice2 == 'fbe':
                     winlose = 'l'
-                elif defbotchoice2 == 'silence':
+                elif defbotchoice2 == 'rct':
                     winlose = 'w'
-            elif atkchoice2 == 'argue':
-                green(f"{playername}(you): Redditors, lend me your power!")
-                if defbotchoice2 == 'plead':
+            elif atkchoice2 == 'ct':
+                green(f"{playername}(you): Don't worry. I'm the strongest.")
+                if defbotchoice2 == 'da':
                     winlose = 'w'
-                elif defbotchoice2 == 'argue':
+                elif defbotchoice2 == 'hwb':
                     winlose = 'l'
-                elif defbotchoice2 == 'denial':
+                elif defbotchoice2 == 'simple domain':
                     winlose = 'l'
-                elif defbotchoice2 == 'confess':
+                elif defbotchoice2 == 'fbe':
                     winlose = 'w'
-                elif defbotchoice2 == 'silence':
+                elif defbotchoice2 == 'rct':
                     winlose = 'l'
-            elif atkchoice2 == 'accuse':
-                green(f"{playername}(you): I call cap.")
-                if defbotchoice2 == 'plead':
+            elif atkchoice2 == 'ct amplification':
+                green(f"{playername}(you): Cursed Technique Amplification: Blue")
+                if defbotchoice2 == 'da':
                     winlose = 'l'
-                elif defbotchoice2 == 'argue':
+                elif defbotchoice2 == 'hwb':
                     winlose = 'l'
-                elif defbotchoice2 == 'denial':
+                elif defbotchoice2 == 'simple domain':
                     winlose = 'l'
-                elif defbotchoice2 == 'confess':
+                elif defbotchoice2 == 'fbe':
                     winlose = 'w'
-                elif defbotchoice2 == 'silence':
+                elif defbotchoice2 == 'rct':
                     winlose = 'w'
-            elif atkchoice2 == 'warn':
-                green(f"{playername} (you): Don't do that again...")
-                if defbotchoice2 == 'plead':
+            elif atkchoice2 == 'ctr':
+                green(f"{playername} (you): Cursed Technique Reversal: Red")
+                if defbotchoice2 == 'da':
                     winlose = 'l'
-                elif defbotchoice2 == 'argue':
+                elif defbotchoice2 == 'hwb':
                     winlose = 'l'
-                elif defbotchoice2 == 'denial':
+                elif defbotchoice2 == 'simple domain':
                     winlose = 'l'
-                elif defbotchoice2 == 'confess':
+                elif defbotchoice2 == 'fbe':
                     winlose = 'w'
-                elif defbotchoice2 == 'silence':
+                elif defbotchoice2 == 'rct':
                     winlose = 'w'
-            elif atkchoice2 == 'silence':
-                green(f"{playername} (you): ...")
-                if defbotchoice2 == 'plead':
+            elif atkchoice2 == 'imaginary technique':
+                green(f"{playername} (you): Imaginary Technique: Hollow Purple")
+                if defbotchoice2 == 'da':
                     winlose = 'w'
-                elif defbotchoice2 == 'argue':
+                elif defbotchoice2 == 'hwb':
                     winlose = 'l'
-                elif defbotchoice2 == 'denial':
+                elif defbotchoice2 == 'simple domain':
                     winlose = 'l'
-                elif defbotchoice2 == 'confess':
+                elif defbotchoice2 == 'fbe':
                     winlose = 'w'
-                elif defbotchoice2 == 'silence':
+                elif defbotchoice2 == 'rct':
                     winlose = 'l'
             if atkchoice != '4':
                 green(f"You chose: {atkchoice2}")
@@ -294,85 +294,84 @@ def vote(namelist, suspts, energylv, murd, playername, day, dayrandomvar, murdna
     winlose = ''
     defchoice2 = defoptions[int(defchoice)-1].lower()
     atkbotchoice = atkbotchoice.lower()
-    if defchoice2 == 'plead':
-        green(f"{playername}(you): S-sir, please!!")
+    if defchoice2 == 'da':
+        green(f"{playername}(you): Domain Amplification!")
         if atkbotchoice == 'object':
             winlose = 'l'
-        elif atkbotchoice == 'argue':
+        elif atkbotchoice == 'hwb':
             winlose = 'w'
         elif atkbotchoice == 'accuse':
             winlose = 'l'
         elif atkbotchoice == 'warn':
             winlose = 'l'
-        elif atkbotchoice == 'silence':
+        elif atkbotchoice == 'rct':
             winlose = 'w'
-    elif defchoice2 == 'argue':
-        green(f"{playername}(you): Redditors, lend me your power!")
+    elif defchoice2 == 'hwb':
+        green(f"{playername}(you): Hollow Wicker Basket!")
         if atkbotchoice == 'object':
             winlose = 'w'
-        elif atkbotchoice == 'argue':
+        elif atkbotchoice == 'hwb':
             winlose = 't'
         elif atkbotchoice == 'accuse':
             winlose = 'l'
         elif atkbotchoice == 'warn':
             winlose = 'l'
-        elif atkbotchoice == 'silence':
+        elif atkbotchoice == 'rct':
             winlose = 'w'
-    elif defchoice2 == 'denial':
-        green(f"{playername}(you): I didn't do it bro!! trust")
+    elif defchoice2 == 'simple domain':
+        green(f"{playername}(you): New Shadow Style: Simple Domain")
         if atkbotchoice == 'object':
             winlose = 'w'
-        elif atkbotchoice == 'argue':
+        elif atkbotchoice == 'hwb':
             winlose = 'l'
         elif atkbotchoice == 'accuse':
             winlose = 'l'
         elif atkbotchoice == 'warn':
             winlose = 'w'
-        elif atkbotchoice == 'silence':
+        elif atkbotchoice == 'rct':
             winlose = 't'
-    elif defchoice2 == 'confess':
-        green(f"{playername}(you): Yeah. I did that.")
+    elif defchoice2 == 'fbe':
+        green(f"{playername}(you): Falling Blossom Emotion!")
         if atkbotchoice == 'object':
             winlose = 't'
-        elif atkbotchoice == 'argue':
+        elif atkbotchoice == 'hwb':
             winlose = 'w'
         elif atkbotchoice == 'accuse':
             winlose = 'l'
         elif atkbotchoice == 'warn':
             winlose = 'w'
-        elif atkbotchoice == 'silence':
+        elif atkbotchoice == 'rct':
             winlose = 'l'
-    elif defchoice2 == 'silence':
-        green(f"{playername}(you): ...")
+    elif defchoice2 == 'rct':
+        green(f"{playername}(you): I'm still alive and kickin'!")
         if atkbotchoice == 'object':
             winlose = 'w'
-        elif atkbotchoice == 'argue':
+        elif atkbotchoice == 'hwb':
             winlose = 'l'
         elif atkbotchoice == 'accuse':
             winlose = 'l'
         elif atkbotchoice == 'warn':
             winlose = 'w'
-        elif atkbotchoice == 'silence':
+        elif atkbotchoice == 'rct':
             winlose = 't'
     green(f"You chose: {defchoice2}")
     person = namelist[randint(1,len(namelist)-1)]
     red(f"{person} chose: {atkbotchoice}")
     if winlose == 'w':
-        green(f"{playername}(you): I'm outta here!")
+        green(f"{playername}(you): Nah, I'd win.")
         playsound("byebye.mp3")
-        yellow("You went through with the interrogation without seeming suspicious!\n")
+        yellow("You won the fight.\n")
         suspts -= 20
     elif winlose == 'l':
-        red(f"{person}: Are you sure?")
+        red(f"{person}: You were magnificent, {playername},\nI will never forget you for as long as I live.")
         playsound("areyousure.mp3")
-        blue("You lost the interrogation...\n")
-        red("Everyone is now more suspicious of you.\n")
+        blue("You lost the fight...\n")
         suspts += 50
     elif winlose == 't':
-        green(f"{playername}(you): ...")
-        red(f"{person}: ...")
+        green(f"{playername}(you): It's not December 24th yet.")
+        red(f"{person}: ...Oh.")
         playsound("crow.mp3")
-        blue("You...both lost the interrogation?\n")
+        blue("The fight ended in a draw.\n")
 
     time.sleep(2)
     purple("It's time to vote.\nIf you think someone is suspicious, vote them out!\nAlternatively, you can also skip your vote.\n")
@@ -504,7 +503,7 @@ def day(day, suspts, energylv, name_list, murd, player_role, chosen, player_name
     purple("It's the start of a brand new day.")
     purple(f"Here are your day {day} stats:")
     if player_role == 'surv':
-        blue(f"Your role: 😨survivor")
+        blue(f"Your role: 😨sorcerer")
     else:
         red(f"Your role: 🔪 murderer")
     susptstext = (f"🤔 Suspicion Points: {suspts}")
@@ -514,8 +513,8 @@ def day(day, suspts, energylv, name_list, murd, player_role, chosen, player_name
         blue(susptstext+" (Bad...)")
     else:
         blue(susptstext)
-    yellow(f"⚡Energy Level: {energylv}")
-    deadlist = ["was found with his eyes gouged out and his neck hanging on a branch… Terrifying! 😱", "had been impaled and had died from blood loss...", "was electrocuted, leaving their body completely unrecognisable...", "was having a midnight snack and suddenly suffered from a heart attack...Yes, this was caused by the murderer.", "somehow found an active volcano and jumped into it, burning themselves into ashes in the process.", "was found without skin in a toolshed."]
+    yellow(f"⚡Cursed Energy: {energylv}")
+    deadlist = ["was waffled. Kashimo-style.", "was cut in half by a Dismantle that bisects the world itself!", "had their body completely transfigured into something unrecognisable...", "was impaled, and then stabbed to oblivion by the Inverted Spear of Heaven.", "had their body completely burned..."]
     rand_death = randint(0,(len(deadlist)-1))
     if dayrandomvar > 10:
         dayrandomvar -= 10
@@ -556,7 +555,7 @@ def day(day, suspts, energylv, name_list, murd, player_role, chosen, player_name
             else:
                 yellow("No murder had occurred overnight.")
                 dot_spam("which means", False)
-                green(f"The murderer has been eliminated! Hooray!\n(end of game)")
+                green(f"The curse user has been eliminated! Hooray!\n(end of game)")
                 pygame.mixer.music.stop()
                 playsound("cheer.mp3")
                 playsound("win.mp3")
@@ -661,7 +660,7 @@ def peek(murd, names, murddead):
         chosen_one = names[randint(1,len(names)-1)]
     dot_spam("You peeked out the window", False)
     peektext = [f"...and saw {chosen_one} walking on the streets with their hands in their pockets...", f"...and saw {chosen_one} quietly sitting on a bench outside...", f"...and saw {chosen_one} breakdancing in an alleyway...?", f"...and saw {chosen_one} doing the Enma Palm Sign...", f"...and saw {chosen_one} floating in the air with a grin...Oh, you were hallucinating. {chosen_one} is really just standing there doing nothing.", f"...and saw {chosen_one} stretching out in the open..."]
-    murdtext = [f"...and saw {chosen_one} holding a knife...", f"...and saw {chosen_one} with bloods splattered all over their hands...", f"...and saw {chosen_one} carrying a Hush Puppy..."]
+    murdtext = [f"...and saw {chosen_one} holding a Soul-Splitting Katana covered in blood...", f"...and saw {chosen_one} mumbling the words, 'with this treasure...I summon...'," f"...and saw {chosen_one} carrying a Festering Life Sword..."]
     murdtextrate = randint(1,2)
     allpeektext = peektext
     #print(f"value for murd: {murd}")
@@ -754,7 +753,7 @@ def aicode(playerrole, c1role, c2role, c3role, c4role, c5role, c6role, namelist,
     
 def compnames():
     finalcomp_names = []
-    comp_names = ["Tim", "Gerald", "Jack", "Sammy", "Maria", "Jeremy", "Kaitlyn", "Andrew", "Tate", "Matthew", "Nick", "Eric", "Martin", "Hugo", "Harry", "Richard", "Michael", "Gabriel", "Josephine", "Joe", "Patrick", "Ronald", "Jerry", "Oliver", "Mark", "Elizabeth", "Billy", "Greg", "Violet", "Martha", "Jeffery", "Jerome", "Debbie", "Callum", "Grant", "Sarah", "Veronica", "Rachel", "Colin", "Josh", "Aaron", "Frank", "Cynthia", "Steven", "Jennifer", "Sophie", "Muhammed", "Emily", "Claire", "Kylie", "Joel", "Alicia", "Darrell"]
+    comp_names = ["Yuji", "Megumi", "Nobara", "Gojo", "Yaga", "Maki", "Inumaki", "Panda", "Yuta", "Yuki", "Geto", "Kenjaku", "Jogo", "Mahito", "Dagon", "Hanami", "Nanami", "Todo", "Tengen", "Shoko", "Choso", "Yorozu", "Naoya", "Naobito", "Toji", "Eso", "Kechizu", "Sukuna", "Kusakabe", "Kashimo", "Ryu", "Uro", "Dhruv", "Kuroroushi", "Higuruma", "Hakari", "Kirara", "Junpei", "Kamo", "Uraume", "Miwa", "Miguel", "Takaba", "Mai", "Reggie", "Hazenoki"]
     random.shuffle(comp_names)
     for i in range(6):
         finalcomp_names.append(comp_names[0])
@@ -774,7 +773,7 @@ def overview(daynum, name, role, energy_lv, sus_points, murd, dead, names):
         red("You have perished...This is quite tragic indeed.")
     yellow(f"{name}:")
     green(f"Your role was {role}.")
-    yellow(f"Final Energy Level: {energy_lv}")
+    yellow(f"Final Cursed Energy: {energy_lv}")
     blue(f"Final Suspicion Points: {sus_points}")
     if role == 'surv':
         dot_spam("You survived for", False)
@@ -782,7 +781,7 @@ def overview(daynum, name, role, energy_lv, sus_points, murd, dead, names):
             purple(f"...1 day?\nWow. You must be really bad at this game.")
         else:
             purple(f"{daynum} days.")
-        dot_spam("The murderer was", False)
+        dot_spam("The curse user was", False)
         red(f"{names[murd]}.")
 
 def murdthing(player_role, role_list, namelist, daynum, murd):
