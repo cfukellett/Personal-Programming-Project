@@ -201,7 +201,7 @@ def vote(namelist, suspts, energylv, murd, playername, day, dayrandomvar, murdna
             winlose = ''
             defbotchoice2 = defbotchoice.lower()
             if atkchoice2 == 'ce manipulation':
-                green(f"{playername}(you): {rcl(randint(1,len(rcl)-1))}")
+                green(f"{playername}(you): {rcl[randint(1,len(rcl)-1)]}")
                 if defbotchoice2 == 'da':
                     winlose = 'l'
                 elif defbotchoice2 == 'hwb':
@@ -213,7 +213,7 @@ def vote(namelist, suspts, energylv, murd, playername, day, dayrandomvar, murdna
                 elif defbotchoice2 == 'rct':
                     winlose = 'w'
             elif atkchoice2 == 'ct':
-                green(f"{playername}(you): {rcl(randint(1,len(rcl)-1))}")
+                green(f"{playername}(you): {rcl[randint(1,len(rcl)-1)]}")
                 if defbotchoice2 == 'da':
                     winlose = 'w'
                 elif defbotchoice2 == 'hwb':
@@ -264,20 +264,20 @@ def vote(namelist, suspts, energylv, murd, playername, day, dayrandomvar, murdna
                 green(f"You chose: {atkchoice2}")
                 red(f"{person} chose: {defbotchoice2}")
                 if winlose == 'w':
-                    red(f"{person}: {rcl(randint(1,len(rcl)-1))}")
+                    red(f"{person}: {rcl[randint(1,len(rcl)-1)]}")
                     playsound("ohno.mp3")
                     green("You won the interrogation!")
                     if namelist[murd-1] == person:
                         red(f"{person} is quite suspicious...\n")
                 elif winlose == 'l':
-                    red(f"{person}: {rcl(randint(1,len(rcl)-1))}")
+                    red(f"{person}: {rcl[randint(1,len(rcl)-1)]}")
                     playsound("areyousure.mp3")
                     blue("You lost the interrogation...\n")
                 elif winlose == 't':
-                    green(f"{playername}(you): {rcl(randint(1,len(rcl)-1))}")
-                    red(f"{person}: {rcl(randint(1,len(rcl)-1))}")
+                    green(f"{playername}(you): {rcl[randint(1,len(rcl)-1)]}")
+                    red(f"{person}: {rcl[randint(1,len(rcl)-1)]}")
                     playsound("crow.mp3")
-                    blue(f"{rcl(randint(1,len(rcl)-1))}")
+                    blue(f"{rcl[randint(1,len(rcl)-1)]}")
             time.sleep(1.5)
     red("Don't you have a human heart?")
     time.sleep(2)
@@ -376,17 +376,17 @@ def vote(namelist, suspts, energylv, murd, playername, day, dayrandomvar, murdna
         blue("The fight ended in a draw.\n")
 
     time.sleep(2)
-    purple(f"{rcl(randint(1,len(rcl)-1))}")
+    purple(f"{rcl[randint(1,len(rcl)-1)]}")
     nameindex = 1
     for name in namelist:
         if playername != namelist[0]:
             blue(f"{nameindex}. {name}")
             nameindex += 1
     blue(f"{nameindex}. Skip")
-    playervote = input(f"{rcl(randint(1,len(rcl)-1))}")
+    playervote = input(f"{rcl[randint(1,len(rcl)-1)]}")
     while 1 > int(playervote) or int(playervote) > nameindex or playervote.isalpha():
         wronginsert()
-        playervote = input(f"{rcl(randint(1,len(rcl)-1))}")
+        playervote = input(f"{rcl[randint(1,len(rcl)-1)]}")
     if playervote == str(nameindex):
         red("You skipped your vote...")
     else:
