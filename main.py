@@ -56,6 +56,7 @@ def intro():
 
 def rules():
     red("WARNING: The rules are very complex and confusing.\nYou WILL get a headache. Good luck!")
+    yellow("(it's easier to understand as you play)")
     time.sleep(1.5)
     yellow("There are 7 players - you and 6 other bots.")
     blue("You start off as a survivor or a murderer. (survivor only in this version!)")
@@ -72,7 +73,7 @@ def rules():
     green("Afterwards, all players must vote for who they believe is the murderer.")
     yellow("Some players may find you trustworthy and follow your vote,\nwhile others may keep their votes hidden from you.")
     purple("The game ends if the murderer successfully murders everyone\n(1 survivor left is a win for the murderer)\nor if the survivors successfully eliminate the murderer!")
-    yellow("That wasn't confusing at all, right?\n(it's easier to understand as you go along)\nInput anything to continue.")
+    yellow("That wasn't confusing at all, right?\nInput anything to continue.")
     RandomInputThingHiEveryoneHowAreYouAllImDoingVeryWellThisFineEveningInFactIAmFeelingQuiteEnergeticActuallyNoImNotAlrightBye = input()
 
 def roles():
