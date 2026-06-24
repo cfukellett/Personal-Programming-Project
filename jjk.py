@@ -156,7 +156,7 @@ def vote(namelist, suspts, energylv, murd, playername, day, dayrandomvar, murdna
     #print(namelist)
     intenamelist = namelist
     intenamelist.pop(0)
-    defoptions = ["DA", "HWB", "Simple Domain", "FBE", "RCT"]
+    defoptions = ["DA", "HWB", "Simple Domain", "FBE", "Reverse Cursed Technique"]
     atkoptions = ["CE Manipulation", "CT", "CT Amplification", "CTR", "Imaginary Technique"]
     random.shuffle(atkoptions)
     random.shuffle(defoptions)
@@ -178,22 +178,22 @@ def vote(namelist, suspts, energylv, murd, playername, day, dayrandomvar, murdna
             blue("Choose your fighting option.")
             random.shuffle(atkoptions)
             blue(f"1. {atkoptions[0]}\n2. {atkoptions[1]}\n3. {atkoptions[2]}\n4. Skip")
-            #the interrogated has these options: da, hwb, simple domain, fbe, rct, reroll
-            #the interrogater has these options: object, hwb, accuse, warn, rct, skip, reroll
-            #da beats object, hwb beats accuse, simple domain beats hwb, fbe beats warn, rct is a tie, reroll allows them to reroll their options
-            #object beats hwb, hwb beats simple domain, accuse beats fbe, warn beats rct, rct beats da, reroll allows them to reroll their options
+            #the interrogated has these options: da, hwb, simple domain, fbe, reverse cursed technique, reroll
+            #the interrogater has these options: object, hwb, accuse, warn, reverse cursed technique, skip, reroll
+            #da beats object, hwb beats accuse, simple domain beats hwb, fbe beats warn, reverse cursed technique is a tie, reroll allows them to reroll their options
+            #object beats hwb, hwb beats simple domain, accuse beats fbe, warn beats reverse cursed technique, reverse cursed technique beats da, reroll allows them to reroll their options
             #i have come from the future (2 weeks) i am here to say that the notes above are all false 
             atkchoice = input()
             atkchoice2 = ''
             while atkchoice not in ['1', '2', '3', '4']:
                 wronginsert()
-                blue("Choose your interrogation option.")
+                blue(f"{rcl[randint(1,len(rcl)-1)]}")
                 blue(f"1. {atkoptions[0]}\n2. {atkoptions[1]}\n3. {atkoptions[2]}\n4. Skip")
                 atkchoice = input()
             #if atkchoice == 5:
             #    atkchoice = intespec(atkoptions, atkchoice, 'reroll')
             if int(atkchoice) == 4:
-                red("You chose to skip this interrogation...\n")
+                red(f"{rcl[randint(1,len(rcl)-1)]}\n")
                 atkchoice2 == "none"
             else:
                 atkchoice2 = atkoptions[int(atkchoice)-1].lower()
@@ -210,7 +210,7 @@ def vote(namelist, suspts, energylv, murd, playername, day, dayrandomvar, murdna
                     winlose = 'l'
                 elif defbotchoice2 == 'fbe':
                     winlose = 'l'
-                elif defbotchoice2 == 'rct':
+                elif defbotchoice2 == 'reverse cursed technique':
                     winlose = 'w'
             elif atkchoice2 == 'ct':
                 green(f"{playername}(you): {rcl[randint(1,len(rcl)-1)]}")
@@ -222,7 +222,7 @@ def vote(namelist, suspts, energylv, murd, playername, day, dayrandomvar, murdna
                     winlose = 'l'
                 elif defbotchoice2 == 'fbe':
                     winlose = 'w'
-                elif defbotchoice2 == 'rct':
+                elif defbotchoice2 == 'reverse cursed technique':
                     winlose = 'l'
             elif atkchoice2 == 'ct amplification':
                 green(f"{playername}(you): Cursed Technique Amplification: Blue")
@@ -234,7 +234,7 @@ def vote(namelist, suspts, energylv, murd, playername, day, dayrandomvar, murdna
                     winlose = 'l'
                 elif defbotchoice2 == 'fbe':
                     winlose = 'w'
-                elif defbotchoice2 == 'rct':
+                elif defbotchoice2 == 'reverse cursed technique':
                     winlose = 'w'
             elif atkchoice2 == 'ctr':
                 green(f"{playername} (you): Cursed Technique Reversal: Red")
@@ -246,7 +246,7 @@ def vote(namelist, suspts, energylv, murd, playername, day, dayrandomvar, murdna
                     winlose = 'l'
                 elif defbotchoice2 == 'fbe':
                     winlose = 'w'
-                elif defbotchoice2 == 'rct':
+                elif defbotchoice2 == 'reverse cursed technique':
                     winlose = 'w'
             elif atkchoice2 == 'imaginary technique':
                 green(f"{playername} (you): Imaginary Technique: Hollow Purple")
@@ -258,7 +258,7 @@ def vote(namelist, suspts, energylv, murd, playername, day, dayrandomvar, murdna
                     winlose = 'l'
                 elif defbotchoice2 == 'fbe':
                     winlose = 'w'
-                elif defbotchoice2 == 'rct':
+                elif defbotchoice2 == 'reverse cursed technique':
                     winlose = 'l'
             if atkchoice != '4':
                 green(f"You chose: {atkchoice2}")
@@ -266,22 +266,22 @@ def vote(namelist, suspts, energylv, murd, playername, day, dayrandomvar, murdna
                 if winlose == 'w':
                     red(f"{person}: {rcl[randint(1,len(rcl)-1)]}")
                     playsound("ohno.mp3")
-                    green("You won the interrogation!")
+                    green(f"{rcl[randint(1,len(rcl)-1)]}")
                     if namelist[murd-1] == person:
                         red(f"{person} is quite suspicious...\n")
                 elif winlose == 'l':
                     red(f"{person}: {rcl[randint(1,len(rcl)-1)]}")
                     playsound("areyousure.mp3")
-                    blue("You lost the interrogation...\n")
+                    blue(f"{rcl[randint(1,len(rcl)-1)]}\n")
                 elif winlose == 't':
                     green(f"{playername}(you): {rcl[randint(1,len(rcl)-1)]}")
                     red(f"{person}: {rcl[randint(1,len(rcl)-1)]}")
                     playsound("crow.mp3")
                     blue(f"{rcl[randint(1,len(rcl)-1)]}")
             time.sleep(1.5)
-    red("Don't you have a human heart?")
+    red(f"{rcl[randint(1,len(rcl)-1)]}")
     time.sleep(2)
-    red("No, she took it with her.\n")
+    red(f"{rcl[randint(1,len(rcl)-1)]}\n")
     time.sleep(2)
     random.shuffle(atkoptions)
     random.shuffle(defoptions)
@@ -289,7 +289,7 @@ def vote(namelist, suspts, energylv, murd, playername, day, dayrandomvar, murdna
     defchoice = input()
     while defchoice not in ['1', '2', '3']:
         wronginsert()
-        blue("Let's larp!")
+        blue(f"{rcl[randint(1,len(rcl)-1)]}")
         blue(f"1. {defoptions[0]}\n2. {defoptions[1]}\n3. {defoptions[2]}\n")
         defchoice = input()
     atkbotchoice = atkoptions[0]
@@ -306,7 +306,7 @@ def vote(namelist, suspts, energylv, murd, playername, day, dayrandomvar, murdna
             winlose = 'l'
         elif atkbotchoice == 'warn':
             winlose = 'l'
-        elif atkbotchoice == 'rct':
+        elif atkbotchoice == 'reverse cursed technique':
             winlose = 'w'
     elif defchoice2 == 'hwb':
         green(f"{playername}(you): Hollow Wicker Basket!")
@@ -318,7 +318,7 @@ def vote(namelist, suspts, energylv, murd, playername, day, dayrandomvar, murdna
             winlose = 'l'
         elif atkbotchoice == 'warn':
             winlose = 'l'
-        elif atkbotchoice == 'rct':
+        elif atkbotchoice == 'reverse cursed technique':
             winlose = 'w'
     elif defchoice2 == 'simple domain':
         green(f"{playername}(you): New Shadow Style: Simple Domain")
@@ -330,7 +330,7 @@ def vote(namelist, suspts, energylv, murd, playername, day, dayrandomvar, murdna
             winlose = 'l'
         elif atkbotchoice == 'warn':
             winlose = 'w'
-        elif atkbotchoice == 'rct':
+        elif atkbotchoice == 'reverse cursed technique':
             winlose = 't'
     elif defchoice2 == 'fbe':
         green(f"{playername}(you): Falling Blossom Emotion!")
@@ -342,9 +342,9 @@ def vote(namelist, suspts, energylv, murd, playername, day, dayrandomvar, murdna
             winlose = 'l'
         elif atkbotchoice == 'warn':
             winlose = 'w'
-        elif atkbotchoice == 'rct':
+        elif atkbotchoice == 'reverse cursed technique':
             winlose = 'l'
-    elif defchoice2 == 'rct':
+    elif defchoice2 == 'reverse cursed technique':
         green(f"{playername}(you): I'm still alive and kickin'!")
         if atkbotchoice == 'object':
             winlose = 'w'
@@ -354,18 +354,18 @@ def vote(namelist, suspts, energylv, murd, playername, day, dayrandomvar, murdna
             winlose = 'l'
         elif atkbotchoice == 'warn':
             winlose = 'w'
-        elif atkbotchoice == 'rct':
+        elif atkbotchoice == 'reverse cursed technique':
             winlose = 't'
     green(f"You chose: {defchoice2}")
     person = namelist[randint(1,len(namelist)-1)]
     red(f"{person} chose: {atkbotchoice}")
     if winlose == 'w':
-        green(f"{playername}(you): Nah, I'd win.")
+        green(f"{playername}(you): {rcl[randint(1,len(rcl)-1)]}")
         playsound("byebye.mp3")
         yellow("You won the fight.\n")
         suspts -= 20
     elif winlose == 'l':
-        red(f"{person}: You were magnificent, {playername},\nI will never forget you for as long as I live.")
+        red(f"{person}: {rcl[randint(1,len(rcl)-1)]}")
         playsound("areyousure.mp3")
         blue("You lost the fight...\n")
         suspts += 50
@@ -388,7 +388,7 @@ def vote(namelist, suspts, energylv, murd, playername, day, dayrandomvar, murdna
         wronginsert()
         playervote = input(f"{rcl[randint(1,len(rcl)-1)]}")
     if playervote == str(nameindex):
-        red("You skipped your vote...")
+        red(f"{rcl[randint(1,len(rcl)-1)]}")
     else:
         purple(f"You voted for {namelist[int(playervote)-1]}.")
     if suspts >= 200:
@@ -430,13 +430,13 @@ def vote(namelist, suspts, energylv, murd, playername, day, dayrandomvar, murdna
                 votewithplayer = False
             if votewithplayer == True:
                 if int(playervote) == nameindex:
-                    blue(f"{name} trusts your vote and has skipped their vote.")
+                    blue(f"{rcl[randint(1,len(rcl)-1)]}")
                     botplayervote += 1
                 else:
-                    blue(f"{name} trusts your vote and has voted for {namelist[int(playervote)-1]}.")
+                    blue(f"{rcl[randint(1,len(rcl)-1)]}")
                     botplayervote += 1
             else:
-                blue(f"{name} has kept their vote hidden from you...")
+                blue(f"{rcl[randint(1,len(rcl)-1)]}")
                 botselfvote += 1
             time.sleep(1.5)
     
@@ -476,9 +476,9 @@ def vote(namelist, suspts, energylv, murd, playername, day, dayrandomvar, murdna
             namelist = namelist.pop(chosenvoted)
         elif chosenvoted == 'skip':
             if skiportie == 'tie':
-                yellow(f"There was a tie in the votes!\nThe votes will be skipped.")
+                yellow(f"{rcl[randint(1,len(rcl)-1)]}")
             else:
-                yellow("The majority agreed to skip the vote.")
+                yellow(f"{rcl[randint(1,len(rcl)-1)]}")
     return murddead, suspts, dead
 
 def intespec(atkoptions, atkchoice, status):
@@ -529,7 +529,7 @@ def day(day, suspts, energylv, name_list, murd, player_role, chosen, player_name
             time.sleep(0.2)
             if murddead == False:
                 if len(name_list) > 3:
-                    red("Oh, what's this? A murder had occurred overnight.")
+                    red(f"{rcl[randint(1,len(rcl)-1)]}")
                     time.sleep(2)
                     #print(name_list)
                     #print(f"This is the murd value before the chosen value has been assigned: {murd}")
@@ -602,7 +602,7 @@ def lms(energylv, murdname, playername):
 def wronginsert():
     print("Please answer with an acceptable input.\n")
 
-def night(player_role, chosen, murd, name_list, energypts, murddead, day):
+def night(player_role, chosen, murd, name_list, energypts, murddead, day, rcl):
     dead = False
     player_lh = ""
     yellow(f"🌙--Night {day}--🌙")
@@ -622,21 +622,21 @@ def night(player_role, chosen, murd, name_list, energypts, murddead, day):
             player_sleep = False
         if player_sleep == False:
             while player_lh != "1" and player_lh != "2" and player_lh != "3":
-                purple("Will you take a peek outside or go into hiding? (Enter 1, 2 or 3)")
-                red("1. (Take a peek outside)")
-                green("2. (Hide in your house)")
-                blue("3. Nevermind. I'm feeling sleepy.")
+                purple(f"{rcl[randint(1,len(rcl)-1)]}")
+                red(f"1. {rcl[randint(1,len(rcl)-1)]}")
+                green(f"2. {rcl[randint(1,len(rcl)-1)]}")
+                blue(f"3. {rcl[randint(1,len(rcl)-1)]}")
                 player_lh = input()
                 if player_lh == "1":
                     player_lh = "look"
-                    red("You decided to take a peek outside...")
+                    red(f"{rcl[randint(1,len(rcl)-1)]}")
                     energypts -= 30
                     dead = peek(murd, name_list, murddead)
                     break
                 elif player_lh == "2":
                     player_lh = "hide"
-                    blue("You decided to hide for the night.")
-                    hide(chosen)
+                    blue(f"{rcl[randint(1,len(rcl)-1)]}")
+                    hide(chosen, rcl)
                     energypts -= 30
                     break
                 elif player_lh == "3":
@@ -692,7 +692,7 @@ def peek(murd, names, murddead):
 
 
 
-def hide(target):
+def hide(target, rcl):
     hideactions = ["You hid in a cardboard box, hoping not to be found...", "You hid in the wardrobe, trying to stay as silent as possible...", "You hid under your bed whilst attempting to control your heavy breathing...", "You hid underneath the bathroom cabinet, surely they won't expect this...", "You hid in the attic, staying as still as possible...", "You hid under the dining table...Surely they can't see you down there...right? RIGHT???", "You dug 3000 kilometers below the surface into the mantle to greet Satan and treated yourself with a nice Subway sandwich. Then, you went into the deep sea to greet your good old friend 'Angus the Deep Sea Anglerfish' and had a great time catching up. Then, you returned to your house and found a knife...but it was a toy knife. So, you decided to climb on the ceiling and hope for the best.", "You hid in the kitchen cabinet, holding your breath."]
     hidingrandom = randint(1,len(hideactions)-1)
     hidetext = "Hiding"
@@ -708,9 +708,9 @@ def hide(target):
     dot_spam(".", True)
     if target == 0:
         print("...?")
-        purple("You heard what seemed like footsteps paddling around in your house.")
-        purple("After 5 minutes of tension, the footsteps faded away.")
-    green("You felt safe.")
+        purple(f"{rcl[randint(1,len(rcl)-1)]}")
+        purple(f"{rcl[randint(1,len(rcl)-1)]}")
+    green(f"{rcl[randint(1,len(rcl)-1)]}")
     time.sleep(1.5)
 
 def dot_spam(text, remove):
@@ -827,7 +827,7 @@ while dead == False:
     if murddead == False:
         aicode(player_role, comp1_role, comp2_role, comp3_role, comp4_role, comp5_role, comp6_role, name_list, day_num, murd)
     if dead == False:
-        dead, energy_points = night(player_role, chosen, murd, name_list, energy_points, murddead, day_num)
+        dead, energy_points = night(player_role, chosen, murd, name_list, energy_points, murddead, day_num, randomchaoslist)
     if dead == True:
         overview(day_num, player_name, player_role, energy_lv, sus_points, murd, dead, name_list)
     #print(chosen)
