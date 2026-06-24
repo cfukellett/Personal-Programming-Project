@@ -27,6 +27,12 @@ def yellow(string):
 def purple(string):
     rgb(string, 255,0,255)
 
+randomchaoslist = ["Throughout heaven and Earth,\nI alone am the honored one.", "Don't worry. I'm the strongest.", "The...the larp! It's immaculate! A special grade larper? Yuji Itadori has never seen this level of larp!", "Reading the manga? What a loser.", "That's how losers think.", "You can see it, Mahoraga!\nYou can see my cursed technique!", "RIKA HELP ME RIKA HELP ME", "MAHORAGA!!! HELP!!!!", "This is...my dessert! SWEET!!!", "Yowai mo.", "I really am...I truly am...\nA CURSE!!! BLACK FLASH!!!", "I really am...I truly am...\nA LARPER! LARP FLASH!!!", "Yuta Okkotsu - after the Night Parade of a Hundred Demons,\nhe has regained his role as a special grade sorcerer,\nrivaling Satoru Gojo in...unusual abilities.", "LARP ME LARP ME", "Are you the strongest because you're Satoru Gojo? Or are you Satoru Gojo because you're the strongest?", "Kasumi Miwa - after the Night Parade of a Hundred Demons,\nshe has regained her role as a special grade sorcerer,\nrivaling Satoru Gojo in...unusual abilities.", "But I finally grasped it on the brink of death!\nThe core of cursed energy!", "Oh? Is that right? Maybe you're right...YOU'RE SO RIGHT!!!", "I'll kill you.", "Stand ready for my arriva- Oh wait...Wrong show...", "It was a desperate gamble at a Domain Expansion lasting two tenths of a second.", "Sorry, Amanai. I'm not even angry over you right now.\nI bear no grudges against anyone. it's just that the world feels so, so wonderful right now.\nThroughout heaven and Earth, I alone am the honoured one.\nThe merit of having a technique that's passed down for generations is having a user's manual.\nThe demerit is that information about the technique is easily leaked.\nYou were a member of the Zen'in clan, weren't you?\nThat's why you know so much about the Limitless technique.\nHowever, even in the Gojo clan, only a scant few know about this.\nTake the amplified and the reversal,\nthen smash those two different expression of infinity to create and push out imaginary mass.\nImaginary Technique: Hollow Purple.", "I bet you thought you were gonna do some pest control!\nOr ghost exterminations like in some make-believe story!\nYou came to Shibuya with half-assed determination didn't ya?!\nHow naive, you stupid brat! This is war!\nNot a battle to fix what's wrong! But a clash of truths!\nYou and your fragile justice! You are me, Yuji Itadori!\nI kill without a second thought, just like you save people without a second thought!\nThe instincts of a curse against the so-called dignity obtained by human reason!\nIt's a battle to determine who will be left standing in a 100 years!\nHow the hell did you think you were gonna beat me when you don't even realize that?\nTell me, Yuji Itadori have you ever stopped to count how many curses you've killed?\nNo, right? Me neither.", "With this treasure, I summon: Eight Handled Sword Divergent Sila Divine General Mahoraga!"]
+
+def chaosglobal():
+    global randomchaoslist
+chaosglobal()
+
 def intro():
     debug = input("Enter password to enter debug mode: (input anything to ignore)\n")
     if debug == 'satorugojo':
@@ -172,7 +178,7 @@ def vote(namelist, suspts, energylv, murd, playername, day, dayrandomvar, murdna
             ReallyRandomInputThatWillNeverBeUsed = input()
     if ReallyRandomInputThatWillNeverBeUsed == '1':
         for person in intenamelist:
-            blue(f"You are fighting{person}.")
+            blue(f"You are fighting {person}.")
             blue("Choose your fighting option.")
             random.shuffle(atkoptions)
             blue(f"1. {atkoptions[0]}\n2. {atkoptions[1]}\n3. {atkoptions[2]}\n4. Skip")
@@ -199,7 +205,7 @@ def vote(namelist, suspts, energylv, murd, playername, day, dayrandomvar, murdna
             winlose = ''
             defbotchoice2 = defbotchoice.lower()
             if atkchoice2 == 'ce manipulation':
-                green(f"{playername}(you): Throughout heaven and Earth, I alone am the honored one.")
+                green(f"{playername}(you): {randomchaoslist(randint(1,len(randomchaoslist)-1))}")
                 if defbotchoice2 == 'da':
                     winlose = 'l'
                 elif defbotchoice2 == 'hwb':
@@ -211,7 +217,7 @@ def vote(namelist, suspts, energylv, murd, playername, day, dayrandomvar, murdna
                 elif defbotchoice2 == 'rct':
                     winlose = 'w'
             elif atkchoice2 == 'ct':
-                green(f"{playername}(you): Don't worry. I'm the strongest.")
+                green(f"{playername}(you): {randomchaoslist(randint(1,len(randomchaoslist)-1))}")
                 if defbotchoice2 == 'da':
                     winlose = 'w'
                 elif defbotchoice2 == 'hwb':
@@ -268,18 +274,18 @@ def vote(namelist, suspts, energylv, murd, playername, day, dayrandomvar, murdna
                     if namelist[murd-1] == person:
                         red(f"{person} is quite suspicious...\n")
                 elif winlose == 'l':
-                    red(f"{person}: Are you sure?")
+                    red(f"{person}: {randomchaoslist(randint(1,len(randomchaoslist)-1))}")
                     playsound("areyousure.mp3")
                     blue("You lost the interrogation...\n")
                 elif winlose == 't':
-                    green(f"{playername}(you): ...")
-                    red(f"{person}: ...")
+                    green(f"{playername}(you): {randomchaoslist(randint(1,len(randomchaoslist)-1))}")
+                    red(f"{person}: {randomchaoslist(randint(1,len(randomchaoslist)-1))}")
                     playsound("crow.mp3")
-                    blue("You...both lost the interrogation?\n")
+                    blue(f"{randomchaoslist(randint(1,len(randomchaoslist)-1))}")
             time.sleep(1.5)
-    red("It is now your turn to be interrogated.")
+    red("Don't you have a human heart?")
     time.sleep(2)
-    red("Choose the correct option to clear their suspicion towards you!\n")
+    red("No, she took it with her.\n")
     time.sleep(2)
     random.shuffle(atkoptions)
     random.shuffle(defoptions)
@@ -287,7 +293,7 @@ def vote(namelist, suspts, energylv, murd, playername, day, dayrandomvar, murdna
     defchoice = input()
     while defchoice not in ['1', '2', '3']:
         wronginsert()
-        blue("Choose your interrogation option.")
+        blue("Let's larp!")
         blue(f"1. {defoptions[0]}\n2. {defoptions[1]}\n3. {defoptions[2]}\n")
         defchoice = input()
     atkbotchoice = atkoptions[0]
@@ -374,17 +380,17 @@ def vote(namelist, suspts, energylv, murd, playername, day, dayrandomvar, murdna
         blue("The fight ended in a draw.\n")
 
     time.sleep(2)
-    purple("It's time to vote.\nIf you think someone is suspicious, vote them out!\nAlternatively, you can also skip your vote.\n")
+    purple(f"{randomchaoslist(randint(1,len(randomchaoslist)-1))}")
     nameindex = 1
     for name in namelist:
         if playername != namelist[0]:
             blue(f"{nameindex}. {name}")
             nameindex += 1
     blue(f"{nameindex}. Skip")
-    playervote = input(f"Type in the number of the person who you would like to vote out,\nor type '{nameindex}' to skip your vote.\n")
+    playervote = input(f"{randomchaoslist(randint(1,len(randomchaoslist)-1))}")
     while 1 > int(playervote) or int(playervote) > nameindex or playervote.isalpha():
         wronginsert()
-        playervote = input(f"Type in the number of the person who you would like to vote out,\nor type '{nameindex}' to skip your vote.\n")
+        playervote = input(f"{randomchaoslist(randint(1,len(randomchaoslist)-1))}")
     if playervote == str(nameindex):
         red("You skipped your vote...")
     else:
@@ -646,6 +652,7 @@ def night(player_role, chosen, murd, name_list, energypts, murddead, day):
                     wronginsert()
     if player_sleep == True:
         blue("Sleeping...😴💤💤")
+        time.sleep(1.5)
     return dead, energypts
 
 def peek(murd, names, murddead):
