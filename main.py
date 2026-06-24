@@ -515,7 +515,7 @@ def day(day, suspts, energylv, name_list, murd, player_role, chosen, player_name
     else:
         blue(susptstext)
     yellow(f"⚡Energy Level: {energylv}")
-    deadlist = ["was found with his eyes gouged out and his neck hanging on a branch… Terrifying! 😱", "had been impaled and had died from blood loss...", "was electrocuted, leaving their body completely unrecognisable...", "was having a midnight snack and suddenly suffered from a heart attack...Yes, this was caused by the murderer.", "somehow found an active volcano and jumped into it, burning themselves into ashes in the process.", "was found without skin in a toolshed."]
+    deadlist = ["was found with their eyes gouged out and their neck hanging on a branch… Terrifying! 😱", "had been impaled and had died from blood loss...", "was electrocuted, leaving their body completely unrecognisable...", "was having a midnight snack and suddenly suffered from a heart attack...Yes, this was caused by the murderer.", "somehow found an active volcano and jumped into it, burning themselves into ashes in the process.", "was found without skin in a toolshed."]
     rand_death = randint(0,(len(deadlist)-1))
     if dayrandomvar > 10:
         dayrandomvar -= 10
