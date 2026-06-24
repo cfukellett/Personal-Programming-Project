@@ -264,7 +264,7 @@ def vote(namelist, suspts, energylv, murd, playername, day, dayrandomvar, murdna
                 green(f"You chose: {atkchoice2}")
                 red(f"{person} chose: {defbotchoice2}")
                 if winlose == 'w':
-                    red(f"{person}: Oh no.")
+                    red(f"{person}: {rcl(randint(1,len(rcl)-1))}")
                     playsound("ohno.mp3")
                     green("You won the interrogation!")
                     if namelist[murd-1] == person:
