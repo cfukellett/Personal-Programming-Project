@@ -29,7 +29,7 @@ def purple(string):
 
 randomchaoslist = ["Throughout heaven and Earth,\nI alone am the honored one.", "Don't worry. I'm the strongest.", "The...the larp! It's immaculate! A special grade larper? Yuji Itadori has never seen this level of larp!", "Reading the manga? What a loser.", "That's how losers think.", "You can see it, Mahoraga!\nYou can see my cursed technique!", "RIKA HELP ME RIKA HELP ME", "MAHORAGA!!! HELP!!!!", "This is...my dessert! SWEET!!!", "Yowai mo.", "I really am...I truly am...\nA CURSE!!! BLACK FLASH!!!", "I really am...I truly am...\nA LARPER! LARP FLASH!!!", "Yuta Okkotsu - after the Night Parade of a Hundred Demons,\nhe has regained his role as a special grade sorcerer,\nrivaling Satoru Gojo in...unusual abilities.", "LARP ME LARP ME", "Are you the strongest because you're Satoru Gojo? Or are you Satoru Gojo because you're the strongest?", "Kasumi Miwa - after the Night Parade of a Hundred Demons,\nshe has regained her role as a special grade sorcerer,\nrivaling Satoru Gojo in...unusual abilities.", "But I finally grasped it on the brink of death!\nThe core of cursed energy!", "Oh? Is that right? Maybe you're right...YOU'RE SO RIGHT!!!", "I'll kill you.", "Stand ready for my arriva- Oh wait...Wrong show...", "It was a desperate gamble at a Domain Expansion lasting two tenths of a second.", "Sorry, Amanai. I'm not even angry over you right now.\nI bear no grudges against anyone. it's just that the world feels so, so wonderful right now.\nThroughout heaven and Earth, I alone am the honoured one.\nThe merit of having a technique that's passed down for generations is having a user's manual.\nThe demerit is that information about the technique is easily leaked.\nYou were a member of the Zen'in clan, weren't you?\nThat's why you know so much about the Limitless technique.\nHowever, even in the Gojo clan, only a scant few know about this.\nTake the amplified and the reversal,\nthen smash those two different expression of infinity to create and push out imaginary mass.\nImaginary Technique: Hollow Purple.", "I bet you thought you were gonna do some pest control!\nOr ghost exterminations like in some make-believe story!\nYou came to Shibuya with half-assed determination didn't ya?!\nHow naive, you stupid brat! This is war!\nNot a battle to fix what's wrong! But a clash of truths!\nYou and your fragile justice! You are me, Yuji Itadori!\nI kill without a second thought, just like you save people without a second thought!\nThe instincts of a curse against the so-called dignity obtained by human reason!\nIt's a battle to determine who will be left standing in a 100 years!\nHow the hell did you think you were gonna beat me when you don't even realize that?\nTell me, Yuji Itadori have you ever stopped to count how many curses you've killed?\nNo, right? Me neither.", "With this treasure, I summon:\nEight Handled Sword Divergent Sila Divine General Mahoraga!", "Nah, I'd win.", "You were magnificent, Satoru Gojo. I will never forget you for as long as I live.", "Don't you have a human heart?"]
 
-def intro():
+def intro(rcl):
     debug = input("Enter password to enter debug mode: (input anything to ignore)\n")
     if debug == 'satorugojo':
         subprocess.run(["python3", "debug.py"])
@@ -48,29 +48,18 @@ def intro():
         read_rules = input()
         read_rules = read_rules.lower()
     if read_rules in ['y', 'yes']:
-        rules()
+        rules(rcl)
     red("The game will now begin.")
     return name
 
-def rules():
+def rules(rcl):
     red("WARNING: The rules are very complex and confusing.\nYou WILL get a headache. Good luck!")
     time.sleep(1.5)
-    yellow("There are 7 players - you and 6 other bots.")
-    blue("You start off as a survivor or a murderer. (survivor only in this version!)")
-    purple("Your base energy level starts off as 'Neutral',\nwhile your suspicion points start off as '0'.")
-    red("During the night, you have 3 options.")
-    blue("1. Peek out your window\n2. Hide\n3. Go to sleep")
-    red("Peeking out the window allows you to make observations\n(and potentially see some super suspicious stuff!!! oooo)")
-    blue("Hiding ensures that you stay safe for the night.")
-    green("Sleeping allows you to progress through the night without making any special decisions.")
-    purple("Peeking and hiding will cause you to lose energy, while sleeping causes you to gain energy.")
-    yellow("When the day begins, there may be a murder.")
-    red("You must then interrogate every player -\na successful interrogation may allow you to obtain valuable information.")
-    blue("You will then be interrogated.\nSuccessfully winning the interrogation will cause you to look less suspicious to the others.")
-    green("Afterwards, all players must vote for who they believe is the murderer.")
-    yellow("Some players may find you trustworthy and follow your vote,\nwhile others may keep their votes hidden from you.")
-    purple("The game ends if the murderer successfully murders everyone\n(1 survivor left is a win for the murderer)\nor if the survivors successfully eliminate the murderer!")
-    yellow("That wasn't confusing at all, right?\n(it's easier to understand as you go along)\nInput anything to continue.")
+    yellow(rcl[randint(1,len(rcl)-1)])
+    red(rcl[randint(1,len(rcl)-1)])
+    blue(rcl[randint(1,len(rcl)-1)])
+    green(rcl[randint(1,len(rcl)-1)])
+    purple(rcl[randint(1,len(rcl)-1)])
     RandomInputThingHiEveryoneHowAreYouAllImDoingVeryWellThisFineEveningInFactIAmFeelingQuiteEnergeticActuallyNoImNotAlrightBye = input()
 
 def roles():
@@ -799,7 +788,7 @@ def murdthing(player_role, role_list, namelist, daynum, murd):
 #player_lh = int(input())
 os.system('cls' if os.name == 'nt' else 'clear')
 print("\n")
-player_name = intro()
+player_name = intro(randomchaoslist)
 player_role, comp1_role, comp2_role, comp3_role, comp4_role, comp5_role, comp6_role = roles()
 comp1name, comp2name, comp3name, comp4name, comp5name, comp6name = compnames()
 name_list = [player_name, comp1name, comp2name, comp3name, comp4name, comp5name, comp6name]
