@@ -31,12 +31,14 @@ def intro():
     debug = input("Enter password to enter debug mode: (input anything to ignore)\n")
     if debug == 'satorugojo':
         subprocess.run(["python3", "debug.py"])
+        sys.exit()
     print("--Welcome--")
     time.sleep(1.2)
     yellow("Please enter your name:\n")
     name = input()
     if name.lower() in ['gojo', 'satoru', 'satoru gojo', 'satorugojo', 'gojo satoru', 'gojosatoru']:
         subprocess.run(["python3", "jjk.py"])
+        sys.exit()
     yellow(f"Hello, {name}, welcome to the game.")
     time.sleep(1)
     red("Would you like to read the rules? (y/n):\n")
